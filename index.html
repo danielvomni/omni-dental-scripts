@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omni Dental Scripts</title>
+    <meta name="description" content="Herramienta de guiones de llamada dinámicos para clínicas dentales — Omni Dental">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="app-header">
+        <div class="header-inner">
+            <div class="logo">
+                <div class="logo-text">
+                    <span class="logo-omni">OMNI</span>
+                    <span class="logo-dental">Dental</span>
+                </div>
+                <span class="logo-scripts">Scripts</span>
+            </div>
+            <div class="selectors">
+                <div class="select-group">
+                    <label for="clinic-select">Clínica</label>
+                    <select id="clinic-select"><option value="">-- Seleccione Clínica --</option></select>
+                </div>
+                <div class="select-group">
+                    <label for="treatment-select">Tratamiento</label>
+                    <select id="treatment-select" disabled><option value="">-- Primero elija clínica --</option></select>
+                </div>
+            </div>
+            <button id="copy-btn" class="btn-copy" title="Copiar guion">📋 Copiar Todo</button>
+        </div>
+    </header>
+
+    <div id="search-bar" class="search-bar" style="display:none">
+        <input type="text" id="clinic-search" placeholder="🔍 Buscar clínica rápidamente..." autocomplete="off">
+    </div>
+
+    <main id="app-main">
+        <aside id="sidebar" style="display:none">
+            <div class="sidebar-card" id="quick-info">
+                <h3>📍 Info Rápida</h3>
+                <div class="info-row"><span class="info-label">Dirección:</span><span id="info-location"></span></div>
+                <div class="info-row"><span class="info-label">Referencia:</span><span id="info-ref"></span></div>
+                <div class="info-row"><span class="info-label">Oferta:</span><span id="info-offer"></span></div>
+                <div class="info-row"><span class="info-label">📄 Documentación aceptada:</span><span id="info-docs"></span></div>
+                <div class="info-row"><span class="info-label">💼 Situación económica:</span><span id="info-econ"></span></div>
+                <div class="info-row"><span class="info-label">💳 Financiación:</span><span id="info-financing"></span></div>
+            </div>
+            <div class="sidebar-card" id="qualif-badge" style="display:none">
+                <h3>⚡ Cualificación</h3>
+                <div id="qualif-status"></div>
+            </div>
+        </aside>
+
+        <section id="script-area">
+            <div id="script-content" class="empty-state">
+                <div class="empty-logo">
+                    <span class="empty-omni">OMNI</span>
+                    <span class="empty-dental">Dental</span>
+                </div>
+                <p class="empty-sub">Scripts</p>
+                <p class="empty-desc">Seleccione una clínica y tratamiento para generar el guion.</p>
+                <div class="stats-row">
+                    <div class="stat"><span class="stat-num" id="stat-clinics">0</span><span class="stat-label">Clínicas</span></div>
+                    <div class="stat"><span class="stat-num" id="stat-scripts">10</span><span class="stat-label">Guiones</span></div>
+                    <div class="stat"><span class="stat-num" id="stat-treatments">6</span><span class="stat-label">Tratamientos</span></div>
+                </div>
+            </div>
+        </section>
+
+        <aside id="negativas-panel" style="display:none">
+            <div class="sidebar-card">
+                <h3>🔄 Respuestas Negativas</h3>
+                <p class="panel-subtitle">Qué decir si el paciente pone objeciones</p>
+                <div id="negativas-list"></div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="scripts.js"></script>
+    <script src="clinics-data.js"></script>
+    <script src="clinics-data-2.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

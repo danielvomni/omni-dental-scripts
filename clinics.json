@@ -1,0 +1,55 @@
+{
+  "clinics": [
+    {
+      "id": "clinica-dental-centro",
+      "name": "Clínica Dental Centro",
+      "address_short": "Calle Mayor 1",
+      "reference_point": "al lado de la Puerta del Sol",
+      "value_points": "cirugía guiada por ordenador, especialistas con más de 15 años de experiencia y tecnología 3D de última generación",
+      "promotion": "implante completo con corona por solo 890€",
+      "accepted_docs": "DNI o NIE permanente, y una nómina o pensión de al menos 900€",
+      "location": "Calle Mayor 1, 28013 Madrid",
+      "phone": "+34 912 345 678",
+      "financing": {
+        "provider": "Santander Consumer",
+        "max_months_interest_free": 12,
+        "max_months_total": 60,
+        "min_amount": 300
+      }
+    },
+    {
+      "id": "dental-smile-vigo",
+      "name": "Dental Smile Vigo",
+      "address_short": "Avenida de la Marina 45",
+      "reference_point": "frente al Club Náutico",
+      "value_points": "expertos en carga inmediata (dientes en el mismo día) y sedación consciente para pacientes con miedo",
+      "promotion": "2x1 en blanqueamiento al realizar tu primer implante",
+      "accepted_docs": "DNI, NIE o Pasaporte con contrato de trabajo en vigor",
+      "location": "Avenida de la Marina 45, 36201 Vigo",
+      "phone": "+34 986 112 233",
+      "financing": {
+        "provider": "Sabadell Consumer",
+        "max_months_interest_free": 24,
+        "max_months_total": 48,
+        "min_amount": 500
+      }
+    },
+    {
+      "id": "clinica-gijon",
+      "name": "Clínica Dental Gijón",
+      "address_short": "Calle Magnus Blikstad, 71",
+      "reference_point": "en la misma calle que Los Alzas",
+      "value_points": "más de 20 años de experiencia y un equipo de implantólogos altamente especializados. Ofrecemos carga inmediata, garantía en implantes de hasta 10 años y supervisión por el especialista de principio a fin",
+      "promotion": "20% de descuento en el tratamiento completo",
+      "accepted_docs": "DNI + Nómina, Jubilados, Terceros o Autónomos con ingresos regulares",
+      "location": "Calle Magnus Blikstad, 71, 33207 Gijón, Asturias",
+      "phone": "+34 985 000 000",
+      "financing": {
+        "provider": "Entidad Colaboradora",
+        "max_months_interest_free": 12,
+        "max_months_total": 60,
+        "min_amount": 300
+      }
+    }
+  ]
+}
