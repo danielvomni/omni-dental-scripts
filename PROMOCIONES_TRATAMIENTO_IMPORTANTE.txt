@@ -1,0 +1,15 @@
+Cambios de esta versión:
+
+- Las promociones ahora se segmentan según el tratamiento seleccionado.
+- Si una promoción contiene bloques como "Implantes:", "Ortodoncia:", "Carillas:" o "Blanqueamiento:", el guion solo muestra el bloque que corresponde al tratamiento activo.
+- La ficha lateral también muestra la oferta del tratamiento seleccionado, no la promoción completa de todos los tratamientos.
+- Si no hay promoción específica para un tratamiento, el guion omite la oferta y mantiene la primera visita gratuita.
+- No se han añadido clínicas nuevas en esta fase.
+- No se ha reconstruido la base original.
+- No se han cambiado nombres de clínicas.
+
+Ejemplos esperados:
+- Carranza → Implantes: solo oferta de implantes.
+- Carranza → Ortodoncia: solo oferta de ortodoncia.
+- Carranza → Blanqueamiento: solo oferta de blanqueamiento.
+- Massana → Carillas: solo oferta de carillas.

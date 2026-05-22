@@ -1,4 +1,26 @@
 // Script templates by treatment type
+function buildAuthorityOfferText(c, intro, options = {}) {
+  const hasValuePoints = !!(c.valuePoints && c.valuePoints !== '—');
+  const hasPromo = !!(c.promo && c.promo !== '—');
+  let t = intro;
+
+  if (hasValuePoints) {
+    t += `
+
+En <b>${c.name}</b> trabajamos con <b>${c.valuePoints}</b>.`;
+  }
+
+  if (hasPromo) {
+    const prefix = hasValuePoints ? 'Y ahora mismo tenemos' : 'Ahora mismo tenemos';
+    const suffix = options.promoSuffix || '';
+    t += `
+
+${prefix} una promoción vigente: <b>${c.promo}</b>${suffix}.`;
+  }
+
+  return t;
+}
+
 const SCRIPT_TEMPLATES = {
 
   implantes: {
@@ -6,7 +28,7 @@ const SCRIPT_TEMPLATES = {
     icon: "🦷",
     steps: [
       { title: "Saludo + Encaje + Ubicación", text: (c) => `Hola <b>[Nombre]</b>, te llamo de <b>${c.name}</b> porque dejaste una solicitud para una cita de valoración gratuita de <b>implantes dentales</b>, ¿correcto? Estamos en <b>${c.address}</b>${c.ref && c.ref !== '—' ? `, cerca de ${c.ref}` : ''}. ¿La zona te suena?`, note: "→ Si no conoce la zona: No hay problema, le enviaremos la ubicación exacta y el enlace de Google Maps por WhatsApp." },
-      { title: "Autoridad + Oferta", text: (c) => { let t = `Perfecto. Antes de seguir, te explico muy rápido: esta llamada puede ser grabada por motivos de calidad.`; if (c.valuePoints) t += `\n\nEn <b>${c.name}</b> trabajamos con <b>${c.valuePoints}</b>.`; if (c.promo && c.promo !== '—') t += `\n\nY ahora mismo tenemos una promoción vigente: <b>${c.promo}</b>, válida solo durante esta semana/mes para las primeras reservas.`; t += `\n\nY la primera visita ahora mismo sigue siendo totalmente gratuita dentro de la campaña activa.`; return t; } },
+      { title: "Autoridad + Oferta", text: (c) => buildAuthorityOfferText(c, `Perfecto. Antes de seguir, te explico muy rápido: esta llamada puede ser grabada por motivos de calidad.`, { promoSuffix: ', válida solo durante esta semana/mes para las primeras reservas' }) },
       { title: "Motivo de la visita", text: () => `Para ayudarte bien, ¿qué es exactamente lo que necesitas? ¿Una rehabilitación completa o solo una pieza en concreto?`, note: "→ Escuchar respuesta y resumir: «Perfecto, entonces vienes por ______.»" },
       { title: "Cualificación Documental", text: (c) => `Para poder abrir tu ficha y que el especialista te atienda, ¿qué documentación tienes disponible? Aceptamos: <b>${c.qualifDoc}</b>.`, rebate: (c) => `Te entiendo perfectamente [Nombre], nos encantaría poder ayudarte. El tema es que para esta campaña específica trabajamos con una financiera externa que, por normativa, nos exige presentar <b>${c.qualifDoc}</b>.\n\nSé que es un fastidio... si te parece bien, dejo tu ficha anotada y en cuanto cambien las condiciones te doy un aviso, ¿te parece bien? <b>(Finalizar llamada)</b>` },
       { title: "Cualificación Económica", text: () => `Cuando un paciente quiere financiar el tratamiento, las entidades suelen pedir cierta documentación. ¿Qué situación laboral o de ingresos tienes tú ahora mismo?`, note: (c) => `→ Aceptamos: <b>${c.qualifEcon}</b>.\n→ Si menciona ingresos regulares: Pasamos al siguiente bloque.\n→ Si solo dice ‹Trabajo›: «¿Cómo recibes tus ingresos? ¿Por nómina o eres autónomo?»`, rebate: () => `Te comprendo totalmente. El tema es que las entidades financieras nos piden ingresos regulares (nómina, jubilación, autónomo) para poder aprobarlo.\n\nNo te preocupes, lo dejamos anotado. Si más adelante tu situación cambia, avísanos con confianza y retomamos. ¡Mucho ánimo! <b>(Finalizar llamada)</b>`, condition: "econQualif" },
@@ -31,7 +53,7 @@ const SCRIPT_TEMPLATES = {
     icon: "😁",
     steps: [
       { title: "Saludo + Encaje + Ubicación", text: (c) => `Hola <b>[Nombre]</b>, te llamo de <b>${c.name}</b> en <b>${c.city || ''}</b> porque dejaste una solicitud para una cita de valoración gratuita de <b>ortodoncia</b>, ¿correcto? Estamos en <b>${c.address}</b>${c.ref && c.ref !== '—' ? `, cerca de ${c.ref}` : ''}. ¿La zona te suena?`, note: "→ Si no conoce la zona: enviaremos ubicación por WhatsApp." },
-      { title: "Autoridad + Oferta", text: (c) => { let t = `Perfecto. Esta llamada puede ser grabada por motivos de calidad.`; if (c.valuePoints) t += `\n\nEn <b>${c.name}</b> trabajamos con <b>${c.valuePoints}</b>.`; if (c.promo && c.promo !== '—') t += `\n\nPromoción vigente: <b>${c.promo}</b>.`; t += `\n\nY la primera visita ahora mismo sigue siendo totalmente gratuita dentro de la campaña activa.`; return t; } },
+      { title: "Autoridad + Oferta", text: (c) => buildAuthorityOfferText(c, `Perfecto. Esta llamada puede ser grabada por motivos de calidad.`) },
       { title: "Motivo de la visita", text: () => `Para ayudarte bien, ¿qué es exactamente lo que necesitas? ¿Es un tratamiento desde cero o una revisión de algo que ya llevas?`, note: "→ Resumir: «Perfecto, entonces vienes por ______.»" },
       { title: "Cualificación Documental", text: (c) => `Para poder abrir tu ficha, ¿qué documentación tienes disponible? Aceptamos: <b>${c.qualifDoc}</b>.`, rebate: (c) => `Te entiendo perfectamente, nos encantaría poder ayudarte. El tema es que para esta campaña específica trabajamos con una financiera que, por normativa, nos exige presentar <b>${c.qualifDoc}</b>. ¿Te parece que te avise si cambian estas condiciones? <b>(Finalizar)</b>` },
       { title: "Cualificación Económica", text: () => `¿Qué situación laboral o de ingresos tienes ahora mismo?`, note: (c) => `→ Aceptamos: <b>${c.qualifEcon}</b>.`, rebate: () => `Te comprendo totalmente. El tema es que las entidades financieras nos piden ingresos regulares. No te preocupes, lo dejamos anotado por si más adelante cambia tu situación. ¡Mucho ánimo! <b>(Finalizar)</b>`, condition: "econQualif" },
@@ -47,7 +69,7 @@ const SCRIPT_TEMPLATES = {
     icon: "✨",
     steps: [
       { title: "Saludo + Encaje + Ubicación", text: (c) => `Hola <b>[Nombre]</b>, te llamo de <b>${c.name}</b> porque dejaste una solicitud para una cita de valoración gratuita de <b>carillas</b>, ¿correcto? Estamos en <b>${c.address}</b>${c.ref && c.ref !== '—' ? `, cerca de ${c.ref}` : ''}. ¿La zona te suena?`, note: "→ Si no conoce la zona: enviaremos ubicación por WhatsApp." },
-      { title: "Autoridad + Oferta", text: (c) => { let t = `Esta llamada puede ser grabada por motivos de calidad.`; if (c.valuePoints) t += `\n\nEn <b>${c.name}</b> trabajamos con <b>${c.valuePoints}</b>.`; if (c.promo && c.promo !== '—') t += `\n\nPromoción: <b>${c.promo}</b>.`; t += `\n\nY la primera visita ahora mismo sigue siendo totalmente gratuita dentro de la campaña activa.`; return t; } },
+      { title: "Autoridad + Oferta", text: (c) => buildAuthorityOfferText(c, `Esta llamada puede ser grabada por motivos de calidad.`) },
       { title: "Motivo de la visita", text: () => `¿Qué es exactamente lo que te gustaría mejorar de tus dientes? ¿Color, forma, desgaste…?`, note: "→ Resumir: «Perfecto, entonces vienes por ______.»" },
       { title: "Cualificación Documental", text: (c) => `¿Qué documentación tienes disponible? Aceptamos: <b>${c.qualifDoc}</b>.`, rebate: (c) => `Te entiendo perfectamente, nos encantaría poder ayudarte. El tema es que para esta campaña específica trabajamos con una financiera que nos exige presentar <b>${c.qualifDoc}</b>. ¿Te aviso si cambian las condiciones? <b>(Finalizar)</b>` },
       { title: "Cualificación Económica", text: () => `¿Qué situación laboral o de ingresos tienes?`, note: (c) => `→ Aceptamos: <b>${c.qualifEcon}</b>.`, rebate: () => `Te comprendo totalmente. Las entidades nos piden ingresos regulares. Lo dejamos anotado por si más adelante cambia tu situación. <b>(Finalizar)</b>`, condition: "econQualif" },
@@ -63,7 +85,7 @@ const SCRIPT_TEMPLATES = {
     icon: "🪥",
     steps: [
       { title: "Saludo + Encaje + Ubicación", text: (c) => `Hola <b>[Nombre]</b>, te llamo de <b>${c.name}</b> porque dejaste una solicitud para una cita de valoración gratuita de <b>blanqueamiento dental</b>, ¿correcto? Estamos en <b>${c.address}</b>${c.ref && c.ref !== '—' ? `, cerca de ${c.ref}` : ''}. ¿La zona te suena?` },
-      { title: "Autoridad + Oferta", text: (c) => { let t = `Esta llamada puede ser grabada por motivos de calidad.`; if (c.valuePoints) t += `\n\nEn <b>${c.name}</b> trabajamos con <b>${c.valuePoints}</b>.`; if (c.promo && c.promo !== '—') t += `\n\nPromoción: <b>${c.promo}</b>.`; t += `\n\nY la primera visita ahora mismo sigue siendo totalmente gratuita dentro de la campaña activa.`; return t; } },
+      { title: "Autoridad + Oferta", text: (c) => buildAuthorityOfferText(c, `Esta llamada puede ser grabada por motivos de calidad.`) },
       { title: "Motivo de la visita", text: () => `¿Qué te gustaría mejorar con el blanqueamiento? ¿Aclarar manchas o mejorar el aspecto general?`, note: "→ Resumir: «Perfecto, entonces vienes por ______.»" },
       { title: "Cualificación Documental", text: (c) => `¿Qué documentación tienes? Aceptamos: <b>${c.qualifDoc}</b>.`, rebate: (c) => `Te entiendo perfectamente. Solo tramitamos con <b>${c.qualifDoc}</b> por exigencia de la financiera. ¿Te aviso si cambia? <b>(Finalizar)</b>` },
       { title: "Valor + Urgencia", text: (c) => `${(c.promo && c.promo !== '—') ? `La promoción de <b>${c.promo}</b> es para las primeras 10 reservas.` : 'Perfecto, procedemos a agendar tu cita.'}` },
@@ -102,7 +124,7 @@ const SCRIPT_TEMPLATES = {
     icon: "🦷",
     steps: [
       { title: "Saludo + Ubicación", text: () => `Hola <b>[Nombre]</b>, te llamo de <b>Clínica Dental Fonseca y Obando</b> porque dejaste una solicitud para una cita de valoración gratuita de <b>implantes dentales</b>, ¿correcto? Estamos en Calle del Gral. Ricardos, 138. ¿La zona te suena?`, note: "→ Si no conoce: enviaremos ubicación por WhatsApp." },
-      { title: "Autoridad + Oferta", text: () => `Esta llamada puede ser grabada por motivos de calidad.\n\nAhora mismo tenemos una promoción vigente de <b>prótesis provisional gratuita</b> con tu tratamiento, válida para las primeras reservas. Y la primera visita ahora mismo sigue siendo totalmente gratuita dentro de la campaña activa.` },
+      { title: "Autoridad + Oferta", text: () => `Esta llamada puede ser grabada por motivos de calidad.\n\nAhora mismo tenemos una promoción vigente de <b>prótesis provisional gratuita</b> con tu tratamiento, válida para las primeras reservas.` },
       { title: "Motivo de la visita", text: () => `¿Qué es exactamente lo que necesitas? ¿Una rehabilitación completa o solo una pieza en concreto?`, note: "→ Resumir en 1 frase." },
       { title: "Cualificación Documental", text: () => `Para abrirte la ficha médica, ¿tienes DNI, NIE…?`, rebate: () => `Te entiendo perfectamente, nos encantaría poder ayudarte. El tema es que para esta campaña específica trabajamos con una financiera que nos exige presentar documentación válida en vigor. ¿Te aviso si cambian las condiciones? <b>(Finalizar)</b>` },
       { title: "Cualificación Económica (Camuflada)", text: () => `Para mirar qué hueco nos queda libre con el especialista... <b>¿eres de los que trabaja de mañana o lo haces por la tarde?</b>`, note: "→ Si confirma que trabaja: «¡Perfecto! En caso de que te agrade el presupuesto, contamos con financiación. ¿Recibes ingresos por nómina o eres autónomo?»\n→ Si no tiene ingresos: Preguntar si un familiar podría figurar como titular." },
@@ -110,6 +132,56 @@ const SCRIPT_TEMPLATES = {
       { title: "Verificación de datos", text: () => `¿Me confirmas tu nombre y apellido?` },
       { title: "Agendamiento", text: () => `¿Te viene mejor por la mañana o por la tarde?`, rebate: () => `Tengo otra opción en los próximos 3 días.` },
       { title: "Resumen Final", text: () => `La oferta es prótesis provisional gratuita con tu tratamiento. Tu cita queda para el [día] a las [hora] en <b>Fonseca y Obando</b> (Gral. Ricardos 138). Te envío info por WhatsApp.`, highlight: true }
+    ]
+  },
+
+
+  ardenne_implantes: {
+    label: "Implantes Ardenne Dental",
+    icon: "🦷",
+    steps: [
+      { title: "Saludo + Encaje + Ubicación", text: () => `Hola <b>[Nombre]</b>, te llamo de <b>Ardenne Dental</b> porque dejaste una solicitud para una cita de valoración gratuita de <b>implantes dentales</b>, ¿correcto?
+
+Estamos en <b>Av. Espanya, 61, 43882 Segur de Calafell, Tarragona</b>. ¿La zona te suena?
+
+Antes de seguir, te comento que esta llamada puede ser grabada por motivos de calidad.`, note: "→ Si no conoce la zona: No pasa nada, luego te enviamos la ubicación exacta por WhatsApp para que lo tengas más fácil." },
+      { title: "Explicación breve de la llamada", text: () => `Te explico rápidamente, <b>[Nombre]</b>.
+
+En Ardenne Dental estamos gestionando solicitudes de pacientes interesados en implantes dentales y ahora mismo contamos con precios promocionales en varios tratamientos. Además, la primera valoración es gratuita.`, note: "Importante: en esta clínica no cerramos fecha y hora definitiva. Solo confirmamos si el precio encaja para el lead y recepción de la clínica confirma disponibilidad de cita." },
+      { title: "Motivo de la visita", text: () => `Para orientarte bien, ¿qué es exactamente lo que necesitas?
+
+¿Te falta una pieza concreta, varias piezas, o estás buscando una rehabilitación más completa?`, note: "→ Escuchar respuesta y resumir: «Perfecto, entonces en tu caso sería ______.»" },
+      { title: "Cantidad aproximada de piezas", text: () => `Y más o menos, para ubicarte mejor, ¿cuántas piezas te faltan o cuántas zonas te gustaría tratar?`, note: "→ Si no lo sabe: «No pasa nada, es normal. En la valoración el doctor lo revisa con exactitud, pero te lo pregunto para poder orientarte con el rango de precios antes de que te contacte recepción.»" },
+      { title: "Comunicar precio según el caso", text: () => `Según lo que me comentas, te puedo orientar con los precios promocionales actuales:
+
+<b>Si necesita una pieza individual:</b>
+Para una pieza individual, el implante está en promoción de <b>1.199 € a 855 €</b>.
+La funda sobre implante está en promoción de <b>599 € a 486 €</b>.
+
+<b>Si necesita 2 implantes con sobredentadura:</b>
+Para el tratamiento de <b>2 implantes + sobredentadura</b>, el precio promocional es de <b>2.835 €</b>. Antes estaba en 3.199 €.
+
+<b>Si necesita 4 implantes con sobredentadura:</b>
+Para <b>4 implantes + sobredentadura con LOCATOR</b>, el precio promocional es de <b>4.650 €</b>. Antes estaba en 5.650 €.
+
+<b>Si necesita rehabilitación fija con 6 implantes:</b>
+Para una rehabilitación de <b>6 implantes + 12 fundas metal/cerámica</b> sobre implantes, el precio promocional es de <b>10.960 €</b>. Antes estaba en 13.000 €. Este tratamiento no incluye provisional.
+
+<b>Si necesita rehabilitación fija con 8 implantes:</b>
+Para una rehabilitación de <b>8 implantes + 12 fundas metal/cerámica</b> sobre implantes, el precio promocional es de <b>12.670 €</b>. Antes estaba en 15.000 €. Este tratamiento no incluye provisional.` },
+      { title: "Aclaración importante: no hay financiación", text: () => `En este caso, Ardenne Dental <b>no dispone de financiación</b> para esta promoción, por lo que el tratamiento tendría que abonarse de forma particular, según las condiciones que te expliquen directamente en la clínica.` },
+      { title: "Cualificación por capacidad real de pago", text: () => `Teniendo en cuenta que el tratamiento estaría aproximadamente en <b>[precio según caso]</b>, y que no hay financiación, ¿crees que podrías asumirlo de forma particular si el diagnóstico confirma que ese es el tratamiento que necesitas?`, note: `→ Si puede asumirlo: «Perfecto, recepción te contactará en breve para revisar disponibilidad y confirmarte la cita de valoración gratuita.»
+→ Si tiene dudas: «Lo entiendo perfectamente, es una decisión importante. Si el doctor confirma que el tratamiento está en ese rango, ¿crees que podrías organizarte para asumirlo?»
+→ Si necesita financiación: «Te lo comento con total transparencia: Ardenne Dental no trabaja con financiación para esta promoción, por lo que tendría que pagarse de forma particular.»` },
+      { title: "Confirmación de datos básicos", text: () => `Antes de pasar tu solicitud a recepción, necesito confirmar tus datos para dejar bien registrada la información.
+
+¿Me confirmas tu nombre y apellidos, por favor?
+
+¿Me indicas una fecha y hora aproximada en la que podrías acudir?`, note: "→ No prometer hueco definitivo. Recepción confirmará fecha y hora según disponibilidad." }
+    ],
+    rebates: [
+      { label: "NECESITA FINANCIACIÓN", response: "Entiendo. En ese caso te lo comento con total transparencia: Ardenne Dental no trabaja con financiación para esta promoción, por lo que el tratamiento tendría que pagarse de forma particular. Si necesitas financiarlo obligatoriamente, probablemente esta opción no encaje contigo ahora mismo. Si cambian las condiciones, te contactaremos nuevamente.", cierre: "¿Crees que podrías asumirlo de forma particular o ahora mismo dependerías totalmente de financiación?" },
+      { label: "PREGUNTA SI PUEDE PAGAR POCO A POCO", response: "Ahora mismo no tenemos opción de financiación externa ni cuotas gestionadas por la clínica. Lo que sí puede hacer recepción es explicarte las condiciones concretas de pago, pero no sería una financiación como tal.", cierre: "Teniendo esto en cuenta, ¿crees que podría encajarte si el diagnóstico confirma ese tratamiento?" }
     ]
   },
 
@@ -138,7 +210,7 @@ const SCRIPT_TEMPLATES = {
     icon: "📞",
     steps: [
       { title: "Saludo + Reenganche", text: (c) => `Hola <b>[Nombre]</b>, te llamo de <b>${c.name}</b>. Hace un tiempo nos dejaste tus datos para informarte sobre implantes dentales, pero al final se nos quedó la cita pendiente. Antes de cerrar el expediente, quería confirmar si todavía te interesa aprovechar la revisión gratuita y la promoción especial.`, note: "→ Si NO interesado: «Solo te lo decía porque tu ficha sigue abierta y puedes beneficiarte del descuento. ¿Qué días te suele venir mejor?»" },
-      { title: "Autoridad + Oferta", text: (c) => `En <b>${c.name}</b> trabajamos con <b>${c.valuePoints}</b>. Tenemos: <b>${c.promo}</b>.\n\nY la primera visita ahora mismo sigue siendo totalmente gratuita dentro de la campaña activa.` },
+      { title: "Autoridad + Oferta", text: (c) => buildAuthorityOfferText(c, `Perfecto. Te explico muy rápido:`) },
       { title: "Motivo + Cualificación", text: (c) => `¿Qué es lo que necesitas? ¿Rehabilitación completa o pieza en concreto?\n\n¿Qué documentación tienes? Aceptamos: <b>${c.qualifDoc || 'DNI/NIE'}</b>.` },
       { title: "Verificación + Agendamiento", text: () => `¿Me confirmas nombre y apellido? ¿Te viene mejor mañana o tarde?` },
       { title: "Resumen Final", text: (c) => `Oferta: <b>${c.promo}</b>. Cita el [día] a las [hora] en <b>${c.name}</b>. Te envío info por WhatsApp.`, highlight: true }

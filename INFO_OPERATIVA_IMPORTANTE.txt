@@ -1,0 +1,19 @@
+FASE 2 - Información operativa añadida
+
+Base: omni-dental-scripts-horarios-sin-notas.zip
+
+Se mantiene la app original y se añaden campos complementarios en clinic-schedules.js:
+- Recordatorio
+- WhatsApp
+- Agendamiento el mismo día
+- Agendamiento a largo plazo
+- Seguros
+- Ayudas
+
+No se muestra la sección Notas.
+No se añadieron clínicas nuevas todavía.
+No se cambiaron nombres de clínicas ni guiones.
+
+Clínicas existentes con información operativa añadida: 42
+
+Fuente: Google Sheet / Untitled spreadsheet.xlsx

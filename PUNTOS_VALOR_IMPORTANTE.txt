@@ -1,0 +1,7 @@
+Cambios de esta fase:
+
+- El bloque 2 (Autoridad + Oferta) ahora puede usar puntos de valor por tratamiento.
+- Si una clínica tiene varios tratamientos y el punto de valor corresponde solo a implantes, el guion de ortodoncia, carillas o blanqueamiento ya no lo muestra.
+- Para tratamientos donde no hay información específica de puntos de valor, el bloque de autoridad no añade esa frase y pasa directamente a la oferta/primera visita gratuita.
+- No se modificaron nombres de clínicas ni guiones base.
+- Los cambios de puntos de valor están en clinic-schedules.js como datos complementarios.

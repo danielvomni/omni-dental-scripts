@@ -1,0 +1,36 @@
+Horarios integrados en clinic-schedules.js
+Clínicas existentes con horarios añadidos: 42
+adeje, barrientos, belestar, caobadent, carey, carranza, cespedes, chroma, colvi, dentalestetic, dentalis, espai, estudio32, excelentia, firstdental, flordent, fonseca, identalitas, ivoria, jerez, marinabaixa, massana, mostoles, mpelite, nunez, oliver, palomero, paretsdent, rcclinica, rodriguezpons, saludnavarra, santrafael, smailo, smiledent-gijon, smiledent-leon, smiling, soler, stardental, usera, vistalegre, wright, zarate
+
+Filas de la validación no integradas porque la clínica no existe en el proyecto original:
+- Boutique Dental Garcia Caceres
+- Castelldent Clínica Dental
+- Centro Odontologico Larrea
+- Clinica Dental Maria Mercedes
+- Clínica Antonio Vidal Implantes
+- Clínica Dental Ageitos Pedreira
+- Clínica Dental Care ı Terrassa
+- Clínica Dental Hermosilla H144
+- Clínica Dental Martínez Silva
+- Clínicas Dental Star ı Alcobendas
+- Clínicas Dental Star ı As Cancelas
+- Clínicas Dental Star ı Cabrera de Mar
+- Clínicas Dental Star ı Fan Mallorca
+- Clínicas Dental Star ı Gran Via Hortaleza
+- Clínicas Dental Star ı Holea
+- Clínicas Dental Star ı Hortensia
+- Clínicas Dental Star ı Montigalá
+- Clínicas Dental Star ı Rosaleda
+- Implant Clinic
+- Instituto Dental Abad
+- MS Dental
+- Noguera Clínica Dental
+- Nuño + Pérez Odontólogos
+- Sanchez Arranz
+
+Notas de seguridad: se omitieron notas discriminatorias y credenciales/enlaces internos detectados para no publicarlos en una web estática.
+
+CAMBIO POSTERIOR:
+- Se eliminó la visualización y los campos de notas de agenda en la app por seguridad.
+- Esta versión se centra solo en horarios, duración de cita, recordatorio y WhatsApp si existen.
+- Los campos Recordatorio, WhatsApp, Agendamiento mismo día, Agendamiento largo plazo, Seguros y Ayudas se trabajarán en una fase posterior.

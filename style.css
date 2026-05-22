@@ -110,3 +110,38 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .negativa-body .cierre{margin-top:8px;padding:8px 12px;background:var(--success-bg);border-radius:var(--radius-sm);color:var(--success);font-weight:700;font-size:12px}
 
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+
+/* SCHEDULE / AVAILABILITY */
+#schedule-card{border-color:var(--border-dark)}
+#info-schedule{font-size:13px;color:var(--text)}
+.schedule-block{margin-bottom:10px}
+.schedule-line{padding:5px 0;border-bottom:1px solid var(--border)}
+.schedule-line:last-child{border-bottom:none}
+.schedule-line strong{font-weight:800;color:var(--accent)}
+.info-row.compact{margin-bottom:8px}
+.schedule-note{background:var(--accent-soft);border-radius:var(--radius-sm);padding:10px;margin-top:10px;font-size:12.5px;color:var(--text)}
+.schedule-list{margin:8px 0 0 18px}
+.schedule-list li{margin-bottom:10px}
+.schedule-subblock{margin-top:6px;padding-left:8px;border-left:2px solid var(--border-dark)}
+.schedule-text{line-height:1.55}
+
+/* Reprogramación: horarios por tratamiento */
+.schedule-treatment-block {
+  border-top: 1px solid #e6e6e6;
+  padding-top: 12px;
+  margin-top: 12px;
+}
+.schedule-treatment-block:first-child {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+.schedule-treatment-title {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: #111;
+}
