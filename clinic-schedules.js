@@ -648,30 +648,14 @@ const CLINIC_SCHEDULES = {
   "barrientos": {
     "byTreatment": {
       "implantes": {
-        "sedes": [
-          {
-            "nombre": "Horario principal",
-            "horarios": {
-              "lunes": "10:15 a 13:15 / 16:15 a 19:15",
-              "martes": "10:15 a 13:15 / 16:15 a 19:15",
-              "miercoles": "10:15 a 13:15 / 16:15 a 19:15",
-              "jueves": "10:15 a 13:15 / 16:15 a 19:15",
-              "viernes": "10:15 a 13:15 / 16:15 a 19:15"
-            },
-            "duracionCita": "30 min"
-          },
-          {
-            "nombre": "Todas las sedes",
-            "horarios": {
-              "lunes": "de 10 a 13 y de 16 a 19",
-              "martes": "de 10 a 13 y de 16 a 19",
-              "miercoles": "de 10 a 13 y de 16 a 19",
-              "jueves": "de 10 a 13 y de 16 a 19",
-              "viernes": "de 10 a 13 y de 16 a 19"
-            },
-            "duracionCita": "60min"
-          }
-        ],
+        "horarios": {
+          "lunes": "10:15 a 13:15 / 16:15 a 19:15",
+          "martes": "10:15 a 13:15 / 16:15 a 19:15",
+          "miercoles": "10:15 a 13:15 / 16:15 a 19:15",
+          "jueves": "10:15 a 13:15 / 16:15 a 19:15",
+          "viernes": "10:15 a 13:15 / 16:15 a 19:15"
+        },
+        "duracionCita": "30 min",
         "valuePoints": "instalaciones modernas, implantología con carga inmediata y 4,9 estrellas en más de 50 reseñas"
       },
       "ortodoncia": {
@@ -687,7 +671,7 @@ const CLINIC_SCHEDULES = {
       }
     },
     "ayudas": "No podemos citar pacientes con ayudas.",
-    "recordatorio": "SI / NO",
+    "recordatorio": "SI",
     "whatsapp": "Subcuenta \"WhatsApp\"",
     "agendamientoMismoDia": "SI",
     "agendamientoLargoPlazo": "NO"
@@ -793,7 +777,8 @@ const CLINIC_SCHEDULES = {
           "miercoles": "10:00 a  13:00 / 15:00 a 18:00",
           "jueves": "10:00 a  13:00 / 15:00 a 18:00"
         },
-        "duracionCita": "60min"
+        "duracionCita": "60min",
+        "promo": "Descuento: 30%"
       }
     },
     "recordatorio": "SI",
@@ -1071,13 +1056,14 @@ const CLINIC_SCHEDULES = {
           "jueves": "11:30 a 13:30",
           "viernes": "11:30 a 13:30 / 16:00 y 16:30"
         },
-        "duracionCita": "30min"
+        "duracionCita": "30min",
+        "promo": "Prótesis sobre implantes: desde 5,4€ al día. Implante Unitario + corona: desde 29€ al mes"
       },
       "blanqueamiento": {
         "horarios": {
-          "lunes": "11:00 a 13:30/ / 16:00 a 19:30",
-          "martes": "11:00 a 13:30/ / 16:00 a 19:30",
-          "miercoles": "11:00 a 13:30/ / 16:00 a 19:30",
+          "lunes": "11:00 a 13:30 / 16:00 a 19:30",
+          "martes": "11:00 a 13:30 / 16:00 a 19:30",
+          "miercoles": "11:00 a 13:30 / 16:00 a 19:30",
           "jueves": "11:00 a 13:30",
           "viernes": "11:00 a 13:30"
         },

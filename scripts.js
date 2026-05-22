@@ -136,6 +136,140 @@ const SCRIPT_TEMPLATES = {
   },
 
 
+
+  implantes_stardental: {
+    label: "Implantes Star Dental",
+    icon: "🦷",
+    steps: [
+      {
+        title: "Saludo + Encaje + Ubicación",
+        text: () => `Hola <b>[Nombre]</b>, te llamo de <b>Clínica Dental Star Dental</b> porque dejaste una solicitud para <b>implantes dentales</b>, ¿correcto?
+
+Estamos en <b>Avenida Nuevo Mundo, 7, Boadilla del Monte, 28660 Madrid</b>. ¿La zona te suena?`,
+        note: `→ Si dice que no conoce la zona: «No hay problema, te enviaremos la ubicación exacta y el enlace de Google Maps por WhatsApp.»`
+      },
+      {
+        title: "Mini pitch de autoridad + oferta + explicación de cita",
+        text: () => `Perfecto. Antes de seguir, te explico muy rápido: esta llamada puede ser grabada por motivos de calidad.
+
+Ahora mismo tenemos una promoción vigente: <b>Prótesis sobre implantes desde 5,4€ al día</b> e <b>implante unitario + corona desde 29€ al mes</b>, válida solo durante este mes para las primeras reservas.
+
+Además, la primera cita es totalmente gratuita.`
+      },
+      {
+        title: "Motivo de la visita",
+        text: () => `Para ayudarte bien, ¿qué es exactamente lo que necesitas? ¿Una rehabilitación completa o solo una pieza en concreto?`,
+        note: `→ Escuchar respuesta.
+→ Resumir: «Perfecto, entonces vienes por [motivo].»`
+      },
+      {
+        title: "Cualificación documental",
+        text: () => `Para abrirte la ficha médica aquí en nuestro programa, ¿tienes <b>DNI, NIE o pasaporte</b>?
+
+<b>Si responde DNI:</b>
+Perfecto, con DNI podemos revisar tu situación laboral para ver si encaja con las condiciones de financiación.
+
+<b>Si responde NIE:</b>
+En algunos casos, muchos pacientes prefieren combinar la financiación con ahorro propio o hacer una parte del tratamiento sin financiación.
+
+En tu caso, ¿crees que podrías asumir una parte del tratamiento con ahorro propio o prefieres depender totalmente de financiación?
+
+<b>Si responde que depende totalmente de financiación o que no tiene margen:</b>
+«Perfecto, [Nombre]. Lo dejo registrado por aquí para que puedan revisar bien tu caso, porque ahora mismo estamos trabajando con cupos bastante limitados para esta campaña. En cuanto tengamos una actualización o veamos disponibilidad que encaje contigo, te contactaremos para comentártelo.»
+
+<b>Si no tiene documentación válida:</b>
+«Perfecto, [Nombre]. Lo dejo registrado por aquí para que puedan revisar bien tu caso, porque ahora mismo estamos trabajando con cupos bastante limitados para esta campaña. En cuanto tengamos una actualización o veamos disponibilidad que encaje contigo, te contactaremos para comentártelo.»`,
+        note: `→ Si no cumple documentación o depende totalmente de financiación sin ahorros/tercero válido, no avanzar a cita.`
+      },
+      {
+        title: "Situación laboral o ingresos",
+        text: () => `Cuando un paciente quiere financiar el tratamiento, las entidades suelen pedir cierta documentación.
+
+¿Qué situación laboral o de ingresos tienes tú ahora mismo?
+
+<b>Si el paciente dice solamente «trabajo»:</b>
+«Genial. Te pregunto porque las financieras diferencian entre nómina, autónomos o pensión. ¿Cómo recibes tú tus ingresos?»`
+      },
+      {
+        title: "Si tiene nómina",
+        text: () => `Perfecto. En el caso de nómina, para confirmar que encaja con las condiciones de financiación, ¿tu domicilio fiscal está en Madrid o alrededores?
+
+<b>Si responde que sí:</b>
+Perfecto, entonces podemos continuar con la verificación de datos.
+
+<b>Si responde que no:</b>
+«Perfecto, [Nombre]. Lo dejo registrado por aquí para que puedan revisar bien tu caso, porque ahora mismo estamos trabajando con cupos bastante limitados para esta campaña. En cuanto tengamos una actualización o veamos disponibilidad que encaje contigo, te contactaremos para comentártelo.»`
+      },
+      {
+        title: "Si es autónomo/a",
+        text: () => `Perfecto. En el caso de autónomos, normalmente la financiera suele pedir la declaración de la renta para poder valorar la operación. ¿La tendrías disponible?
+
+<b>Si responde que sí:</b>
+«Perfecto. Y para confirmarlo, ¿tu domicilio fiscal está en Madrid o alrededores?»
+
+<b>Si no tiene la renta disponible o el domicilio fiscal no está en Madrid o alrededores:</b>
+«Perfecto, [Nombre]. Lo dejo registrado por aquí para que puedan revisar bien tu caso, porque ahora mismo estamos trabajando con cupos bastante limitados para esta campaña. En cuanto tengamos una actualización o veamos disponibilidad que encaje contigo, te contactaremos para comentártelo.»`
+      },
+      {
+        title: "Si es pensionista / jubilado/a",
+        text: () => `Perfecto. En tu caso, la financiación suele requerir que el domicilio fiscal esté en Madrid o alrededores.
+
+¿Es tu caso actualmente?
+
+<b>Si responde que sí:</b>
+«Perfecto. Y por último, ¿me confirmas tu fecha de nacimiento?»
+
+<b>Importante:</b> edad máxima permitida: 80 años.
+
+<b>Si no cumple domicilio fiscal o edad:</b>
+«Perfecto, [Nombre]. Lo dejo registrado por aquí para que puedan revisar bien tu caso, porque ahora mismo estamos trabajando con cupos bastante limitados para esta campaña. En cuanto tengamos una actualización o veamos disponibilidad que encaje contigo, te contactaremos para comentártelo.»`
+      },
+      {
+        title: "Si participa un tercero",
+        text: () => `Perfecto. En ese caso, la persona que participe en la financiación tendría que cumplir los mismos requisitos: documentación válida, estabilidad laboral y domicilio fiscal en Madrid o alrededores.
+
+Para ubicarlo bien, ¿esa persona cuenta con DNI y tiene nómina, pensión o actividad como autónomo/a?`,
+        note: `→ Aplicar los mismos filtros según el caso: nómina, autónomo o pensionista.`
+      },
+      {
+        title: "Verificación de datos",
+        text: () => `Antes de agendar, necesito confirmar tus datos para abrir correctamente la ficha.
+
+¿Me confirmas tu nombre y apellidos?`
+      },
+      {
+        title: "Agendamiento",
+        text: () => `¿Te viene mejor por la mañana o por la tarde?`,
+        note: `→ Ofrecer única disponibilidad real dentro de las próximas 72 horas.`
+      },
+      {
+        title: "Cierre",
+        text: () => `Perfecto, tu cita queda programada para el [día] a las [hora], en <b>Clínica Dental Star Dental, Avenida Nuevo Mundo, 7, Boadilla del Monte</b>.
+
+Ahora te envío por WhatsApp la ubicación y toda la información para que lo tengas más cómodo.
+
+¿Tienes alguna duda rápida antes de que te lo mande?`,
+        highlight: true
+      }
+    ],
+    rebates: [
+      { label: "NO CUMPLE CRITERIOS STAR DENTAL", response: "Perfecto, [Nombre]. Lo dejo registrado por aquí para que puedan revisar bien tu caso, porque ahora mismo estamos trabajando con cupos bastante limitados para esta campaña. En cuanto tengamos una actualización o veamos disponibilidad que encaje contigo, te contactaremos para comentártelo.", cierre: "Dejar registrado y no avanzar a cita si no cumple criterios." }
+    ]
+  },
+
+  blanqueamiento_sin_cualificacion: {
+    label: "Blanqueamiento",
+    icon: "🪥",
+    steps: [
+      { title: "Saludo + Encaje + Ubicación", text: (c) => `Hola <b>[Nombre]</b>, te llamo de <b>${c.name}</b> porque dejaste una solicitud para una cita de valoración gratuita de <b>blanqueamiento dental</b>, ¿correcto? Estamos en <b>${c.address}</b>${c.ref && c.ref !== '—' ? `, cerca de ${c.ref}` : ''}. ¿La zona te suena?` },
+      { title: "Autoridad + Oferta", text: (c) => buildAuthorityOfferText(c, `Esta llamada puede ser grabada por motivos de calidad.`) },
+      { title: "Motivo de la visita", text: () => `¿Qué te gustaría mejorar con el blanqueamiento? ¿Aclarar manchas o mejorar el aspecto general?`, note: "→ Resumir: «Perfecto, entonces vienes por ______.»" },
+      { title: "Verificación de datos", text: () => `¿Me confirmas tu nombre y apellido?` },
+      { title: "Agendamiento", text: () => `¿Te viene mejor por la mañana o por la tarde?` },
+      { title: "Resumen Final", text: (c) => `Cita el [día] a las [hora] en <b>${c.name}</b>. Te envío info por WhatsApp.`, highlight: true }
+    ]
+  },
+
   ardenne_implantes: {
     label: "Implantes Ardenne Dental",
     icon: "🦷",
