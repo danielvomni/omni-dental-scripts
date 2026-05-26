@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyBtn = document.getElementById('copy-btn');
   const searchBar = document.getElementById('search-bar');
   const searchInput = document.getElementById('clinic-search');
+  const searchResults = document.getElementById('clinic-search-results');
 
   // Stats
   document.getElementById('stat-clinics').textContent = CLINICS_DATA.length;
@@ -26,13 +27,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function selectClinicById(clinicId) {
+    const clinic = CLINICS_DATA.find(c => c.id === clinicId);
+    if (!clinic) return;
+    clinicSelect.value = clinic.id;
+    clinicSelect.dispatchEvent(new Event('change'));
+    searchInput.value = clinic.name;
+    searchResults.innerHTML = '';
+    searchResults.style.display = 'none';
+  }
+
+  function renderSearchResults(clinics, query) {
+    if (!query) {
+      searchResults.innerHTML = '';
+      searchResults.style.display = 'none';
+      return;
+    }
+
+    const topMatches = clinics.slice(0, 8);
+    searchResults.style.display = 'block';
+
+    if (topMatches.length === 0) {
+      searchResults.innerHTML = '<div class="search-empty">No hay clínicas con ese nombre o ciudad.</div>';
+      return;
+    }
+
+    searchResults.innerHTML = topMatches.map(c => `
+      <button type="button" class="search-result" data-clinic-id="${c.id}">
+        <span class="search-result-name">${c.name}</span>
+        <span class="search-result-meta">${c.city || ''}</span>
+      </button>
+    `).join('');
+  }
+
   // Search filter
   searchInput.addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
+    const q = e.target.value.trim().toLowerCase();
     const filtered = CLINICS_DATA.filter(c =>
-      c.name.toLowerCase().includes(q) || (c.city || '').toLowerCase().includes(q)
+      c.name.toLowerCase().includes(q)
+      || (c.city || '').toLowerCase().includes(q)
+      || (c.address || '').toLowerCase().includes(q)
+      || (c.ref || '').toLowerCase().includes(q)
+      || (c.id || '').toLowerCase().includes(q)
     );
     populateClinicSelect(filtered);
+    renderSearchResults(filtered, q);
+  });
+
+  searchResults.addEventListener('click', (e) => {
+    const result = e.target.closest('.search-result');
+    if (!result) return;
+    selectClinicById(result.dataset.clinicId);
   });
 
   // Clinic change → populate treatments
