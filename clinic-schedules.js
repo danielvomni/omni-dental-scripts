@@ -27,10 +27,10 @@ const CLINIC_SCHEDULES = {
     "byTreatment": {
       "implantes": {
         "horarios": {
-          "lunes": "09:30h - 13:00h / 16:00h - 17:30h",
-          "martes": "09:30h - 13:00h / 16:00h - 19:00h",
-          "miercoles": "09:30h - 13:00h / 16:00h - 19:00h",
-          "jueves": "09:30h - 13:00h / 16:00h - 19:00h"
+          "lunes": "10:00h - 13:00h",
+          "martes": "10:00h - 13:00h / 16:00h - 19:00h",
+          "miercoles": "10:00h - 13:00h / 16:00h - 19:00h",
+          "jueves": "10:00h - 13:00h / 16:00h - 19:00h"
         },
         "duracionCita": "30 Min",
         "agendamientoLargoPlazo": "NO",
@@ -38,10 +38,10 @@ const CLINIC_SCHEDULES = {
       },
       "blanqueamiento": {
         "horarios": {
-          "lunes": "09:30h - 13:00h / 16:00h - 17:30h",
-          "martes": "09:30h - 13:00h / 16:00h - 19:00h",
-          "miercoles": "09:30h - 13:00h / 16:00h - 19:00h",
-          "jueves": "09:30h - 13:00h / 16:00h - 19:00h"
+          "lunes": "10:00h - 13:00h",
+          "martes": "10:00h - 13:00h / 16:00h - 19:00h",
+          "miercoles": "10:00h - 13:00h / 16:00h - 19:00h",
+          "jueves": "10:00h - 13:00h / 16:00h - 19:00h"
         },
         "duracionCita": "30 Min",
         "agendamientoLargoPlazo": "NO",
