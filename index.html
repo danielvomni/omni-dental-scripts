@@ -8,7 +8,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="auth-locked">
+    <section id="auth-screen" class="auth-screen">
+        <form id="auth-form" class="auth-card">
+            <div class="auth-logo">
+                <span class="logo-omni">OMNI</span>
+                <span class="logo-dental">Dental</span>
+                <span class="logo-scripts">Scripts</span>
+            </div>
+            <label for="auth-password">Clave de acceso</label>
+            <input type="password" id="auth-password" autocomplete="current-password" required>
+            <button type="submit" class="btn-copy">Ingresar</button>
+            <p id="auth-error" class="auth-error" hidden>Clave incorrecta.</p>
+        </form>
+    </section>
+
     <header id="app-header">
         <div class="header-inner">
             <div class="logo">

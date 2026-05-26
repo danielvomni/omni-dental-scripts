@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const AUTH_PASSWORD_HASH = '8513fb218dcc9ce6bc4b3060e4ce56f7358aa5b2952e57574019345b0e0ccd46';
+  const AUTH_SESSION_KEY = 'omniDentalScriptsAuth';
+  const authForm = document.getElementById('auth-form');
+  const authPassword = document.getElementById('auth-password');
+  const authError = document.getElementById('auth-error');
   const clinicSelect = document.getElementById('clinic-select');
   const treatmentSelect = document.getElementById('treatment-select');
   const scriptContent = document.getElementById('script-content');
@@ -8,6 +13,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchBar = document.getElementById('search-bar');
   const searchInput = document.getElementById('clinic-search');
   const searchResults = document.getElementById('clinic-search-results');
+
+  function unlockApp() {
+    document.body.classList.remove('auth-locked');
+    if (authError) authError.hidden = true;
+  }
+
+  async function hashPassword(value) {
+    const encoded = new TextEncoder().encode(value);
+    const digest = await crypto.subtle.digest('SHA-256', encoded);
+    return Array.from(new Uint8Array(digest))
+      .map(byte => byte.toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  if (sessionStorage.getItem(AUTH_SESSION_KEY) === AUTH_PASSWORD_HASH) {
+    unlockApp();
+  } else if (authPassword) {
+    authPassword.focus();
+  }
+
+  if (authForm) {
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const attemptHash = await hashPassword(authPassword.value);
+      if (attemptHash === AUTH_PASSWORD_HASH) {
+        sessionStorage.setItem(AUTH_SESSION_KEY, AUTH_PASSWORD_HASH);
+        authPassword.value = '';
+        unlockApp();
+      } else {
+        authError.hidden = false;
+        authPassword.select();
+      }
+    });
+  }
 
   // Stats
   document.getElementById('stat-clinics').textContent = CLINICS_DATA.length;
