@@ -1187,6 +1187,23 @@ const CLINIC_SCHEDULES = {
     "agendamientoMismoDia": "SI",
     "agendamientoLargoPlazo": "NO"
   },
+  "implantclinic": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "lunes": "11:00h y 12:00h",
+          "martes": "11:00h y 12:00h / 16:00h y 17:00h",
+          "miercoles": "11:00h y 12:00h / 16:00h y 17:00h",
+          "viernes": "11:00h y 12:00h"
+        },
+        "duracionCita": "60min"
+      }
+    },
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"WhatsApp 2\"",
+    "agendamientoMismoDia": "SI",
+    "agendamientoLargoPlazo": "SI"
+  },
   "ardenne": {
     "byTreatment": {
       "implantes": {
