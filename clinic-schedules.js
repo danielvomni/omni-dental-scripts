@@ -458,6 +458,80 @@ const CLINIC_SCHEDULES = {
     "seguros": "no aceptan seguros",
     "agendamientoMismoDia": "SI"
   },
+  "massana-valladolid": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "jueves": "10:00 a 13:30 / 16:00 a 19:00",
+          "otros": "2026-05-25: 16:00 a 17:30"
+        },
+        "duracionCita": "30 min",
+        "valuePoints": "implantólogo con más de 15 años de experiencia, acompañamiento completo, carga inmediata, sedación consciente, radiografía dental 3D sin coste y escáner intraoral"
+      },
+      "carillas": {
+        "horarios": {
+          "jueves": "10:00 a 13:30 / 16:00 a 19:00",
+          "otros": "2026-05-25: 16:00 a 17:30"
+        },
+        "duracionCita": "30 min",
+        "valuePoints": "especialistas en estética dental avanzada y diseño de sonrisa con carillas"
+      },
+      "ortodoncia": {
+        "horarios": {
+          "miercoles": "10:00 a 13:30 / 16:00 a 19:00",
+          "otros": "2026-05-14: 10:00 a 11:30"
+        },
+        "duracionCita": "30 min",
+        "valuePoints": "especialistas en ortodoncia y alineación dental"
+      }
+    },
+    "ayudas": "No podemos citar pacientes con ayuda",
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"WhatsApp\"",
+    "seguros": "No aceptan seguros",
+    "agendamientoMismoDia": "NO",
+    "agendamientoLargoPlazo": "SI"
+  },
+  "massana-leon": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "lunes": "09:30 a 18:45",
+          "martes": "09:30 a 18:45",
+          "jueves": "09:30 a 18:45",
+          "viernes": "09:30 a 18:45"
+        },
+        "duracionCita": "45 min",
+        "valuePoints": "implantólogo con más de 15 años de experiencia, acompañamiento completo, carga inmediata, sedación consciente, radiografía dental 3D sin coste y escáner intraoral"
+      },
+      "carillas": {
+        "horarios": {
+          "lunes": "09:30 a 18:45",
+          "martes": "09:30 a 18:45",
+          "jueves": "09:30 a 18:45",
+          "viernes": "09:30 a 18:45"
+        },
+        "duracionCita": "45 min",
+        "valuePoints": "especialistas en estética dental avanzada y carillas"
+      },
+      "ortodoncia": {
+        "horarios": {
+          "lunes": "09:30 a 18:45",
+          "martes": "09:30 a 18:45",
+          "miercoles": "09:30 a 18:45",
+          "viernes": "09:30 a 18:45"
+        },
+        "duracionCita": "30 min",
+        "valuePoints": "especialistas en ortodoncia y alineación dental"
+      }
+    },
+    "ayudas": "No podemos citar pacientes con ayuda",
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"WhatsApp\"",
+    "seguros": "No aceptan seguros",
+    "agendamientoMismoDia": "NO",
+    "agendamientoLargoPlazo": "SI"
+  },
   "massana": {
     "byTreatment": {
       "implantes": {
