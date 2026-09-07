@@ -426,8 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
       blanqueamiento: 'Blanqueamiento',
       endodoncia: 'Endodoncia',
       periodoncia: 'Periodoncia',
-      estetica_fhos: 'Estética',
-      estetica_soler: 'Estética'
+      estetica_fhos: 'Estética'
     };
     return labels[treatmentKey] || String(treatmentKey).replace(/_/g, ' ');
   }
@@ -497,8 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { key: 'ortodoncia', names: ['Ortodoncia', 'Ortodoncia Autoligada', 'Invisible', 'Brackets', 'Invisalign', 'Convencional'] },
       { key: 'carillas', names: ['Carillas'] },
       { key: 'blanqueamiento', names: ['Blanqueamiento'] },
-      { key: 'estetica_fhos', names: ['Estética', 'FHOS', 'Medicina Estética'] },
-      { key: 'estetica_soler', names: ['Estética', 'Armonización'] }
+      { key: 'estetica_fhos', names: ['Estética', 'FHOS', 'Medicina Estética'] }
     ];
 
     const allNames = labels.flatMap(group => group.names);
@@ -555,8 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ortodoncia: ['ortodoncia'],
       carillas: ['carillas'],
       blanqueamiento: ['blanqueamiento'],
-      estetica_fhos: ['estetica_fhos'],
-      estetica_soler: ['estetica_soler']
+      estetica_fhos: ['estetica_fhos']
     };
     return map[treatment] || [treatment];
   }

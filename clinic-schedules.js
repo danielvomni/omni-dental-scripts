@@ -574,25 +574,6 @@ const CLINIC_SCHEDULES = {
     "agendamientoMismoDia": "SI",
     "agendamientoLargoPlazo": "SI"
   },
-  "belestar": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "09:30h a 13:30 / 16:00h a 18:30h",
-          "miercoles": "09:30h a 13:00 / 16:00h a 18:30h",
-          "jueves": "09:30h a 13:00 / 16:00h a 18:30h",
-          "viernes": "09:30h a 13:00 / 16:00h a 17:30h"
-        },
-        "duracionCita": "30 min"
-      }
-    },
-    "ayudas": "No podemos citar pacientes con ayudas.",
-    "recordatorio": "NO",
-    "whatsapp": "WhatsApp2 (para wp1) . Ellos envian confirmación de citas",
-    "seguros": "aceptan solamente Servial",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "SI"
-  },
   "excelentia": {
     "byTreatment": {
       "implantes": {
@@ -608,40 +589,6 @@ const CLINIC_SCHEDULES = {
     "recordatorio": "SI",
     "whatsapp": "Subcuenta \"Excelentia\"",
     "seguros": "podemos citar paciente que no tengan seguros ASISA, ADESLA, SANITAS, MAPFRE",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "SI"
-  },
-  "firstdental": {
-    "byTreatment": {
-      "implantes": {
-        "sedes": [
-          {
-            "nombre": "Majadahonda",
-            "horarios": {
-              "lunes": "16:30 hasta las 19:30",
-              "martes": "10:00 hasta la 13:00",
-              "miercoles": "10:00 hasta la 13:00",
-              "jueves": "16:30 hasta las 19:30"
-            },
-            "duracionCita": "60 min"
-          },
-          {
-            "nombre": "El Escorial",
-            "horarios": {
-              "lunes": "10:00 hasta la 13:00",
-              "martes": "16:30 hasta las 19:30",
-              "miercoles": "16:30 hasta las 19:30",
-              "jueves": "10:00 hasta la 13:00"
-            },
-            "duracionCita": "60 min"
-          }
-        ]
-      }
-    },
-    "ayudas": "Podemos citar pacientes con ayudas.",
-    "recordatorio": "NO",
-    "whatsapp": "Subcuenta \"WhatsApp\"",
-    "seguros": "no aceptan seguros",
     "agendamientoMismoDia": "SI",
     "agendamientoLargoPlazo": "SI"
   },
@@ -737,55 +684,6 @@ const CLINIC_SCHEDULES = {
     "recordatorio": "NO",
     "seguros": "Trabaja con seguros DKV",
     "agendamientoMismoDia": "SI"
-  },
-  "santrafael": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "09:00 a 18:30",
-          "martes": "09:00 a 18:30",
-          "miercoles": "09:00 a 18:30",
-          "jueves": "09:00 a 18:30"
-        },
-        "duracionCita": "30min",
-        "valuePoints": "38 años abierta, una de las clínicas más prestigiosas de Sabadell, 99% de valoraciones de cinco estrellas, carga inmediata y escáner"
-      },
-      "ortodoncia": {
-        "horarios": {
-          "lunes": "09:00 a 18:30",
-          "martes": "09:00 a 18:30",
-          "miercoles": "09:00 a 18:30",
-          "jueves": "09:00 a 18:30"
-        },
-        "duracionCita": "30min",
-        "valuePoints": "38 años abierta, una de las clínicas más prestigiosas de Sabadell y 99% de valoraciones de cinco estrellas"
-      }
-    },
-    "ayudas": "No podemos citar pacientes con ayudas.",
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp\"",
-    "seguros": "no aceptan seguros",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "NO"
-  },
-  "smiling": {
-    "byTreatment": {
-      "carillas": {
-        "horarios": {
-          "lunes": "10:00 a  13:00 / 15:00 a 18:00",
-          "martes": "10:00 a  13:00 / 15:00 a 18:00",
-          "miercoles": "10:00 a  13:00 / 15:00 a 18:00",
-          "jueves": "10:00 a  13:00 / 15:00 a 18:00"
-        },
-        "duracionCita": "60min",
-        "promo": "Descuento: 30%"
-      }
-    },
-    "recordatorio": "SI",
-    "whatsapp": "Subuenta Smiling",
-    "seguros": "no aceptan seguros",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "NO"
   },
   "caobadent": {
     "byTreatment": {
@@ -913,51 +811,6 @@ const CLINIC_SCHEDULES = {
     "agendamientoMismoDia": "SI",
     "agendamientoLargoPlazo": "SI"
   },
-  "soler": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "10:00 a 13:00 / 15:00 a 19:00",
-          "miercoles": "10:00 a 13:00 / 15:00 a 19:00",
-          "jueves": "10:00 a 13:00 / 15:00 a 19:00",
-          "viernes": "10:00 a 13:00"
-        },
-        "duracionCita": "60min",
-        "valuePoints": "10 años abierta, implantólogo con más de 8 años de experiencia, especialista en prótesis con más de 15 años, clínica familiar y cercana"
-      },
-      "ortodoncia": {
-        "horarios": {
-          "lunes": "10:00 a 13:00 / 15:00 a 19:00",
-          "miercoles": "10:00 a 13:00 / 15:00 a 19:00",
-          "jueves": "10:00 a 13:00 / 15:00 a 19:00",
-          "viernes": "10:00 a 13:00"
-        },
-        "duracionCita": "60min",
-        "agendamientoLargoPlazo": "SI",
-        "valuePoints": ""
-      },
-      "estetica": {
-        "horarios": {
-          "lunes": "16:00 a 19:30",
-          "martes": "16:00 a 19:30",
-          "miercoles": "16:00 a 19:30",
-          "jueves": "16:00 a 19:30"
-        },
-        "duracionCita": "30min"
-      },
-      "estetica_fhos": {
-        "agendamientoLargoPlazo": "SI"
-      },
-      "estetica_soler": {
-        "valuePoints": ""
-      }
-    },
-    "ayudas": "Podemos citar pacientes con ayuda.",
-    "seguros": "no aceptan seguros",
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp 2\"",
-    "agendamientoMismoDia": "SI"
-  },
   "paretsdent": {
     "byTreatment": {
       "implantes": {
@@ -1046,55 +899,6 @@ const CLINIC_SCHEDULES = {
     "ayudas": "podemos citar pacientes con ayudas apartir de 1000€",
     "seguros": "no trabajan con seguros"
   },
-  "stardental": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "11:00 a 13:30 / 16:00 a 19:30",
-          "martes": "11:30 a 13:30 / 16:00 a 19:30",
-          "miercoles": "11:30 a 13:30 / 16:00 y 16:30 / 19:00 y 19:30",
-          "jueves": "11:30 a 13:30",
-          "viernes": "11:30 a 13:30 / 16:00 y 16:30"
-        },
-        "duracionCita": "30min",
-        "promo": "Prótesis sobre implantes: desde 5,4€ al día. Implante Unitario + corona: desde 29€ al mes"
-      },
-      "blanqueamiento": {
-        "horarios": {
-          "lunes": "11:00 a 13:30 / 16:00 a 19:30",
-          "martes": "11:00 a 13:30 / 16:00 a 19:30",
-          "miercoles": "11:00 a 13:30 / 16:00 a 19:30",
-          "jueves": "11:00 a 13:30",
-          "viernes": "11:00 a 13:30"
-        },
-        "duracionCita": "30min"
-      }
-    },
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp 2\"",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "SI"
-  },
-  "mpelite": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "15:00 a 18:00",
-          "martes": "10:00 a 13:00 / 15:00 a 18:00",
-          "miercoles": "15:00 a 19:00",
-          "jueves": "12:00 a 13:00 / 15:00 a 18:00",
-          "viernes": "10:00 a 13:00"
-        },
-        "duracionCita": "60min"
-      }
-    },
-    "seguros": "aceptan seguros",
-    "ayudas": "Podemos agendar ayudas",
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp 2\"",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "NO"
-  },
   "smailo": {
     "byTreatment": {
       "implantes": {
@@ -1114,61 +918,7 @@ const CLINIC_SCHEDULES = {
     "agendamientoMismoDia": "SI",
     "agendamientoLargoPlazo": "SI"
   },
-  "carey": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "10:00 a 13:00 / 16:00 a 19:30",
-          "martes": "10:00 a 13:00 / 16:00 a 19:30",
-          "miercoles": "10:00 a 13:00 / 16:00 a 19:30",
-          "jueves": "10:00 a 13:00 / 16:00 a 19:30",
-          "viernes": "10:00 a 13:00"
-        },
-        "duracionCita": "15min"
-      }
-    },
-    "ayudas": "podemos citar pacientes con ayudas apartir de 1000€ (a excepción de pacientes que necesiten boca completa o media arcada)",
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp 2\"",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "NO"
-  },
-  "identalitas": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "16:00 a 19:00",
-          "martes": "16:00 a 19:00",
-          "jueves": "12:00 a 14:00 / 16:00 a 19:00",
-          "viernes": "10:00 a 13:00 / 16:00 a 19:00"
-        },
-        "duracionCita": "30min"
-      }
-    },
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp\"",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "NO"
-  },
-  "rcclinica": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "09:30 a 12:30 / 16:30 a 19:30",
-          "martes": "09:30 a 12:30 / 16:30 a 19:30",
-          "miercoles": "09:30 a 12:30 / 16:30 a 19:30",
-          "jueves": "09:30 a 12:30 / 16:30 a 19:30",
-          "viernes": "09:30 a 12:30 / 16:30 a 19:30"
-        },
-        "duracionCita": "60min"
-      }
-    },
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp 2\"",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "NO"
-  }
-,
+
   "nuno_perez": {
     "byTreatment": {
       "implantes": {
@@ -1214,6 +964,145 @@ const CLINIC_SCHEDULES = {
     "whatsapp": "Subcuenta \"WhatsApp 2\"",
     "agendamientoMismoDia": "SI",
     "agendamientoLargoPlazo": "NO"
+  },
+  "odos": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "lunes": "10:00 a 13:15 / 16:00 a 19:15",
+          "martes": "10:00 a 13:15 / 16:00 a 19:15",
+          "miercoles": "10:00 a 13:15 / 16:00 a 19:15",
+          "jueves": "10:00 a 13:15 / 16:00 a 19:15"
+        },
+        "duracionCita": "60min"
+      },
+      "apnea": {
+        "horarios": {
+          "lunes": "10:00 a 13:30 / 16:00 a 19:30",
+          "miercoles": "10:00 a 13:30 / 16:00 a 19:30",
+          "jueves": "10:00 a 13:30 / 16:00 a 19:30"
+        },
+        "duracionCita": "60min"
+      }
+    },
+    "ayudas": "NO",
+    "seguros": "SIN INFO",
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"WhatsApp 2\"",
+    "agendamientoMismoDia": "SI",
+    "agendamientoLargoPlazo": "SI"
+  },
+  "castelldent": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "lunes": "10:00",
+          "martes": "10:00, 13:00, 15:00",
+          "miercoles": "10:00, 13:00, 15:00",
+          "jueves": "10:00, 13:00, 15:00, 19:00",
+          "viernes": "10:00, 13:00, 15:00"
+        },
+        "duracionCita": "30min"
+      }
+    },
+    "ayudas": "NO",
+    "seguros": "SIN INFO",
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"Castelldent\"",
+    "agendamientoMismoDia": "NO",
+    "agendamientoLargoPlazo": "SI"
+  },
+  "videsdental": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "lunes": "10:00 a 13:00 / 16:00 a 18:15",
+          "martes": "10:00 a 13:00",
+          "miercoles": "10:00 a 13:00 / 16:00 a 18:15",
+          "jueves": "10:00 a 13:00 / 16:00 a 18:15"
+        },
+        "duracionCita": "45min"
+      }
+    },
+    "ayudas": "NO",
+    "seguros": "NO",
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"Whatsapp\"",
+    "agendamientoMismoDia": "SI",
+    "agendamientoLargoPlazo": "NO"
+  },
+  "caredentjerez": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "lunes": "16:00 a 19:30",
+          "martes": "10:00 a 13:30 / 16:00 a 20:30",
+          "miercoles": "16:00 a 19:30",
+          "viernes": "10:00 a 13:30 / 16:00 a 20:30"
+        },
+        "duracionCita": "30min"
+      },
+      "ortodoncia": {
+        "horarios": {
+          "jueves": "16:00 a 20:00"
+        },
+        "duracionCita": "30min"
+      }
+    },
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"WhatsApp 2\"",
+    "agendamientoMismoDia": "SI",
+    "agendamientoLargoPlazo": "NO"
+  },
+  "zendental": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "lunes": "10:00 a 13:30 / 16:00 a 19:30",
+          "miercoles": "10:00 a 13:30 / 16:00 a 19:30",
+          "viernes": "10:00 a 13:30"
+        },
+        "duracionCita": "30min"
+      }
+    },
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"WhatsApp 2\"",
+    "agendamientoMismoDia": "SI",
+    "agendamientoLargoPlazo": "SI"
+  },
+  "marinadental": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "lunes": "10:00 a 12:15 / 16:00 a 17:30",
+          "martes": "10:00 a 12:15 / 16:00 a 17:30",
+          "miercoles": "16:00 a 17:30",
+          "jueves": "10:00 a 12:15 / 16:00 a 17:30"
+        },
+        "duracionCita": "45min"
+      }
+    },
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"WhatsApp\"",
+    "agendamientoMismoDia": "SI",
+    "agendamientoLargoPlazo": "SI"
+  },
+  "soniadent": {
+    "byTreatment": {
+      "implantes": {
+        "horarios": {
+          "martes": "10:00 a 12:15 / 15:30 a 19:15",
+          "jueves": "10:00 a 12:15 / 15:30 a 19:15",
+          "viernes": "10:00 a 12:15 / 15:30 a 16:15"
+        },
+        "duracionCita": "45min"
+      }
+    },
+    "ayudas": "NO",
+    "recordatorio": "SI",
+    "whatsapp": "Subcuenta \"WhatsApp 2\"",
+    "agendamientoMismoDia": "SI",
+    "agendamientoLargoPlazo": "SI"
   }
 
 };
