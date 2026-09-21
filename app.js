@@ -152,14 +152,15 @@ document.addEventListener('DOMContentLoaded', () => {
       treatmentSelect.value = clinic.treatments[0];
       renderScript(clinic, clinic.treatments[0]);
     } else {
-      resetUI();
+      showClinicInfoOnly(clinic);
     }
   });
 
   // Treatment change → render script
   treatmentSelect.addEventListener('change', () => {
     const clinic = CLINICS_DATA.find(c => c.id === clinicSelect.value);
-    if (!clinic || !treatmentSelect.value) { resetUI(); return; }
+    if (!clinic) { resetUI(); return; }
+    if (!treatmentSelect.value) { showClinicInfoOnly(clinic); return; }
     renderScript(clinic, treatmentSelect.value);
   });
 
@@ -367,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formatAllTreatmentSchedules(clinic) {
-    const externalSchedules = (typeof CLINIC_SCHEDULES !== 'undefined') ? CLINIC_SCHEDULES : null;
+    const externalSchedules = (typeof CLINIC_SCHEDULES !== 'undefined' ? CLINIC_SCHEDULES : (typeof window !== 'undefined' ? window.CLINIC_SCHEDULES : null));
     const externalClinic = externalSchedules ? (externalSchedules[clinic.id] || externalSchedules[clinic.name]) : null;
     const treatmentKeys = Array.from(new Set([
       ...(clinic.treatments || []),
@@ -434,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function getExplicitTreatmentValue(clinic, field, treatment) {
     if (!clinic) return undefined;
 
-    const externalSchedules = (typeof CLINIC_SCHEDULES !== 'undefined') ? CLINIC_SCHEDULES : null;
+    const externalSchedules = (typeof CLINIC_SCHEDULES !== 'undefined' ? CLINIC_SCHEDULES : (typeof window !== 'undefined' ? window.CLINIC_SCHEDULES : null));
     const externalClinic = externalSchedules ? (externalSchedules[clinic.id] || externalSchedules[clinic.name]) : null;
 
     if (externalClinic && externalClinic.byTreatment && externalClinic.byTreatment[treatment] && externalClinic.byTreatment[treatment][field] !== undefined) {
@@ -455,23 +456,47 @@ document.addEventListener('DOMContentLoaded', () => {
   function getTreatmentAwareValue(clinic, field, treatment) {
     if (!clinic) return null;
 
-    const externalSchedules = (typeof CLINIC_SCHEDULES !== 'undefined') ? CLINIC_SCHEDULES : null;
+    const externalSchedules = (typeof CLINIC_SCHEDULES !== 'undefined' ? CLINIC_SCHEDULES : (typeof window !== 'undefined' ? window.CLINIC_SCHEDULES : null));
     const externalClinic = externalSchedules ? (externalSchedules[clinic.id] || externalSchedules[clinic.name]) : null;
 
-    if (externalClinic && externalClinic.byTreatment && externalClinic.byTreatment[treatment] && externalClinic.byTreatment[treatment][field] !== undefined) {
-      return externalClinic.byTreatment[treatment][field];
+    if (externalClinic) {
+      if (externalClinic.byTreatment && treatment && externalClinic.byTreatment[treatment] && externalClinic.byTreatment[treatment][field] !== undefined) {
+        return externalClinic.byTreatment[treatment][field];
+      }
+      if (externalClinic[field] !== undefined) {
+        return externalClinic[field];
+      }
+      if (externalClinic.byTreatment) {
+        const keys = Object.keys(externalClinic.byTreatment);
+        const fallbackObj = externalClinic.byTreatment['implantes'] || (keys.length > 0 ? externalClinic.byTreatment[keys[0]] : null);
+        if (fallbackObj && fallbackObj[field] !== undefined) {
+          return fallbackObj[field];
+        }
+      }
     }
 
-    if (externalClinic && externalClinic[field] !== undefined) {
-      return externalClinic[field];
-    }
-
-    if (clinic.treatmentData && clinic.treatmentData[treatment] && clinic.treatmentData[treatment][field] !== undefined) {
+    if (clinic.treatmentData && treatment && clinic.treatmentData[treatment] && clinic.treatmentData[treatment][field] !== undefined) {
       return clinic.treatmentData[treatment][field];
     }
 
-    if (clinic.byTreatment && clinic.byTreatment[treatment] && clinic.byTreatment[treatment][field] !== undefined) {
+    if (clinic.byTreatment && treatment && clinic.byTreatment[treatment] && clinic.byTreatment[treatment][field] !== undefined) {
       return clinic.byTreatment[treatment][field];
+    }
+
+    if (clinic.treatmentData) {
+      const keys = Object.keys(clinic.treatmentData);
+      const fallbackObj = clinic.treatmentData['implantes'] || (keys.length > 0 ? clinic.treatmentData[keys[0]] : null);
+      if (fallbackObj && fallbackObj[field] !== undefined) {
+        return fallbackObj[field];
+      }
+    }
+
+    if (clinic.byTreatment) {
+      const keys = Object.keys(clinic.byTreatment);
+      const fallbackObj = clinic.byTreatment['implantes'] || (keys.length > 0 ? clinic.byTreatment[keys[0]] : null);
+      if (fallbackObj && fallbackObj[field] !== undefined) {
+        return fallbackObj[field];
+      }
     }
 
     return clinic[field] !== undefined ? clinic[field] : null;
@@ -654,6 +679,48 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
+  }
+
+  function showClinicInfoOnly(clinic) {
+    const defaultTreatment = clinic.treatments[0] || 'implantes';
+    sidebar.style.display = 'block';
+    document.getElementById('info-location').textContent = clinic.address ? stripPostalCode(clinic.address) : '—';
+    document.getElementById('info-ref').textContent = clinic.ref || '—';
+    document.getElementById('info-offer').textContent = clinic.promo || '—';
+    document.getElementById('info-docs').textContent = clinic.qualifDoc || '—';
+    document.getElementById('info-econ').textContent = clinic.qualifEcon || '—';
+    document.getElementById('info-financing').textContent = clinic.financing || '—';
+
+    const ayudasQuick = getTreatmentAwareValue(clinic, 'ayudas', defaultTreatment) || '';
+    const segurosQuick = getTreatmentAwareValue(clinic, 'seguros', defaultTreatment) || '';
+    const ayudasRow = document.getElementById('info-ayudas-row');
+    const segurosRow = document.getElementById('info-seguros-row');
+    const ayudasEl = document.getElementById('info-ayudas');
+    const segurosEl = document.getElementById('info-seguros');
+
+    if (ayudasRow && ayudasEl) {
+      ayudasEl.textContent = ayudasQuick;
+      ayudasRow.style.display = ayudasQuick ? '' : 'none';
+    }
+    if (segurosRow && segurosEl) {
+      segurosEl.textContent = segurosQuick;
+      segurosRow.style.display = segurosQuick ? '' : 'none';
+    }
+
+    renderScheduleInfo(clinic, defaultTreatment);
+
+    const qualifBadge = document.getElementById('qualif-badge');
+    if (qualifBadge) qualifBadge.style.display = 'none';
+    if (negativasPanel) negativasPanel.style.display = 'none';
+
+    scriptContent.className = 'empty-state';
+    scriptContent.innerHTML = `
+      <div class="empty-logo">
+        <span class="empty-omni">OMNI</span>
+        <span class="empty-dental">Dental</span>
+      </div>
+      <p class="empty-sub">${escapeHtml(clinic.name)}</p>
+      <p class="empty-desc">Seleccione un tratamiento en el menú superior para ver el guion correspondiente.</p>`;
   }
 
   function resetUI() {

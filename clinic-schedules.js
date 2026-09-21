@@ -11,7 +11,7 @@ const CLINIC_SCHEDULES = {
           "martes": "10:00h - 13:30h / 16:00h 19:30h",
           "miercoles": "10:00h - 17:30h",
           "jueves": "10:00h - 13:30h / 16:00h 19:30h",
-          "viernes": "10:00h - 13:30h / 16:00h 17:30h"
+          "viernes": "10:00h - 13:30h"
         },
         "duracionCita": "30 Min"
       }
@@ -63,26 +63,6 @@ const CLINIC_SCHEDULES = {
     "seguros": "Se aceptan pacientes con seguro Divina Pastora y Santalucía.",
     "agendamientoMismoDia": "SI"
   },
-  "estudio32": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "09:30h - 13:30h / 15:00h - 16:30h",
-          "martes": "09:30h - 13:30h / 15:00h - 17:30h",
-          "miercoles": "09:30h - 13:30h / 15:00h - 17:30h",
-          "jueves": "09:30h - 13:30h / 15:00h - 17:30h",
-          "viernes": "09:30h - 13:00h"
-        },
-        "duracionCita": "30 Min"
-      }
-    },
-    "ayudas": "Podemos agendar ayudas por encima de 800€.",
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"Estudio32\"",
-    "seguros": "solo seguro Santa Lucia",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "NO"
-  },
   "usera": {
     "byTreatment": {
       "implantes": {
@@ -101,7 +81,7 @@ const CLINIC_SCHEDULES = {
     "whatsapp": "Subcuenta \"WhatsApp 2\"",
     "seguros": "aceptan seguros que no sean Sanitas, Asisa, Mapfre, Adesla",
     "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "NO"
+    "agendamientoLargoPlazo": "SI"
   },
   "mostoles": {
     "byTreatment": {
@@ -227,24 +207,6 @@ const CLINIC_SCHEDULES = {
     "recordatorio": "SI",
     "whatsapp": "Subcuenta \"WhatsApp\"",
     "seguros": "podemos citar pacientes, trabajan con la mayoria de seguros",
-    "agendamientoMismoDia": "SI"
-  },
-  "dentalestetic": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "09:30 - 12:45/ 16:30 - 19:45",
-          "martes": "09:30 - 12:45/ 16:30 - 19:45",
-          "miercoles": "09:30 - 12:45/ 16:30 - 19:45",
-          "jueves": "09:30 - 12:45/ 16:30 - 19:45",
-          "viernes": "10:00 a 17:15"
-        },
-        "duracionCita": "30min",
-        "agendamientoLargoPlazo": "SI"
-      }
-    },
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp 2\"",
     "agendamientoMismoDia": "SI"
   },
   "rodriguezpons": {
@@ -759,38 +721,6 @@ const CLINIC_SCHEDULES = {
     "seguros": "Trabaja con seguros DKV",
     "agendamientoMismoDia": "SI"
   },
-  "caobadent": {
-    "byTreatment": {
-      "ortodoncia": {
-        "horarios": {
-          "lunes": "10:00 a 13:15 / 16:00 a 19:15",
-          "martes": "10:00 a 13:15 / 16:00 a 19:15",
-          "miercoles": "10:00 a 13:15 / 16:00 a 19:15",
-          "jueves": "10:00 a 13:15 / 16:00 a 19:15",
-          "viernes": "10:00 a 13:15 / 15:00 a 18:30"
-        },
-        "duracionCita": "45min",
-        "valuePoints": "doctores con más de 20 años de experiencia, formación continua, muy buenas reseñas, escáner y TAC para diagnóstico preciso"
-      },
-      "carillas": {
-        "horarios": {
-          "lunes": "10:00 a 13:15 / 16:00 a 19:15",
-          "martes": "10:00 a 13:15 / 16:00 a 19:15",
-          "miercoles": "10:00 a 13:15 / 16:00 a 19:15",
-          "jueves": "10:00 a 13:15 / 16:00 a 19:15",
-          "viernes": "10:00 a 13:15 / 15:00 a 18:30"
-        },
-        "duracionCita": "45min",
-        "valuePoints": "doctores con más de 20 años de experiencia, formación continua, muy buenas reseñas, escáner y TAC para diagnóstico preciso"
-      }
-    },
-    "ayudas": "No podemos citar pacientes con ayudas.",
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp 2\"",
-    "seguros": "no aceptan seguros",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "SI"
-  },
   "colvi": {
     "byTreatment": {
       "estetica_fhos": {
@@ -858,32 +788,6 @@ const CLINIC_SCHEDULES = {
     "whatsapp": "Subcuenta \"Smiledent Gijón\"",
     "agendamientoMismoDia": "SI",
     "agendamientoLargoPlazo": "NO"
-  },
-  "nunez": {
-    "byTreatment": {
-      "implantes": {
-        "horarios": {
-          "lunes": "10:00 a 19:00",
-          "miercoles": "10:00 a 19:00",
-          "viernes": "10:00 a 19:00"
-        },
-        "valuePoints": "5 años abierta, cirujana con más de 12 años de experiencia en implantes, reconocimientos de excelencia profesional y TAC incluido si la valoración lo requiere"
-      },
-      "blanqueamiento": {
-        "horarios": {
-          "miercoles": "10:00 a 19:00",
-          "jueves": "10:00 a 19:00",
-          "viernes": "10:00 a 19:00"
-        },
-        "duracionCita": "30min",
-        "valuePoints": ""
-      }
-    },
-    "ayudas": "No podemos citar pacientes con ayudas.",
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp 2\"",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "SI"
   },
   "paretsdent": {
     "byTreatment": {
@@ -1028,17 +932,6 @@ const CLINIC_SCHEDULES = {
     "agendamientoMismoDia": "SI",
     "agendamientoLargoPlazo": "SI"
   },
-  "ardenne": {
-    "byTreatment": {
-      "implantes": {
-        "duracionCita": "Recepción confirma fecha y hora"
-      }
-    },
-    "recordatorio": "SI",
-    "whatsapp": "Subcuenta \"WhatsApp 2\"",
-    "agendamientoMismoDia": "SI",
-    "agendamientoLargoPlazo": "NO"
-  },
   "odos": {
     "byTreatment": {
       "implantes": {
@@ -1180,3 +1073,4 @@ const CLINIC_SCHEDULES = {
   }
 
 };
+if (typeof window !== 'undefined') window.CLINIC_SCHEDULES = CLINIC_SCHEDULES;
