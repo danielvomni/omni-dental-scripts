@@ -68,13 +68,14 @@ body.auth-locked .auth-screen{min-height:100vh;display:flex;align-items:center;j
 .search-empty{padding:10px 14px;font-size:13px;color:var(--text-muted)}
 
 /* MAIN LAYOUT */
-#app-main{max-width:1600px;margin:0 auto;padding:20px 24px;display:grid;grid-template-columns:280px 1fr 280px;gap:20px;min-height:calc(100vh - 90px)}
+#app-main{max-width:1800px;margin:0 auto;padding:20px 24px;display:grid;grid-template-columns:250px minmax(0,1fr) 300px;gap:20px;min-height:calc(100vh - 90px);align-items:start}
+#clinic-details{min-width:0}
+#clinic-details>summary,.compact-navigation{display:none}
 @media(max-width:1200px){
-  #app-main{grid-template-columns:1fr;gap:14px}
-  #sidebar{order:1;display:block!important}
-  #script-area{order:2}
-  #negativas-panel{order:3;display:block!important}
-  #sidebar{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  #app-main{grid-template-columns:minmax(0,1fr) 340px;gap:14px}
+  #sidebar{grid-column:1/-1;columns:3;column-gap:14px}
+  #clinic-details{grid-column:1/-1}
+  #sidebar .sidebar-card{break-inside:avoid}
   #sidebar .sidebar-card,#negativas-panel .sidebar-card{margin-bottom:0}
 }
 
@@ -170,3 +171,159 @@ body.auth-locked .auth-screen{min-height:100vh;display:flex;align-items:center;j
   margin-bottom: 8px;
   color: #111;
 }
+
+/* Notas de cita: campos locales y vista previa independiente del guion. */
+[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.header-inner,.search-bar{max-width:1800px}
+.header-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn-secondary{background:white;color:var(--text);border:1.5px solid var(--border-dark);padding:8px 14px;border-radius:var(--radius-sm);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer}
+body.auth-locked #search-bar{display:none!important}
+button:disabled{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #29684a;outline-offset:2px}
+#call-tools{min-width:0;position:sticky;top:110px;max-height:calc(100vh - 125px);overflow-y:auto;scrollbar-width:thin;padding-right:3px}
+.appointment-card{padding:18px;border-color:#b7c9bf}
+.note-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.note-heading h2{font-size:18px;line-height:1.3;letter-spacing:-.3px}
+.note-tag{font-size:10px;font-weight:700;color:#286044;background:#eef5f0;padding:3px 8px;border-radius:20px}
+.note-context{font-size:12px;color:var(--text-muted);line-height:1.45;margin-bottom:14px}
+.note-modes{display:flex;border:1px solid var(--border);padding:3px;border-radius:8px;background:var(--bg);margin-bottom:14px}
+.note-modes button{flex:1;border:0;background:transparent;border-radius:5px;padding:7px 5px;font:600 12px 'Inter',sans-serif;cursor:pointer;color:var(--text-muted)}
+.note-modes button[aria-pressed="true"]{background:#fff;color:var(--text);box-shadow:var(--shadow)}
+.note-policy{padding:10px 12px;font-size:12px;line-height:1.5;background:#f1f6f3;border-radius:6px;margin-bottom:14px;color:#315a42}
+#appointment-form fieldset{border:0;min-width:0}
+#appointment-form label,.inline-notes label{display:block;font-size:12px;font-weight:600;margin-bottom:10px}
+#appointment-form textarea,.inline-notes input:not([type="checkbox"]):not([type="radio"]),.inline-notes select{display:block;width:100%;min-width:0;padding:8px 10px;border:1px solid var(--border-dark);border-radius:6px;background:#fff;color:var(--text);font:400 13px 'Inter',sans-serif;margin-top:5px;line-height:1.4}
+.inline-notes .optional{font-size:11px;color:var(--text-muted);font-weight:400}
+.note-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:10px}
+.amount-grid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.inline-notes .note-check{display:flex;align-items:center;gap:8px;font-weight:500;cursor:pointer;font-size:12px;margin:10px 0 14px}
+.note-check input{accent-color:#286044;width:16px;height:16px;flex-shrink:0}
+.note-hint{font-size:11px;line-height:1.55;color:var(--text-muted);margin:5px 0 12px}
+.note-warning{font-size:12px;line-height:1.5;color:#885000;background:#fff5dd;border:1px solid #edcf86;border-radius:6px;padding:10px;margin:10px 0}
+.note-third{padding:12px 12px 2px;margin:10px 0;border-left:3px solid #b7c9bf;background:#f7f9f7;border-radius:5px}
+.note-preview-area{border-top:1px solid var(--border);margin-top:14px;padding-top:14px}
+#appointment-form #note-preview{font:13px/1.7 'Inter',sans-serif;background:#f8faf8;min-height:125px;resize:vertical}
+#note-copy{width:100%;background:#25583d;padding:11px}
+.note-copy-status{color:#25583d;font-size:12px;font-weight:600;margin-top:8px;min-height:18px}
+.inline-notes:empty{display:none}
+.inline-notes:not(:empty){margin-top:16px;padding:14px 16px 4px;background:#f4f8f5;border:1px solid #d7e4da;border-radius:8px}
+.inline-notes fieldset{border:0;min-width:0}
+.inline-notes legend{font-size:12px;font-weight:700;margin-bottom:8px}
+.answer-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.inline-notes .answer-pills label{display:flex;align-items:center;gap:8px;margin:0;position:relative;cursor:pointer}
+.answer-pills input{position:absolute;width:1px;height:1px;opacity:0}
+.answer-pills span{padding:8px 14px;background:#fff;border:1.5px solid #cdd9cf;border-radius:6px;min-height:38px;display:flex;align-items:center;gap:8px;font-size:13px}
+.answer-pills span::before{content:'';width:13px;height:13px;border:1.5px solid #84978b;border-radius:50%}
+.answer-pills input:checked+span{background:#e2f0e5;border-color:#286044;color:#234d34}
+.answer-pills input:checked+span::before{background:#286044;box-shadow:inset 0 0 0 2px #e2f0e5}
+.answer-pills input:focus-visible+span{outline:2px solid #29684a;outline-offset:2px}
+.answer-pills input:disabled+span{opacity:.45;cursor:not-allowed}
+.answer-pills input[data-criterion="rejected"]+span{background:#fff1f0;border-color:#c62a20;color:#a32019}
+.answer-pills input[data-criterion="rejected"]:checked+span{background:#ffe1dd;border-width:2px}
+.answer-pills input[data-criterion="rejected"]:checked+span::before{background:#a32019;box-shadow:inset 0 0 0 2px #ffe1dd}
+.answer-pills input[data-criterion="review"]+span{background:#fff9e9;border-color:#ac750c;color:#805600}
+.answer-pills input[data-criterion="review"]:checked+span::before{background:#805600;box-shadow:inset 0 0 0 2px #fff9e9}
+.inline-notes select[data-criterion="rejected"]{border:2px solid #c62a20;background:#fff1f0;color:#a32019}
+.inline-notes select[data-criterion="review"]{border-color:#ac750c;background:#fff9e9;color:#805600}
+.inline-notes option[data-criterion="rejected"]{color:#a32019}
+.inline-notes option[data-criterion="review"]{color:#805600}
+.criterion-warning{font-size:13px;line-height:1.5;padding:8px 10px;border-radius:6px;margin:4px 0 12px}
+.criterion-warning[data-criterion="rejected"]{color:#a32019;background:#fff1f0;border-left:3px solid #c62a20}
+.criterion-warning[data-criterion="review"]{color:#805600;background:#fff9e9;border-left:3px solid #ac750c}
+.date-shortcuts{display:flex;gap:8px;margin-bottom:12px}
+.date-shortcuts .btn-secondary{padding:6px 14px;font-size:12px}
+.appointment-pickers{display:flex;gap:24px;flex-wrap:wrap}
+.picker-group{flex:1 1 210px;max-width:360px}
+.picker-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:10px}
+.inline-notes #note-number-row{max-width:240px}
+.inline-notes .note-grid{max-width:440px}
+.inline-notes #note-income,.inline-notes #note-third-income{max-width:360px}
+.inline-notes .note-third{max-width:500px}
+.inline-notes #note-counter{margin-bottom:10px}
+#script-content{scroll-margin-top:145px}
+/* Ventanas compartidas con HighLevel: guion a todo el ancho y nota al final. */
+@media(max-width:1100px){
+  body{padding-bottom:76px}
+  .header-inner{padding:10px 16px;gap:10px}
+  .logo-omni,.logo-dental{font-size:18px}
+  .selectors{flex-basis:100%;order:3;gap:10px;min-width:0}
+  .select-group{min-width:0;flex:1}
+  .select-group select{width:100%;max-width:100%;text-overflow:ellipsis}
+  .header-actions{margin-left:auto}
+  #app-header{position:static}
+  #app-main{padding:12px 16px;grid-template-columns:minmax(0,1fr);gap:14px}
+  #script-area,#call-tools{min-width:0}
+  #call-tools{position:static;max-height:none;overflow:visible;padding-right:0;scroll-margin-top:12px}
+  #clinic-details>summary{display:list-item;padding:10px 14px;border:1px solid var(--border-dark);border-radius:6px;background:white;font-size:13px;font-weight:600;cursor:pointer}
+  #clinic-details[open]>summary{margin-bottom:12px}
+  #sidebar{columns:auto}
+  #sidebar .sidebar-card{margin-bottom:12px}
+  #note-return{display:block;width:100%;margin-top:12px}
+  #note-jump{display:block;position:fixed;right:16px;bottom:12px;z-index:90;box-shadow:var(--shadow-md)}
+  body.auth-locked #note-jump{display:none}
+  #script-content{scroll-margin-top:12px}
+}
+@media(max-width:760px){
+  .header-inner{padding:12px 16px;gap:14px}
+  .selectors{width:100%;flex-basis:100%;flex-wrap:wrap;gap:10px}
+  .select-group{min-width:0;flex:1 1 180px}
+  .select-group select{max-width:100%;width:100%}
+  .header-actions{width:auto}
+  #app-header{position:static}
+  #app-main{padding:12px 16px;grid-template-columns:minmax(0,1fr)}
+  #call-tools{position:static;max-height:none;overflow:visible;padding-right:0}
+  #sidebar{grid-column:1;columns:auto}
+  #sidebar .sidebar-card{margin-bottom:12px}
+  .search-bar{padding:8px 16px}
+  #script-area{min-width:0}
+  .empty-state{padding:35px 15px}
+  .inline-notes:not(:empty){padding:12px 10px 4px}
+  .appointment-pickers{gap:10px}
+  #script-content{scroll-margin-top:16px}
+}
+@media(max-width:480px){
+  .selectors{flex-direction:column}
+  .select-group{flex:auto}
+  .logo-scripts{display:none}
+  .step-container{padding:16px}
+  .note-heading{flex-wrap:wrap}
+  .answer-pills span{overflow-wrap:anywhere}
+  .picker-group{flex-basis:100%;min-width:0}
+}
+
+/* Una ruta documental por línea, con ajuste natural en pantalla dividida. */
+#info-econ,
+#note-economic-criteria {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  line-height: 1.65;
+}
+
+#info-offer { display: grid; gap: 12px; min-width: 0; }
+.offer-treatment { padding: 12px 14px; border: 1px solid #d8e4dd; border-left: 3px solid #517660; border-radius: 8px; background: #f5f9f6; min-width: 0; }
+.offer-treatment-title { display: block; margin-bottom: 8px; color: #254b36; }
+.offer-line { margin: 0; line-height: 1.6; overflow-wrap: anywhere; }
+.offer-line + .offer-line { margin-top: 7px; }
+
+/* Biblioteca inicial: lectura cómoda también en pantalla dividida. */
+#call-tools[hidden],#note-jump[hidden]{display:none!important}
+#app-main[data-layout="home"]{grid-template-columns:minmax(0,1fr)}
+#app-main[data-layout="clinic"]{grid-template-columns:250px minmax(0,1fr)}
+@media(max-width:1100px){#app-main[data-layout="clinic"]{grid-template-columns:minmax(0,1fr)}}
+.home-templates{margin-bottom:24px;min-width:0}
+.home-templates[hidden]{display:none}
+.home-templates h1{font-size:26px;margin:0 0 12px}
+.home-templates>p{color:var(--text-muted);line-height:1.6;margin-bottom:20px}
+.home-template{background:#fff;border:1px solid #d5d5d5;border-radius:12px;margin-bottom:10px;overflow:hidden}
+.home-template>summary{padding:18px 20px;font-weight:700;cursor:pointer;line-height:1.5}
+.home-template>summary:hover{background:#f1f6f3}
+.home-template summary:focus-visible{outline:3px solid #397555;outline-offset:-3px}
+.home-template-body{padding:0 20px 20px;overflow-wrap:anywhere}
+.home-template-step{padding:18px 0;border-top:1px solid #e6e6e6;line-height:1.65}
+.home-template-step h3{font-size:16px;margin:0 0 12px}
+.home-template-step details,.home-objection{margin-top:12px}
+.home-template-step summary,.home-objection summary{cursor:pointer;font-weight:600}
+#home-templates:not([hidden]) + .empty-state{padding:20px}
+#home-templates:not([hidden]) + .empty-state .empty-logo{display:none}
+@media(max-width:600px){.home-templates h1{font-size:23px}.home-template>summary{padding:15px}.home-template-body{padding:0 15px 15px}}

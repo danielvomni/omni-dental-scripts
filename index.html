@@ -42,7 +42,9 @@
                     <select id="treatment-select" disabled><option value="">-- Primero elija clínica --</option></select>
                 </div>
             </div>
-            <button id="copy-btn" class="btn-copy" title="Copiar guion">📋 Copiar Todo</button>
+            <div class="header-actions">
+                <button id="new-patient-btn" class="btn-secondary" type="button">Nuevo paciente</button>
+            </div>
         </div>
     </header>
 
@@ -51,10 +53,14 @@
         <div id="clinic-search-results" class="search-results" aria-live="polite"></div>
     </div>
 
-    <main id="app-main">
+    <main id="app-main" data-layout="home">
+        <details id="clinic-details" class="clinic-details" open hidden>
+        <summary>Información y horarios de la clínica</summary>
         <aside id="sidebar" style="display:none">
             <div class="sidebar-card" id="quick-info">
                 <h3>📍 Info Rápida</h3>
+                <p id="info-master" class="note-hint"></p>
+                <p id="info-master-warning" class="note-warning" hidden></p>
                 <div class="info-row"><span class="info-label">Dirección:</span><span id="info-location"></span></div>
                 <div class="info-row"><span class="info-label">Referencia:</span><span id="info-ref"></span></div>
                 <div class="info-row"><span class="info-label">Oferta:</span><span id="info-offer"></span></div>
@@ -75,8 +81,14 @@
                 <div id="qualif-status"></div>
             </div>
         </aside>
+        </details>
 
         <section id="script-area">
+            <section id="home-templates" class="home-templates" aria-labelledby="home-templates-title">
+                <h1 id="home-templates-title">Plantillas de guiones</h1>
+                <p>Abre una plantilla para consultarla. Para gestionar una llamada con sus condiciones y preparar la nota, selecciona la clínica y el tratamiento arriba.</p>
+                <div id="home-template-list"></div>
+            </section>
             <div id="script-content" class="empty-state">
                 <div class="empty-logo">
                     <span class="empty-omni">OMNI</span>
@@ -92,19 +104,110 @@
             </div>
         </section>
 
-        <aside id="negativas-panel" style="display:none">
+        <aside id="call-tools" aria-label="Nota y ayudas de la llamada" hidden>
+            <section class="sidebar-card appointment-card" aria-labelledby="note-title">
+                <div class="note-heading"><h2 id="note-title">Nota de cita</h2><span class="note-tag">HighLevel</span></div>
+                <p id="note-context" class="note-context"></p>
+                <div class="note-modes" role="group" aria-label="Nota de cita nueva o reprogramación">
+                    <button id="note-new-mode" type="button" aria-pressed="true">Cita nueva</button>
+                    <button id="note-reschedule-mode" type="button" aria-pressed="false">Reprogramar</button>
+                </div>
+                <p id="note-empty" class="note-hint">Selecciona una clínica y un tratamiento para preparar la nota.</p>
+                <p id="note-policy" class="note-policy" hidden></p>
+                <form id="appointment-form" autocomplete="off">
+                    <fieldset id="note-fields" disabled hidden>
+                        <legend class="sr-only">Datos de la cita</legend>
+                        <div id="note-form-content" hidden>
+                            <div id="note-appointment-block" class="inline-answer-group">
+                                <label id="note-availability-row" for="note-availability" hidden>Disponibilidad del paciente<input id="note-availability" type="text" maxlength="240" placeholder="Ej. martes y jueves por la tarde" data-note-field="availability"></label>
+                                <div id="note-exact-appointment">
+                                <div class="date-shortcuts" role="group" aria-label="Elegir fecha rápidamente">
+                                    <button id="note-today" type="button" class="btn-secondary">Hoy</button>
+                                    <button id="note-tomorrow" type="button" class="btn-secondary">Mañana</button>
+                                </div>
+                                <div class="appointment-pickers">
+                                    <fieldset class="picker-group"><legend id="note-date-legend">Fecha de cita</legend><div class="picker-pair">
+                                        <label for="note-day">Día<select id="note-day" data-note-field="day"><option value="">Día</option></select></label>
+                                        <label for="note-month">Mes<select id="note-month" data-note-field="month"><option value="">Mes</option></select></label>
+                                    </div></fieldset>
+                                    <fieldset class="picker-group"><legend class="sr-only">Hora de cita</legend><div class="picker-pair">
+                                        <label for="note-hour">Hora<select id="note-hour" data-note-field="hour"><option value="">Hora</option></select></label>
+                                        <label for="note-minute">Minutos<select id="note-minute" data-note-field="minute"></select></label>
+                                    </div></fieldset>
+                                </div>
+                                </div>
+                            <label id="note-number-row" for="note-number" hidden>Número de esta cita<input id="note-number" type="number" min="2" step="1" placeholder="Ej. 2" data-note-field="appointmentNumber" aria-describedby="note-counter note-limit-warning"></label>
+                            <p id="note-counter" class="note-hint"></p>
+                            <p id="note-limit-warning" class="note-warning" role="status" hidden></p>
+                            </div>
+                            <div id="note-new-fields">
+                                <label id="note-need-row" for="note-need">Necesidad del paciente <span id="note-need-optional" class="optional">(opcional)</span><input id="note-need" type="text" maxlength="240" placeholder="Ej. rehabilitación completa" data-note-field="need"></label>
+                                <label id="note-pieces-row" for="note-pieces" hidden>Necesidad aproximada<select id="note-pieces" data-note-field="pieces"><option value="">Selecciona las piezas</option><option value="small">1–3 piezas</option><option value="large">4 piezas o más</option><option value="full">Rehabilitación completa</option></select></label>
+                                <label id="note-meta-option" class="note-check" hidden><input type="checkbox" data-note-field="metaDetails">Añadir datos disponibles en Meta</label>
+                                <div id="note-clinic-fields" hidden>
+                                    <label for="note-budget-fit">¿Le encaja la inversión inicial?<select id="note-budget-fit" data-note-field="budgetFit"><option value="">Selecciona una respuesta</option><option>Sí</option><option>No</option><option>No especifica</option></select></label>
+                                    <label for="note-payment-method">Forma de pago prevista<select id="note-payment-method" data-note-field="paymentMethod"><option value="">Selecciona una respuesta</option><option>Fondos propios</option><option>Vía banco</option><option>No especifica</option></select></label>
+                                    <label for="note-previous-assessment">¿Tiene valoración o presupuesto previo?<select id="note-previous-assessment" data-note-field="previousAssessment"><option value="">Selecciona una respuesta</option><option>Sí</option><option>No</option><option>No especifica</option></select></label>
+                                </div>
+                                <fieldset id="note-document-row" class="document-choices"><legend>Documentación del paciente</legend><div class="answer-pills">
+                                    <label><input id="note-document-dni" type="radio" name="note-document" value="DNI" data-note-field="document"><span id="note-document-dni-label">DNI</span></label>
+                                    <label><input id="note-document-nie" type="radio" name="note-document" value="NIE" data-note-field="document"><span id="note-document-nie-label">NIE</span></label>
+                                    <label><input id="note-document-passport" type="radio" name="note-document" value="Pasaporte" data-note-field="document"><span id="note-document-passport-label">Pasaporte</span></label>
+                                    <label><input id="note-document-unspecified" type="radio" name="note-document" value="No especifica" data-note-field="document"><span id="note-document-unspecified-label">No especifica</span></label>
+                                </div><p id="note-document-warning" class="criterion-warning" role="status" hidden></p></fieldset>
+                                <div id="note-economic-fields">
+                                    <p id="note-economic-criteria" class="note-hint"></p>
+                                    <label for="note-income">Situación económica del paciente<select id="note-income" data-note-field="income"><option value="">Selecciona una respuesta</option><option>Nómina</option><option>Autónomo</option><option>Jubilación</option><option>Pensión contributiva</option><option>Pensión no contributiva</option><option>Ayuda</option><option>Sin ingresos</option><option>Ahorros</option><option>Cuenta bancaria o tarjeta</option><option>No especifica</option><option>Otro</option></select></label>
+                                    <p id="note-income-warning" class="criterion-warning" role="status" hidden></p>
+                                    <div class="note-grid amount-grid">
+                                        <label for="note-amount-comparison">Importe <span id="note-amount-optional" class="optional">(opcional)</span><select id="note-amount-comparison" data-note-field="amountComparison"><option value="">Importe indicado</option><option value="more">Más de</option></select></label>
+                                        <label for="note-amount">Euros<input id="note-amount" type="text" inputmode="decimal" maxlength="12" placeholder="Ej. 880" data-note-field="amount"></label>
+                                    </div>
+                                    <label for="note-income-detail">Detalle económico <span class="optional">(opcional)</span><input id="note-income-detail" type="text" maxlength="200" placeholder="Ej. antigüedad de 2 años" data-note-field="incomeDetail"></label>
+                                    <label class="note-check"><input id="note-third" type="checkbox" data-note-field="third">Hay un tercero / avalista</label>
+                                    <div id="note-third-fields" class="note-third" hidden>
+                                        <label for="note-third-income">Situación económica del tercero<select id="note-third-income" data-note-field="thirdIncome"><option value="">Selecciona una respuesta</option><option>Nómina</option><option>Autónomo</option><option>Jubilación</option><option>Pensión contributiva</option><option>Pensión no contributiva</option><option>No especifica</option><option>Otro</option></select></label>
+                                        <p id="note-third-warning" class="criterion-warning" role="status" hidden></p>
+                                        <div class="note-grid amount-grid">
+                                            <label for="note-third-comparison">Importe <span class="optional">(opcional)</span><select id="note-third-comparison" data-note-field="thirdComparison"><option value="">Importe indicado</option><option value="more">Más de</option></select></label>
+                                            <label for="note-third-amount">Euros<input id="note-third-amount" type="text" inputmode="decimal" maxlength="12" placeholder="Ej. 1500" data-note-field="thirdAmount"></label>
+                                        </div>
+                                        <label for="note-third-detail">Detalle del tercero <span class="optional">(opcional)</span><input id="note-third-detail" type="text" maxlength="200" data-note-field="thirdDetail"></label>
+                                    </div>
+                                </div>
+                                <label id="note-asnef-row" for="note-asnef" hidden>Respuesta sobre ASNEF<select id="note-asnef" data-note-field="asnef"><option value="">Selecciona una respuesta</option><option value="indica que no">Indica que no</option><option value="indica que sí">Indica que sí</option><option value="no especifica">No especifica</option></select></label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="note-preview-area">
+                        <label for="note-preview">Vista previa de la nota</label>
+                        <textarea id="note-preview" rows="5" readonly placeholder="La nota aparecerá aquí." aria-describedby="note-validation"></textarea>
+                        <p id="note-validation" class="note-hint"></p>
+                        <button id="note-copy" class="btn-copy" type="button" disabled>Copiar nota</button>
+                        <p id="note-copy-status" class="note-copy-status" role="status" aria-live="polite"></p>
+                        <p class="note-hint">Prepara texto para pegar en HighLevel. No crea ni modifica citas.</p>
+                    </div>
+                </form>
+                <button id="note-return" class="btn-secondary compact-navigation" type="button">Volver al guion</button>
+            </section>
+        <section id="negativas-panel" style="display:none">
             <div class="sidebar-card">
                 <h3>🔄 Respuestas Negativas</h3>
                 <p class="panel-subtitle">Qué decir si el paciente pone objeciones</p>
                 <div id="negativas-list"></div>
             </div>
+        </section>
         </aside>
     </main>
+    <button id="note-jump" class="btn-copy compact-navigation" type="button" disabled hidden>Ver nota</button>
 
     <script src="scripts.js"></script>
     <script src="clinics-data.js"></script>
     <script src="clinics-data-2.js"></script>
     <script src="clinic-schedules.js"></script>
-  <script src="app.js"></script>
+    <script src="clinic-updates.js"></script>
+    <script src="master-updates.js"></script>
+    <script src="appointment-notes.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

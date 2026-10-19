@@ -9,10 +9,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const scriptContent = document.getElementById('script-content');
   const sidebar = document.getElementById('sidebar');
   const negativasPanel = document.getElementById('negativas-panel');
-  const copyBtn = document.getElementById('copy-btn');
   const searchBar = document.getElementById('search-bar');
   const searchInput = document.getElementById('clinic-search');
   const searchResults = document.getElementById('clinic-search-results');
+  const activeClinics = CLINICS_DATA.filter(clinic => !clinic.inactive);
+  let lastTreatment = '';
+  // En media pantalla se prioriza la lectura; las fichas siguen disponibles.
+  const compactScreen = window.matchMedia?.('(max-width:1100px)');
+  const clinicDetails = document.getElementById('clinic-details');
+  if (compactScreen) {
+    clinicDetails.open = !compactScreen.matches;
+    compactScreen.addEventListener('change', event => { clinicDetails.open = !event.matches; });
+  }
+  let scriptPosition = null;
+  document.getElementById('note-jump').addEventListener('click', () => {
+    scriptPosition = window.scrollY ?? null;
+    document.getElementById('call-tools').scrollIntoView({ block: 'start' });
+    document.getElementById('note-preview').focus({ preventScroll: true });
+  });
+  document.getElementById('note-return').addEventListener('click', () => {
+    if (scriptPosition !== null && window.scrollTo) window.scrollTo({ top: scriptPosition });
+    else scriptContent.scrollIntoView({ block: 'start' });
+  });
+  const notes = OmniAppointmentNotes.mount({
+    document, rules: OMNI_APPOINTMENT_RULES, templates: SCRIPT_TEMPLATES, readValue: getTreatmentAwareValue,
+    onModeChange(reschedule) {
+      const clinic = CLINICS_DATA.find(c => c.id === clinicSelect.value);
+      if (!clinic) return;
+      const next = reschedule ? 'reprogramacion' : (lastTreatment || (clinic.treatments.length === 1 ? clinic.treatments[0] : ''));
+      if (next === treatmentSelect.value) return;
+      treatmentSelect.value = next;
+      treatmentSelect.dispatchEvent(new Event('change'));
+    }
+  });
+  document.getElementById('new-patient-btn').addEventListener('click', () => {
+    const clinic = CLINICS_DATA.find(c => c.id === clinicSelect.value);
+    if (!clinic) { notes.reset(); return; }
+    treatmentSelect.value = lastTreatment || (clinic.treatments.length === 1 ? clinic.treatments[0] : '');
+    treatmentSelect.dispatchEvent(new Event('change'));
+    clinicSelect.focus();
+    scriptContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 
   function unlockApp() {
     document.body.classList.remove('auth-locked');
@@ -49,19 +86,50 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Stats
-  document.getElementById('stat-clinics').textContent = CLINICS_DATA.length;
+  document.getElementById('stat-clinics').textContent = activeClinics.length;
 
   // Populate clinic selector
   searchBar.style.display = 'block';
-  CLINICS_DATA.sort((a, b) => a.name.localeCompare(b.name));
-  populateClinicSelect(CLINICS_DATA);
+  activeClinics.sort((a, b) => a.name.localeCompare(b.name));
+  populateClinicSelect(activeClinics);
+  renderHomeTemplates();
+
+  function renderHomeTemplates() {
+    const catalog=[
+      ['vigente_A','Implantes · Selectivo A'],['vigente_B','Implantes · Selectivo B · ASNEF'],
+      ['vigente_C','Implantes · Selectivo C · cuantía de ingresos'],['simplificado','Simplificado'],
+      ['ortodoncia','Ortodoncia · Selectivo'],['carillas','Carillas · Selectivo'],
+      ['blanqueamiento','Blanqueamiento'],['vigente_apnea','Apnea del sueño · Odos','odos','apnea'],
+      ['vigente_massana','Massana Smile'],['vigente_zen','Zen Dental','zendental','implantes'],
+      ['vigente_fonseca','Fonseca y Obando','fonseca','implantes'],
+      ['flordent_estetica','Flordent · Estética','flordent','estetica_medica'],
+      ['vigente_parati','ParaTi · Medicina estética','parati','estetica_medica'],
+      ['ardenne_master','Ardenne Dental','ardenne','implantes'],
+      ['adeje_implantes','Adeje · Implantes','adeje','implantes'],
+      ['adeje_ortodoncia','Adeje · Ortodoncia','adeje','ortodoncia'],
+      ['reprogramacion','Reprogramación'],['recontacto','Recontacto']
+    ];
+    const generic={name:'[Clínica]',city:'[Ciudad]',address:'[Dirección]',ref:'[Referencia]',
+      promo:'[Promoción vigente del tratamiento]',valuePoints:'[Puntos de valor de la clínica]',
+      qualifDoc:'[Documentación admitida por la clínica]',qualifEcon:'[Criterios económicos de la clínica y tratamiento]',treatment:'[Tratamiento]'};
+    document.getElementById('home-template-list').innerHTML=catalog.map(([key,label,id,treatment])=>{
+      const template=SCRIPT_TEMPLATES[key];
+      const clinic=id?activeClinics.find(c=>c.id===id):null;
+      const sample=clinic?{...clinic,...CLINIC_SCHEDULES[id].byTreatment[treatment],treatment}:generic;
+      const scope=clinic?`Uso exclusivo: ${clinic.name}.`:key==='vigente_C'?'Cuantía de 1.221 € confirmada para Nuño y Pérez y Salud Navarra.':key==='vigente_massana'?'Uso exclusivo de las clínicas Massana Smile; seleccionar clínica y tratamiento para aplicar su ficha.':'Plantilla de consulta: las condiciones se adaptan al seleccionar la clínica.';
+      const steps=template.steps.map((step,i)=>`<section class="home-template-step"><h3>${i+1}. ${escapeHtml(step.title)}</h3><div>${formatText(step.text(sample))}</div>${step.note?`<p class="step-note">${formatText(typeof step.note==='function'?step.note(sample):step.note)}</p>`:''}${step.rebate?`<details><summary>Si necesita una alternativa o no cumple</summary><div>${formatText(step.rebate(sample))}</div></details>`:''}</section>`).join('');
+      const objections=(template.rebates || []).map(r=>`<details class="home-objection"><summary>${escapeHtml(r.label)}</summary><p>${formatText(r.response)}</p><p>${formatText(r.cierre || '')}</p></details>`).join('');
+      return `<details class="home-template"><summary>${escapeHtml(label)}</summary><div class="home-template-body"><p class="note-hint">${escapeHtml(scope)}</p>${key==='carillas'?'<p class="note-hint">El cierre conserva la versión anterior; el nuevo documento termina en la cualificación económica.</p>':''}${steps}${objections}</div></details>`;
+    }).join('');
+    document.getElementById('stat-scripts').textContent=catalog.length;
+  }
 
   function populateClinicSelect(clinics) {
     clinicSelect.innerHTML = '<option value="">-- Seleccione Clínica --</option>';
     clinics.forEach(c => {
       const opt = document.createElement('option');
       opt.value = c.id;
-      opt.textContent = `${c.name} (${c.city || ''})`;
+      opt.textContent = c.city ? `${c.name} (${c.city})` : c.name;
       clinicSelect.appendChild(opt);
     });
   }
@@ -102,14 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Search filter
   searchInput.addEventListener('input', (e) => {
     const q = e.target.value.trim().toLowerCase();
-    const filtered = CLINICS_DATA.filter(c =>
+    const filtered = activeClinics.filter(c =>
       c.name.toLowerCase().includes(q)
       || (c.city || '').toLowerCase().includes(q)
       || (c.address || '').toLowerCase().includes(q)
       || (c.ref || '').toLowerCase().includes(q)
       || (c.id || '').toLowerCase().includes(q)
     );
-    populateClinicSelect(filtered);
+    // Buscar no cambia silenciosamente la clínica activa ni su nota.
     renderSearchResults(filtered, q);
   });
 
@@ -121,6 +189,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Clinic change → populate treatments
   clinicSelect.addEventListener('change', () => {
+    lastTreatment = '';
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+    searchResults.style.display = 'none';
     const clinic = CLINICS_DATA.find(c => c.id === clinicSelect.value);
     if (!clinic) {
       treatmentSelect.disabled = true;
@@ -129,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     treatmentSelect.disabled = false;
+    document.getElementById('home-templates').hidden = true;
     treatmentSelect.innerHTML = '<option value="">-- Seleccione Tratamiento --</option>';
 
     clinic.treatments.forEach(t => {
@@ -177,6 +250,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function shouldEconQualify(clinic, treatment) {
+    if (treatment === 'reprogramacion') return false;
+    const policy = OMNI_APPOINTMENT_RULES[clinic.id]?.treatments?.[treatment];
+    if (policy && policy.economic !== undefined) return policy.economic;
     if (!clinic.econQualif) return false;
     if (treatment === 'implantes' || treatment === 'implantes_fonseca') return true;
     if (clinic.econQualifAll) return true;
@@ -184,6 +260,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderScript(clinic, treatment) {
+    scriptPosition = null;
+    showMasterStatus(clinic);
+    if (clinic.treatments.includes(treatment)) lastTreatment = treatment;
+    notes.setContext(clinic, treatment);
     const scriptKey = getScriptKey(clinic, treatment);
     const tmpl = SCRIPT_TEMPLATES[scriptKey];
     if (!tmpl) { scriptContent.innerHTML = '<p>Script no encontrado.</p>'; return; }
@@ -200,19 +280,22 @@ document.addEventListener('DOMContentLoaded', () => {
       ? (clinic.promo || '')
       : (explicitPromo !== undefined ? explicitPromo : getPromoForTreatment(clinic, treatment));
     const cleanClinic = Object.assign({}, clinic, {
+      treatment,
       address: stripPostalCode(clinic.address),
       valuePoints: explicitValuePoints !== undefined ? explicitValuePoints : clinic.valuePoints,
-      promo: treatmentPromo
+      promo: treatmentPromo,
+      qualifDoc: getTreatmentAwareValue(clinic, 'qualifDoc', treatment),
+      qualifEcon: getTreatmentAwareValue(clinic, 'qualifEcon', treatment)
     });
 
     // Update sidebar
     sidebar.style.display = 'block';
     document.getElementById('info-location').textContent = clinic.address;
     document.getElementById('info-ref').textContent = clinic.ref || '—';
-    document.getElementById('info-offer').textContent = cleanClinic.promo || '—';
-    document.getElementById('info-docs').textContent = clinic.qualifDoc || '—';
-    document.getElementById('info-econ').textContent = clinic.qualifEcon || '—';
-    document.getElementById('info-financing').textContent = clinic.financing || '—';
+    renderOffers(clinic, treatment);
+    document.getElementById('info-docs').textContent = getTreatmentAwareValue(clinic, 'qualifDoc', treatment) || '—';
+    document.getElementById('info-econ').textContent = getTreatmentAwareValue(clinic, 'qualifEcon', treatment) || '—';
+    document.getElementById('info-financing').textContent = getTreatmentAwareValue(clinic, 'financing', treatment) || '—';
 
     const ayudasQuick = getTreatmentAwareValue(clinic, 'ayudas', treatment) || '';
     const segurosQuick = getTreatmentAwareValue(clinic, 'seguros', treatment) || '';
@@ -240,11 +323,9 @@ document.addEventListener('DOMContentLoaded', () => {
       qualifStatus.innerHTML = '';
     } else {
       qualifBadge.style.display = 'block';
-      qualifStatus.innerHTML = `
-        <span class="qualif-tag ${doEconQualif ? 'yes' : 'no'}">
-          ${doEconQualif ? '✅ Cualificación económica activa' : '⚡ Sin cualificación económica (volumen)'}
-        </span>
-      `;
+      const policy = OmniAppointmentNotes.policyFor(clinic, treatment, OMNI_APPOINTMENT_RULES, SCRIPT_TEMPLATES);
+      const qualificationLabels = { meta: 'Cualificación realizada en Meta', document: 'Confirmar documentación', operator: 'Cualificación por el operador', none: 'Guion sin cualificación' };
+      qualifStatus.innerHTML = `<span class="qualif-tag ${policy.qualification === 'operator' ? 'yes' : 'no'}">${qualificationLabels[policy.qualification]}</span>`;
     }
 
     // Build script HTML
@@ -257,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>`;
 
     let stepNum = 0;
+    const renderedSteps = [];
     tmpl.steps.forEach((step, i) => {
       const isEconStep = step.condition === 'econQualif';
       if (isEconStep && !doEconQualif) return;
@@ -267,10 +349,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       stepNum++;
+      renderedSteps.push({ index: i, title: step.title });
       const isHighlight = step.highlight ? ' highlight' : '';
       html += `<div class="step-container${isHighlight}">
         <div class="step-title"><span class="step-number">${stepNum}</span>${step.title}</div>
-        <div class="step-text">${formatText(step.text(cleanClinic))}</div>`;
+        <div class="step-text">${formatText(clinic.id === 'ardenne' && treatment === 'reprogramacion' && /confirmaci[oó]n|agendar nueva cita/i.test(step.title) ? 'Registraremos la fecha y hora que solicitas. Ardenne revisará la disponibilidad y te confirmará la nueva cita.' : clinic.id === 'flordent' && treatment !== 'estetica_medica' && /resumen final|confirmaci[oó]n/i.test(step.title) ? 'La disponibilidad acordada queda preagendada de forma provisional. Recepción de la clínica te contactará para confirmar la cita.' : step.text(cleanClinic))}</div>`;
 
       if (step.note) {
         const noteContent = typeof step.note === 'function' ? step.note(cleanClinic) : step.note;
@@ -283,11 +366,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="conditional-box" id="${rebateId}">${formatText(step.rebate(cleanClinic))}</div>`;
       }
 
-      html += `</div>`;
+      html += `<div id="note-slot-${i}" class="inline-notes" data-note-slot></div></div>`;
     });
 
     scriptContent.innerHTML = html;
     scriptContent.classList.remove('empty-state');
+    notes.attachScript(renderedSteps);
 
     // Negativas panel (objeciones)
     if (tmpl.rebates && tmpl.rebates.length > 0) {
@@ -307,6 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('negativas-list').innerHTML = negHtml;
     } else {
       negativasPanel.style.display = 'none';
+      document.getElementById('negativas-list').innerHTML = '';
     }
   }
 
@@ -338,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (scheduleData) {
         const scheduleHtml = formatSchedule(scheduleData);
         if (scheduleHtml) rows.push(`<div class="schedule-block">${scheduleHtml}</div>`);
-      }
+      } else rows.push('<p class="note-warning">Horario no especificado para este tratamiento. Consulta la Master.</p>');
 
       if (duration) rows.push(`<div class="info-row compact"><span class="info-label">Duración de cita:</span><span>${escapeHtml(duration)}</span></div>`);
     }
@@ -347,12 +432,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const whatsapp = getTreatmentAwareValue(clinic, 'whatsapp', treatment) || '';
     const sameDay = getTreatmentAwareValue(clinic, 'agendamientoMismoDia', treatment) || '';
     const longTerm = getTreatmentAwareValue(clinic, 'agendamientoLargoPlazo', treatment) || '';
+    const operational = getTreatmentAwareValue(clinic, 'operationalNotes', treatment) || [];
     const locations = getTreatmentAwareValue(clinic, 'sedes', treatment) || clinic.sedes || null;
 
     if (reminder) rows.push(`<div class="info-row compact"><span class="info-label">Recordatorio:</span><span>${escapeHtml(reminder)}</span></div>`);
     if (whatsapp) rows.push(`<div class="info-row compact"><span class="info-label">WhatsApp:</span><span>${escapeHtml(whatsapp)}</span></div>`);
     if (sameDay) rows.push(`<div class="info-row compact"><span class="info-label">Agendamiento el mismo día:</span><span>${escapeHtml(sameDay)}</span></div>`);
     if (longTerm) rows.push(`<div class="info-row compact"><span class="info-label">Agendamiento a largo plazo:</span><span>${escapeHtml(longTerm)}</span></div>`);
+    if (operational.length) rows.push(`<div class="schedule-note"><strong>Condiciones operativas:</strong><ul class="schedule-list">${operational.map(note => `<li>${escapeHtml(note)}</li>`).join('')}</ul></div>`);
+    rows.push('<p class="note-hint">Los horarios que incluyen fecha son excepciones para esa fecha, no turnos semanales.</p>');
 
     const locationsHtml = formatLocations(locations);
     if (locationsHtml) rows.push(`<div class="schedule-locations">${locationsHtml}</div>`);
@@ -370,12 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function formatAllTreatmentSchedules(clinic) {
     const externalSchedules = (typeof CLINIC_SCHEDULES !== 'undefined' ? CLINIC_SCHEDULES : (typeof window !== 'undefined' ? window.CLINIC_SCHEDULES : null));
     const externalClinic = externalSchedules ? (externalSchedules[clinic.id] || externalSchedules[clinic.name]) : null;
-    const treatmentKeys = Array.from(new Set([
-      ...(clinic.treatments || []),
-      ...Object.keys((externalClinic && externalClinic.byTreatment) || {}),
-      ...Object.keys(clinic.treatmentData || {}),
-      ...Object.keys(clinic.byTreatment || {})
-    ])).filter(Boolean);
+    const treatmentKeys = Array.from(new Set(clinic.treatments || [])).filter(Boolean);
 
     const blocks = treatmentKeys.map(key => {
       const scheduleData = getTreatmentAwareValue(clinic, 'horarios', key)
@@ -385,24 +468,26 @@ document.addEventListener('DOMContentLoaded', () => {
         || getTreatmentAwareValue(clinic, 'duration', key)
         || '';
       const scheduleHtml = scheduleData ? formatSchedule(scheduleData) : '';
-      if (!scheduleHtml && !duration) return '';
 
       const label = getTreatmentLabel(key);
       const durationHtml = duration
         ? `<div class="info-row compact"><span class="info-label">Duración de cita:</span><span>${escapeHtml(duration)}</span></div>`
         : '';
-      return `<div class="schedule-treatment-block"><div class="schedule-treatment-title">${escapeHtml(label)}</div>${scheduleHtml}${durationHtml}</div>`;
+      const longTerm = getTreatmentAwareValue(clinic, 'agendamientoLargoPlazo', key);
+      const longTermHtml = longTerm ? `<div class="info-row compact"><span class="info-label">Más de 72 horas:</span><span>${escapeHtml(longTerm)}</span></div>` : '';
+      const missing = !scheduleHtml ? '<p class="note-warning">Horario no especificado para este tratamiento. Consulta la Master.</p>' : '';
+      return `<div class="schedule-treatment-block"><div class="schedule-treatment-title">${escapeHtml(label)}</div>${scheduleHtml}${missing}${durationHtml}${longTermHtml}</div>`;
     }).filter(Boolean);
 
     if (blocks.length > 0) return blocks.join('');
 
-    const generalSchedule = getTreatmentAwareValue(clinic, 'horarios', 'implantes')
-      || getTreatmentAwareValue(clinic, 'disponibilidadHoraria', 'implantes')
+    const generalSchedule = getTreatmentAwareValue(clinic, 'horarios', null)
+      || getTreatmentAwareValue(clinic, 'disponibilidadHoraria', null)
       || clinic.horarios
       || clinic.disponibilidadHoraria
       || null;
-    const generalDuration = getTreatmentAwareValue(clinic, 'duracionCita', 'implantes')
-      || getTreatmentAwareValue(clinic, 'duration', 'implantes')
+    const generalDuration = getTreatmentAwareValue(clinic, 'duracionCita', null)
+      || getTreatmentAwareValue(clinic, 'duration', null)
       || clinic.duracionCita
       || '';
 
@@ -466,13 +551,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (externalClinic[field] !== undefined) {
         return externalClinic[field];
       }
-      if (externalClinic.byTreatment) {
-        const keys = Object.keys(externalClinic.byTreatment);
-        const fallbackObj = externalClinic.byTreatment['implantes'] || (keys.length > 0 ? externalClinic.byTreatment[keys[0]] : null);
-        if (fallbackObj && fallbackObj[field] !== undefined) {
-          return fallbackObj[field];
-        }
-      }
     }
 
     if (clinic.treatmentData && treatment && clinic.treatmentData[treatment] && clinic.treatmentData[treatment][field] !== undefined) {
@@ -483,25 +561,24 @@ document.addEventListener('DOMContentLoaded', () => {
       return clinic.byTreatment[treatment][field];
     }
 
-    if (clinic.treatmentData) {
-      const keys = Object.keys(clinic.treatmentData);
-      const fallbackObj = clinic.treatmentData['implantes'] || (keys.length > 0 ? clinic.treatmentData[keys[0]] : null);
-      if (fallbackObj && fallbackObj[field] !== undefined) {
-        return fallbackObj[field];
-      }
-    }
-
-    if (clinic.byTreatment) {
-      const keys = Object.keys(clinic.byTreatment);
-      const fallbackObj = clinic.byTreatment['implantes'] || (keys.length > 0 ? clinic.byTreatment[keys[0]] : null);
-      if (fallbackObj && fallbackObj[field] !== undefined) {
-        return fallbackObj[field];
-      }
-    }
-
     return clinic[field] !== undefined ? clinic[field] : null;
   }
 
+
+  function renderOffers(clinic, treatment) {
+    const all = !treatment || ['reprogramacion', 'recontacto'].includes(treatment);
+    const keys = all ? clinic.treatments : [treatment];
+    const blocks = keys.map(key => {
+      const explicit = getExplicitTreatmentValue(clinic, 'promo', key);
+      const text = explicit !== undefined ? explicit : getPromoForTreatment(clinic, key);
+      const description = getExplicitTreatmentValue(clinic, 'offerDescription', key);
+      if (!String(text || '').trim() && !description) return '';
+      const lines = String(text || description).split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+      const label = key === 'estetica_medica' ? 'Estética médica' : getTreatmentLabel(key);
+      return `<section class="offer-treatment"><strong class="offer-treatment-title">${escapeHtml(label)}</strong>${lines.map(line => `<p class="offer-line">${escapeHtml(line)}</p>`).join('')}</section>`;
+    }).filter(Boolean);
+    document.getElementById('info-offer').innerHTML = blocks.length ? blocks.join('') : '—';
+  }
 
   function getPromoForTreatment(clinic, treatment) {
     const promo = clinic && clinic.promo ? String(clinic.promo).trim() : '';
@@ -663,7 +740,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = location.nombre || location.name || 'Sede';
         const address = location.direccion || location.address || '';
         const locationSchedule = formatSchedule(location.horarios || location.disponibilidadHoraria);
-        const duration = location.duracionCita ? `<div><strong>Duración:</strong> ${escapeHtml(location.duracionCita)}</div>` : '';
+        const duration = (location.referencia ? `<div><strong>Referencia:</strong> ${escapeHtml(location.referencia)}</div>` : '') + (location.duracionCita ? `<div><strong>Duración:</strong> ${escapeHtml(location.duracionCita)}</div>` : '');
 
         return `<li><strong>${escapeHtml(name)}</strong>${address ? `<br>${escapeHtml(address)}` : ''}${locationSchedule ? `<div class="schedule-subblock">${locationSchedule}</div>` : ''}${duration}</li>`;
       })
@@ -682,11 +759,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showClinicInfoOnly(clinic) {
+    showMasterStatus(clinic);
+    notes.setContext(clinic, '');
     const defaultTreatment = clinic.treatments[0] || 'implantes';
     sidebar.style.display = 'block';
     document.getElementById('info-location').textContent = clinic.address ? stripPostalCode(clinic.address) : '—';
     document.getElementById('info-ref').textContent = clinic.ref || '—';
-    document.getElementById('info-offer').textContent = clinic.promo || '—';
+    renderOffers(clinic);
     document.getElementById('info-docs').textContent = clinic.qualifDoc || '—';
     document.getElementById('info-econ').textContent = clinic.qualifEcon || '—';
     document.getElementById('info-financing').textContent = clinic.financing || '—';
@@ -707,11 +786,12 @@ document.addEventListener('DOMContentLoaded', () => {
       segurosRow.style.display = segurosQuick ? '' : 'none';
     }
 
-    renderScheduleInfo(clinic, defaultTreatment);
+    renderScheduleInfo(clinic, 'reprogramacion');
 
     const qualifBadge = document.getElementById('qualif-badge');
     if (qualifBadge) qualifBadge.style.display = 'none';
     if (negativasPanel) negativasPanel.style.display = 'none';
+    document.getElementById('negativas-list').innerHTML = '';
 
     scriptContent.className = 'empty-state';
     scriptContent.innerHTML = `
@@ -723,7 +803,18 @@ document.addEventListener('DOMContentLoaded', () => {
       <p class="empty-desc">Seleccione un tratamiento en el menú superior para ver el guion correspondiente.</p>`;
   }
 
+  function showMasterStatus(clinic) {
+    const source = clinic.masterSource;
+    document.getElementById('info-master').textContent = source ? `Master · Horarios · ${source.range} · revisada ${source.date.split("-").reverse().join("/")}` : '';
+    const warning = document.getElementById('info-master-warning');
+    warning.textContent = (clinic.masterIssues || []).join(' ');
+    warning.hidden = !warning.textContent;
+  }
+
   function resetUI() {
+    document.getElementById('home-templates').hidden = false;
+    notes.setContext(null, '');
+    document.getElementById('negativas-list').innerHTML = '';
     sidebar.style.display = 'none';
     negativasPanel.style.display = 'none';
     scriptContent.className = 'empty-state';
@@ -735,20 +826,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <p class="empty-sub">Scripts</p>
       <p class="empty-desc">Seleccione una clínica y tratamiento para generar el guion.</p>
       <div class="stats-row">
-        <div class="stat"><span class="stat-num">${CLINICS_DATA.length}</span><span class="stat-label">Clínicas</span></div>
-        <div class="stat"><span class="stat-num">10</span><span class="stat-label">Guiones</span></div>
+        <div class="stat"><span class="stat-num">${activeClinics.length}</span><span class="stat-label">Clínicas</span></div>
+        <div class="stat"><span class="stat-num">18</span><span class="stat-label">Plantillas</span></div>
         <div class="stat"><span class="stat-num">6</span><span class="stat-label">Tratamientos</span></div>
       </div>`;
   }
 
-  // Copy
-  copyBtn.addEventListener('click', () => {
-    const text = scriptContent.innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      copyBtn.innerText = '¡Copiado!';
-      setTimeout(() => copyBtn.innerText = '📋 Copiar Todo', 2000);
-    });
-  });
 });
 
 // Global toggle functions
