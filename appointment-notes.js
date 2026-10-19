@@ -6,6 +6,30 @@
     carillas: 'Carillas', estetica_fhos: 'FHOS Bioluminiscente', apnea: 'Apnea del sueño', estetica_medica: 'Estética médica'
   };
   const clean = value => String(value || '').replace(/[\r\n\t]+/g, ' ').trim();
+  // Separar respuestas ya validadas del texto principal; no crear nuevos criterios.
+  function conditionalStep(step, clinic) {
+    const text=step.text(clinic);
+    const fonsecaStart=text.indexOf('→ Si dice que SÍ (está en ASNEF):');
+    if(fonsecaStart>=0) {
+      const end=text.indexOf('(Solo si el paciente sí cualifica',fonsecaStart);
+      return {text:(text.slice(0,fonsecaStart)+(end>=0?text.slice(end):'')).trim(),response:text.slice(fonsecaStart,end>=0?end:undefined).trim(),kind:'incomeOrAsnef',consumesRebate:false};
+    }
+    const special = /DNI \+ 1–3 PIEZAS/.test(step.title) ? {marker:/Si SÍ aparece en ASNEF/,kind:'asnef'}
+      : /DNI \+ 4 PIEZAS/.test(step.title) ? {marker:/Si no cumple/,kind:'incomeDni'}
+      : /CUALIFICACIÓN – NIE/.test(step.title) ? {marker:/Si no cumple/,kind:'incomeNie'} : null;
+    if(special) {
+      const match=special.marker.exec(text);
+      if(match) return {text:text.slice(0,match.index).trim(),response:text.slice(match.index).trim(),kind:special.kind,consumesRebate:false};
+    }
+    const document=/cualificaci[oó]n documental|documentaci[oó]n para financiaci[oó]n/i.test(step.title);
+    const economic=/cualificaci[oó]n econ[oó]mica/i.test(step.title);
+    const marker=document ? /(?:→\s*)+Si NO tiene documento válido:/i
+      : economic ? /SI TIENE MENOS DE 1\.200 €:|(?:→\s*)?Si NO cumple con todos los requisitos para financiar\s*:|Si no cumple con los requisitos:|Si menciona ingresos irregulares o ambiguos\s*:/i : null;
+    const match=marker && marker.exec(text);
+    if(match) return {text:text.slice(0,match.index).trim(),response:text.slice(match.index).trim(),kind:document?'document':/SI TIENE MENOS/.test(match[0])?'minimumIncome':'income',consumesRebate:false};
+    if((document || economic) && step.rebate) return {text,response:step.rebate(clinic),kind:document?'document':'income',consumesRebate:true};
+    return {text,response:'',kind:'',consumesRebate:false};
+  }
   function validDate(value) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return false;
     const [year, month, day] = value.split('-').map(Number);
@@ -246,6 +270,7 @@
     let context = { clinic: null, treatment: '', policy: policyFor(null, '', rules, templates) };
     let draft = blankDraft();
     let revision = 0;
+    let responsePanels = [];
     const policyMessages = {
       meta: 'Cualificación realizada en Meta. No repitas el cuestionario; registra solo los datos disponibles.',
       none: 'Este guion no solicita cualificación. No se requieren datos económicos para la nota.',
@@ -330,6 +355,20 @@
         const result = mark(byId(id), kind, draft[kind]);
         byId(id).textContent = result.message; byId(id).hidden = !result.message;
       }
+      for(const panel of responsePanels) {
+        const node=byId(panel.id);
+        if(!node) continue;
+        let show=false;
+        if(!reschedule && enabled) {
+          if(panel.kind==='document') show=policy.document && answerStatus(criteria,'document',draft.document).status==='rejected';
+          if(panel.kind==='income') show=policy.economic && !draft.third && answerStatus(criteria,'income',draft.income,draft.document).status==='rejected';
+          if(panel.kind==='asnef') show=policy.asnef && draft.asnef==='indica que sí';
+          if(panel.kind==='incomeOrAsnef') show=!draft.third && ((policy.asnef && draft.asnef==='indica que sí') || (policy.economic && answerStatus(criteria,'income',draft.income,draft.document).status==='rejected'));
+          if(panel.kind==='incomeDni' || panel.kind==='incomeNie') show=policy.economic && !draft.third && draft.document===(panel.kind==='incomeDni'?'DNI':'NIE') && answerStatus(criteria,'income',draft.income,draft.document).status==='rejected';
+          if(panel.kind==='minimumIncome') show=policy.economic && policy.minimumIncome && /^\d+([.,]\d{1,2})?$/.test(draft.amount) && Number(draft.amount.replace(',','.'))<policy.minimumIncome && draft.amountComparison!=='more';
+        }
+        node.hidden=!show;
+      }
       byId('note-number').min = reschedule ? '2' : '1';
       byId('note-number-row').hidden = !reschedule;
       byId('note-policy').hidden = !enabled;
@@ -396,6 +435,7 @@
     applyDraft(); render();
     return {
       setContext(clinic, treatment) {
+        responsePanels=[];
         // Rescatar los controles antes de reconstruir el guion conserva un único
         // formulario y evita perder referencias o duplicar los IDs.
         Object.values(groups).forEach(group => parking.appendChild(group));
@@ -403,6 +443,7 @@
         reset();
       },
       attachScript(steps) {
+        responsePanels=steps.filter(s=>s.responseKind).map(s=>({id:`note-response-${s.index}`,kind:s.responseKind}));
         const targets = placements(steps, context.treatment === 'reprogramacion');
         if (context.policy.clinicConfirmsAppointment) targets.clinic = steps.find(step => /confirmar inversi[oó]n/i.test(step.title))?.index ?? targets.need;
         // Los datos opcionales de Meta quedan juntos tras el motivo de la llamada.
@@ -417,11 +458,12 @@
           const slot = byId(`note-slot-${index}`);
           if (slot) slot.appendChild(groups[key]);
         }
+        render();
       },
       reset
     };
   }
-  const api = { labels, validDate, validTime, calendarDate, placements, policyFor, criteriaFor, answerStatus, blankDraft, buildNote, validate, counter, copyText, mount };
+  const api = { labels, validDate, validTime, calendarDate, placements, policyFor, criteriaFor, answerStatus, blankDraft, buildNote, validate, counter, copyText, mount, conditionalStep };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.OmniAppointmentNotes = api;
 })(typeof window !== 'undefined' ? window : globalThis);

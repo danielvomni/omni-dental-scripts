@@ -10779,8 +10779,11 @@ const OMNI_SCRIPT_SOURCES_17 = {
   const labels = {implantes:'implantes dentales',ortodoncia:'ortodoncia',carillas:'carillas',estetica_medica:'medicina estética'};
   function interpolate(text,c) {
     // Los datos de clínica son texto, nunca HTML del documento externo.
+    text=text.replace(/Estamos en\s*\[Dirección corta\], cerca de \[Referencia\][.,\s]*¿La zona te suena\?/g,'[Ubicación]')
+      .replace(/,\./g,',').replace(/primeras 10 primeras personas/g,'primeras 10 personas');
     return escape(text).replace(/\[([^\]]+)\]/g,(whole,key)=> {
       const k=key.toLowerCase();
+      if(k==='ubicación') return coherentLocation(c);
       if(k==='clínica') return escape(c.name);
       if(k==='ciudad') return escape(c.city);
       if(k==='dirección corta') return escape(c.address);
@@ -10806,8 +10809,30 @@ const OMNI_SCRIPT_SOURCES_17 = {
       s.text=c=>buildAuthorityOfferText(c,'Perfecto. Antes de seguir, te explico muy rápido: esta llamada puede ser grabada por motivos de calidad.')+'\nAdemás, la primera cita es totalmente gratuita.';
     }
     for(const s of steps) if(/refuerzo de valor/i.test(s.title)) s.skipIfEmpty='promo';
+    for(const s of steps) {
+      // Quitar etiquetas editoriales del documento, sin cambiar la pregunta.
+      s.title=s.title.replace(/\s*\(NUEVO(?: BLOQUE)?\)/g,'').replace(/\s*— NUEVO BLOQUE/g,'');
+      if(/refuerzo de valor/i.test(s.title)) {
+        const original=source.steps.find(step=>/refuerzo de valor/i.test(step.title)).text;
+        s.note=()=>escape(original.split('\n').find(line=>line.startsWith('(Solo')) || '');
+        s.text=c=>(original.includes('optar tanto al diagnóstico') ? 'Perfecto, entonces sí puedes optar tanto al diagnóstico como a la financiación.\n' : '')+
+          'Como te comentaba, esta es la promoción vigente:\n'+escape(c.promo)+
+          '\nLa promoción es para las primeras 10 personas que reserven.';
+      }
+    }
     SCRIPT_TEMPLATES[`vigente_${name}`]={label:({A:'Implantes · Selectivo A',B:'Implantes · Selectivo B · ASNEF',C:'Implantes · Selectivo C',massana:'Massana Smile',zen:'Zen Dental',parati:'ParaTi Medicina Estética',fonseca:'Implantes · Fonseca y Obando',apnea:'Apnea del sueño',ortodoncia:'Ortodoncia · Selectivo',carillas:'Carillas · Selectivo'})[name],icon:'📋',steps,rebates:source.rebates};
   }
+  const massanaNeed=SCRIPT_TEMPLATES.vigente_massana.steps.find(s=>/motivo de la visita/i.test(s.title));
+  const completeMassanaNeed=massanaNeed.text;
+  massanaNeed.text=c=>{
+    const headings={implantes:'Implantes',ortodoncia:'Ortodoncia',carillas:'Carillas'};
+    const full=completeMassanaNeed(c);
+    if(!headings[c.treatment]) return full; // Biblioteca: conserva la plantilla completa.
+    const start=full.indexOf(headings[c.treatment]+'\n');
+    const remaining=full.slice(start+headings[c.treatment].length).trim();
+    const question=remaining.split(/\n(?:Implantes|Ortodoncia|Carillas)\n|\n→ Escuchar respuesta/)[0].trim();
+    return question+'\n\n→ Escuchar respuesta y resumir: «Perfecto, entonces vienes por ______.»';
+  };
   // La pestaña de carillas acaba en el bloque económico: conservar el cierre anterior.
   SCRIPT_TEMPLATES.vigente_carillas.steps.push(...previousCarillas.steps.slice(5));
   SCRIPT_TEMPLATES.ortodoncia=SCRIPT_TEMPLATES.vigente_ortodoncia;

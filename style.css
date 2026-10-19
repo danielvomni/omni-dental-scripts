@@ -307,6 +307,9 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .offer-line + .offer-line { margin-top: 7px; }
 
 /* Biblioteca inicial: lectura cómoda también en pantalla dividida. */
+.response-guidance{margin-top:14px;padding:16px;border-left:4px solid var(--danger);background:var(--danger-bg);border-radius:8px;line-height:1.7}
+.response-guidance[hidden]{display:none}
+.response-guidance>strong{display:block;margin-bottom:10px}
 #call-tools[hidden],#note-jump[hidden]{display:none!important}
 #app-main[data-layout="home"]{grid-template-columns:minmax(0,1fr)}
 #app-main[data-layout="clinic"]{grid-template-columns:250px minmax(0,1fr)}

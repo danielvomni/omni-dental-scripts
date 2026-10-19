@@ -349,24 +349,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       stepNum++;
-      renderedSteps.push({ index: i, title: step.title });
+      const conditional=OmniAppointmentNotes.conditionalStep(step,cleanClinic);
+      renderedSteps.push({ index: i, title: step.title, responseKind:conditional.kind });
       const isHighlight = step.highlight ? ' highlight' : '';
       html += `<div class="step-container${isHighlight}">
         <div class="step-title"><span class="step-number">${stepNum}</span>${step.title}</div>
-        <div class="step-text">${formatText(clinic.id === 'ardenne' && treatment === 'reprogramacion' && /confirmaci[oó]n|agendar nueva cita/i.test(step.title) ? 'Registraremos la fecha y hora que solicitas. Ardenne revisará la disponibilidad y te confirmará la nueva cita.' : clinic.id === 'flordent' && treatment !== 'estetica_medica' && /resumen final|confirmaci[oó]n/i.test(step.title) ? 'La disponibilidad acordada queda preagendada de forma provisional. Recepción de la clínica te contactará para confirmar la cita.' : step.text(cleanClinic))}</div>`;
+        <div class="step-text">${formatText(clinic.id === 'ardenne' && treatment === 'reprogramacion' && /confirmaci[oó]n|agendar nueva cita/i.test(step.title) ? 'Registraremos la fecha y hora que solicitas. Ardenne revisará la disponibilidad y te confirmará la nueva cita.' : clinic.id === 'flordent' && treatment !== 'estetica_medica' && /resumen final|confirmaci[oó]n/i.test(step.title) ? 'La disponibilidad acordada queda preagendada de forma provisional. Recepción de la clínica te contactará para confirmar la cita.' : conditional.text)}</div>`;
 
       if (step.note) {
         const noteContent = typeof step.note === 'function' ? step.note(cleanClinic) : step.note;
         html += `<div class="step-note">${noteContent}</div>`;
       }
 
-      if (step.rebate) {
+      if (step.rebate && !conditional.consumesRebate) {
         const rebateId = `neg-${i}`;
-        html += `<button class="btn-toggle" onclick="toggleNegativa('${rebateId}')">⚠ Si no cumple criterios</button>
+        const alternativeLabel = step.rebateLabel || (/agendamiento|agendar/i.test(step.title) ? 'Si no puede en ese horario' : /documental/i.test(step.title) ? 'Si no tiene la documentación admitida' : /econ[oó]mica/i.test(step.title) ? 'Si no cumple los requisitos económicos' : 'Ver respuesta alternativa');
+        html += `<button class="btn-toggle" onclick="toggleNegativa('${rebateId}')">${escapeHtml(alternativeLabel)}</button>
           <div class="conditional-box" id="${rebateId}">${formatText(step.rebate(cleanClinic))}</div>`;
       }
 
-      html += `<div id="note-slot-${i}" class="inline-notes" data-note-slot></div></div>`;
+      html += `<div id="note-slot-${i}" class="inline-notes" data-note-slot></div>`;
+      if(conditional.response) html+=`<div id="note-response-${i}" class="response-guidance" role="region" aria-label="Respuesta del guion para esta situación" hidden><strong>Respuesta del guion para esta situación</strong><div>${formatText(conditional.response)}</div></div>`;
+      html+='</div>';
     });
 
     scriptContent.innerHTML = html;

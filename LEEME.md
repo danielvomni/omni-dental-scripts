@@ -129,3 +129,15 @@ La pantalla inicial permite desplegar 18 plantillas de consulta. Para gestionar 
 El texto entre paréntesis de las direcciones aparece en Referencia. Se conserva la dirección original como respaldo. También se separan las referencias de las sedes.
 
 101 pruebas automáticas superadas. La revisión visual en navegador real sigue pendiente.
+
+## Coherencia general · 19/10/2026
+
+Se separan los puntos de valor y la promoción para evitar unir frases incompatibles. Se conserva su contenido completo. Los guiones importados componen la ubicación y referencia sin duplicar «cerca de». Massana muestra únicamente la pregunta del tratamiento seleccionado; su plantilla de consulta conserva las tres variantes. Las alternativas de agendamiento se identifican como «Si no puede en ese horario». Se retiran etiquetas editoriales «NUEVO BLOQUE» y repeticiones de puntuación.
+
+105 pruebas automáticas superadas. No se modifican criterios económicos, importes comerciales ni reglas de reprogramación. La adaptación completa de las ramas del guion de Zen y la revisión visual siguen pendientes. Esta entrega no se publica automáticamente en GitHub ni Vercel.
+
+## Respuestas de descarte vinculadas al formulario · 19/10/2026
+
+Los bloques de descarte documental y económico se ocultan al iniciar la llamada y se abren al seleccionar una respuesta marcada como no permitida. Se cierran al corregirla. «No especifica» mantiene el aviso de revisión sin mostrar un descarte. En las rutas con tercero se oculta el cierre económico mientras se valora esa alternativa. Flordent estética abre su respuesta por ingresos inferiores a 1.200 €; una cantidad ambigua «más de» no activa ese cierre. Zen vincula ASNEF a su ruta DNI y 1–3 piezas. Fonseca conserva juntas sus alternativas de incidencias de pago y falta de ingresos, con sus indicaciones para valorar un tercero.
+
+Se conserva el texto de los guiones y los criterios existentes. Las plantillas de consulta del inicio siguen mostrando el contenido completo. 109 pruebas automáticas superadas; comprobación visual en navegador real pendiente. No publicado en GitHub ni Vercel.

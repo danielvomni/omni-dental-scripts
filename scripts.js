@@ -7,18 +7,29 @@ function buildAuthorityOfferText(c, intro, options = {}) {
   if (hasValuePoints) {
     t += `
 
-En <b>${c.name}</b> trabajamos con <b>${c.valuePoints}</b>.`;
+<b>Sobre ${escapeScriptText(c.name)}</b>
+${escapeScriptText(c.valuePoints)}`;
   }
 
   if (hasPromo) {
-    const prefix = hasValuePoints ? 'Y ahora mismo tenemos' : 'Ahora mismo tenemos';
     const suffix = options.promoSuffix || '';
     t += `
 
-${prefix} una promoción vigente: <b>${c.promo}</b>${suffix}.`;
+<b>Promoción vigente</b>
+${escapeScriptText(c.promo)}${suffix ? '\n' + escapeScriptText(suffix.replace(/^,\s*/, '')) : ''}`;
   }
 
   return t;
+}
+
+function escapeScriptText(value) {
+  return String(value || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function coherentLocation(c) {
+  const address=String(c.address || '').trim().replace(/[.,;\s]+$/,'');
+  const ref=String(c.ref || '').trim().replace(/[.,;\s]+$/,'');
+  return address ? `Estamos en ${escapeScriptText(address)}.${ref && ref!=='—' ? ' Referencia: '+escapeScriptText(ref)+'.' : ''} ¿La zona te suena?` : '';
 }
 
 function formatClinicLocation(c) {
