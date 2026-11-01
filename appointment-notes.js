@@ -14,7 +14,8 @@
       const end=text.indexOf('(Solo si el paciente sí cualifica',fonsecaStart);
       return {text:(text.slice(0,fonsecaStart)+(end>=0?text.slice(end):'')).trim(),response:text.slice(fonsecaStart,end>=0?end:undefined).trim(),kind:'incomeOrAsnef',consumesRebate:false};
     }
-    const special = /DNI \+ 1–3 PIEZAS/.test(step.title) ? {marker:/Si SÍ aparece en ASNEF/,kind:'asnef'}
+    const special = /incidencias de pago/i.test(step.title) ? {marker:/Si no cumple con los requisitos:/i,kind:'asnef'}
+      : /DNI \+ 1–3 PIEZAS/.test(step.title) ? {marker:/Si SÍ aparece en ASNEF/,kind:'asnef'}
       : /DNI \+ 4 PIEZAS/.test(step.title) ? {marker:/Si no cumple/,kind:'incomeDni'}
       : /CUALIFICACIÓN – NIE/.test(step.title) ? {marker:/Si no cumple/,kind:'incomeNie'} : null;
     if(special) {
@@ -59,7 +60,7 @@
     const document = find(/cualificaci[oó]n documental|documentaci[oó]n para financiaci[oó]n/i, need);
     const economic = find(/cualificaci[oó]n econ[oó]mica/i, document);
     const appointment = find(/agendamiento|agendar nueva cita/i, find(/confirmaci[oó]n|despedida|resumen|cierre/i, steps.at(-1)?.index));
-    return reschedule ? { appointment } : { need, pieces: need, document, economic, asnef: find(/incidencias de pago|1–3 PIEZAS/i,economic), meta: need, appointment };
+    return reschedule ? { appointment, reason: first } : { need, pieces: need, document, economic, asnef: find(/incidencias de pago|1–3 PIEZAS/i,economic), meta: need, appointment };
   }
   function policyFor(clinic, treatment, rules, templates) {
     if (!clinic) return { qualification: 'none', document: false, economic: false, asnef: false, maxReschedules: null };
@@ -136,7 +137,7 @@
     return { date: '', time: '', day: '', month: '', hour: '', minute: '00', appointmentNumber: reschedule ? '' : '1', need: '', pieces: '', document: '',
       income: '', amount: '', amountComparison: '', incomeDetail: '', third: false,
       thirdIncome: '', thirdAmount: '', thirdComparison: '', thirdDetail: '', asnef: '', metaDetails: false,
-      budgetFit: '', paymentMethod: '', previousAssessment: '', availability: '' };
+      budgetFit: '', paymentMethod: '', previousAssessment: '', availability: '', rescheduleReason: '' };
   }
   function incomeLine(kind, amount, comparison, detail) {
     const money = clean(amount) ? `${comparison === 'more' ? 'más de ' : ''}${clean(amount)} €` : '';
@@ -151,7 +152,7 @@
     const labelPrefix = reschedule ? (policy.clinicConfirmsAppointment ? 'Solicita reprogramación:' : 'Reprograma') : policy.clinicConfirmsAppointment ? 'Disponibilidad aproximada:' : policy.appointmentTentative ? 'Preagenda provisional' : 'Cita';
     const lines = [`${labelPrefix} ${date} ${time}`];
     if (policy.clinicConfirmsAppointment) lines[0] = `${reschedule ? 'Solicita reprogramación. ' : ''}Disponibilidad: ${clean(draft.availability) || '[disponibilidad]'}`;
-    if (reschedule) return lines[0] + (policy.clinicConfirmsAppointment ? '\nFecha y hora pendientes de confirmar por la clínica.' : '');
+    if (reschedule) return lines[0] + (policy.clinicConfirmsAppointment ? '\nFecha y hora pendientes de confirmar por la clínica.' : '') + '\nMotivo: ' + (clean(draft.rescheduleReason) || 'Motivo no especificado');
     const label = labels[treatment] || (['recontacto', ''].includes(treatment) ? '' : clean(treatment));
     const need = clean(draft.need);
     if (label || need) lines.push([label, need].filter(Boolean).join(', '));
@@ -184,7 +185,7 @@
     if (!clinic) errors.push('Selecciona una clínica.');
     if (!treatment) errors.push('Selecciona un tratamiento.');
     if (clinic?.inactive) errors.push('Esta clínica ya no está activa.');
-    if (policy.noteBlocked) errors.push('Falta integrar el guion validado de este tratamiento. Consulta al manager.');
+    if (policy.noteBlocked) errors.push(policy.blockedMessage || 'Falta integrar el guion validado de este tratamiento. Consulta al manager.');
     if (policy.clinicConfirmsAppointment) {
       if (!clean(draft.availability)) errors.push('Indica la disponibilidad del paciente.');
     } else {
@@ -202,6 +203,7 @@
       if (policy.zenRoutes && !draft.pieces) errors.push('Indica el número aproximado de piezas para elegir la ruta de Zen Dental.');
       if (policy.amountRequired && !(draft.third ? draft.thirdAmount : draft.amount)) errors.push('Registra el importe mensual de quien aporta la solvencia; comprueba el mínimo indicado en el guion.');
       if (policy.economic && !draft.income) errors.push('Indica la situación económica o «No especifica».');
+      if (policy.laborTenure && draft.document==='NIE' && ['Nómina','Autónomo'].includes(draft.income) && !draft.third && !clean(draft.incomeDetail)) errors.push('Registra la antigüedad laboral declarada en Detalle económico y comprueba el requisito de esta clínica.');
       if ((policy.economic || (policy.qualification === 'meta' && draft.metaDetails)) && draft.third && !draft.thirdIncome) errors.push('Indica la situación económica del tercero.');
       if (policy.minimumIncome) {
         const amount = Number(String(draft.amount).replace(',', '.'));
@@ -253,7 +255,7 @@
     const form = byId('appointment-form');
     const fields = Array.from(form.querySelectorAll('[data-note-field]'));
     const parking = byId('note-form-content');
-    const groups = { need: byId('note-need-row'), pieces: byId('note-pieces-row'), document: byId('note-document-row'),
+    const groups = { reason: byId('note-reason-row'), need: byId('note-need-row'), pieces: byId('note-pieces-row'), document: byId('note-document-row'),
       economic: byId('note-economic-fields'), asnef: byId('note-asnef-row'),
       meta: byId('note-meta-option'), clinic: byId('note-clinic-fields'), appointment: byId('note-appointment-block') };
     const today = () => new Date();
@@ -276,7 +278,7 @@
       none: 'Este guion no solicita cualificación. No se requieren datos económicos para la nota.',
       document: 'Confirma el tipo de documentación. No se realiza cualificación económica.',
       operator: 'Registra las respuestas según los criterios de esta clínica. La nota no confirma financiación.',
-      reschedule: 'No se vuelve a cualificar. La nota incluye únicamente la nueva fecha y hora.',
+      reschedule: 'No se vuelve a cualificar. Registra la nueva fecha, hora y motivo de inasistencia sin insistir ni interpretarlo.',
       clinic: 'Ardenne confirma la cita. Registra disponibilidad aproximada, inversión, forma de pago y valoración previa; no prometas una cita definitiva.'
     };
     function applyDraft() {
@@ -312,6 +314,7 @@
       byId('note-availability-row').hidden = !policy.clinicConfirmsAppointment;
       byId('note-availability').required = Boolean(policy.clinicConfirmsAppointment);
       byId('note-new-fields').hidden = reschedule;
+      byId('note-reason-row').hidden = !reschedule;
       byId('note-need-row').hidden = reschedule;
       byId('note-pieces-row').hidden = !policy.zenRoutes || reschedule;
       byId('note-need').required = Boolean(policy.needRequired && !reschedule);
@@ -319,6 +322,9 @@
       byId('note-need-optional').textContent = policy.needRequired ? '(obligatoria)' : '(opcional)';
       byId('note-amount-optional').textContent = policy.minimumIncome || policy.amountRequired ? '(importe mensual requerido)' : '(opcional)';
       byId('note-amount').required = Boolean(policy.minimumIncome && !reschedule);
+      const tenureRequired=Boolean(!reschedule && policy.laborTenure && draft.document==='NIE' && ['Nómina','Autónomo'].includes(draft.income) && !draft.third);
+      byId('note-income-detail').required=tenureRequired;
+      byId('note-income-detail-hint').textContent=tenureRequired?'(antigüedad laboral requerida)':'(opcional)';
       Array.from(byId('note-minute').children).forEach(option => { option.disabled = draft.hour === '20' && Number(option.value) > lastMinute(context, draft.date); });
       const meta = policy.qualification === 'meta';
       byId('note-meta-option').hidden = !meta;

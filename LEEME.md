@@ -1,8 +1,8 @@
 # Omni Dental Scripts — citas y notas
 
-Copia de trabajo actualizada el 19 de octubre de 2026. Versión con respuestas integradas en el guion, selectores rápidos de cita y distribución para pantalla dividida. La carpeta original de Downloads permanece intacta.
+Copia de trabajo actualizada el 1 de noviembre de 2026. Incluye la nueva Master, guiones y cualificación revisados, horarios y motivo en la nota de reprogramación. La carpeta original de Downloads permanece intacta.
 
-Consulta [la revisión por clínica del 17/10/2026](REVISION_17_OCTUBRE.md) para los cambios de guiones, horarios y excepciones. El informe ACTUALIZACION_CLINICAS.md conserva el historial anterior.
+Consulta [la actualización del 01/11/2026](ACTUALIZACION_01_NOVIEMBRE.md) para los cambios y pendientes vigentes. Los informes de octubre conservan el historial anterior. Esta versión supera 120 pruebas automáticas; queda pendiente la revisión visual en navegador real.
 
 ## Abrir la aplicación
 

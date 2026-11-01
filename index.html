@@ -140,6 +140,7 @@
                             <p id="note-counter" class="note-hint"></p>
                             <p id="note-limit-warning" class="note-warning" role="status" hidden></p>
                             </div>
+                            <label id="note-reason-row" for="note-reason" hidden>Motivo de la inasistencia<input id="note-reason" type="text" maxlength="300" placeholder="Si no lo indica: Motivo no especificado" data-note-field="rescheduleReason"></label>
                             <div id="note-new-fields">
                                 <label id="note-need-row" for="note-need">Necesidad del paciente <span id="note-need-optional" class="optional">(opcional)</span><input id="note-need" type="text" maxlength="240" placeholder="Ej. rehabilitación completa" data-note-field="need"></label>
                                 <label id="note-pieces-row" for="note-pieces" hidden>Necesidad aproximada<select id="note-pieces" data-note-field="pieces"><option value="">Selecciona las piezas</option><option value="small">1–3 piezas</option><option value="large">4 piezas o más</option><option value="full">Rehabilitación completa</option></select></label>
@@ -163,7 +164,7 @@
                                         <label for="note-amount-comparison">Importe <span id="note-amount-optional" class="optional">(opcional)</span><select id="note-amount-comparison" data-note-field="amountComparison"><option value="">Importe indicado</option><option value="more">Más de</option></select></label>
                                         <label for="note-amount">Euros<input id="note-amount" type="text" inputmode="decimal" maxlength="12" placeholder="Ej. 880" data-note-field="amount"></label>
                                     </div>
-                                    <label for="note-income-detail">Detalle económico <span class="optional">(opcional)</span><input id="note-income-detail" type="text" maxlength="200" placeholder="Ej. antigüedad de 2 años" data-note-field="incomeDetail"></label>
+                                    <label for="note-income-detail">Detalle económico <span id="note-income-detail-hint" class="optional">(opcional)</span><input id="note-income-detail" type="text" maxlength="200" placeholder="Ej. antigüedad de 2 años" data-note-field="incomeDetail"></label>
                                     <label class="note-check"><input id="note-third" type="checkbox" data-note-field="third">Hay un tercero / avalista</label>
                                     <div id="note-third-fields" class="note-third" hidden>
                                         <label for="note-third-income">Situación económica del tercero<select id="note-third-income" data-note-field="thirdIncome"><option value="">Selecciona una respuesta</option><option>Nómina</option><option>Autónomo</option><option>Jubilación</option><option>Pensión contributiva</option><option>Pensión no contributiva</option><option>No especifica</option><option>Otro</option></select></label>

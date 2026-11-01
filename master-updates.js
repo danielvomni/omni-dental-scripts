@@ -1,15 +1,15 @@
-// Datos de la hoja Horarios, leídos el 17/10/2026.
+// Datos de la hoja Horarios, leídos el 01/11/2026.
 // No incluye credenciales ni la columna de notas completa.
 const OMNI_MASTER = {
-  "sourceUrl": "https://docs.google.com/spreadsheets/d/1658kCZYu0cRXBrrpqbtUuszaL9fHXqoc4IiSIJHIGz4/edit?gid=806525214",
+  "sourceUrl": "https://docs.google.com/spreadsheets/d/10JXCaslEt-6V0DKJduIwUH-g4N5l_Wv7lj0SjOBcakI/edit?gid=583459816",
   "sheet": "Horarios",
-  "date": "2026-10-17",
+  "date": "2026-11-01",
   "records": [
     {
       "id": "palomero",
       "sourceName": "Clínica Dental Palomero",
       "sourceRange": "A2:D25",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 2,
@@ -119,6 +119,10 @@ const OMNI_MASTER = {
         {
           "row": 4,
           "text": "Damos la primera cita y reprogramamos una vez más (total 2); si falla a ambas, movemos a \"falla citas\". Esta condición aplica únicamente si se agendaron dos citas en el último año."
+        },
+        {
+          "row": 5,
+          "text": "Confirmar los dos apellidos del paciente antes de agendar"
         }
       ],
       "address": "Calle Magnus Blikstad, 71, 33207 Gijón, Asturias (misma calle que Los Alzas).",
@@ -157,7 +161,7 @@ const OMNI_MASTER = {
       "id": "carranza",
       "sourceName": "Clínica Dental Carranza",
       "sourceRange": "A26:D68",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 26,
@@ -456,7 +460,7 @@ const OMNI_MASTER = {
       "id": "usera",
       "sourceName": "Clínica Dental Usera",
       "sourceRange": "A69:D95",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 69,
@@ -472,7 +476,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 73,
-          "text": "Script Simplificado"
+          "text": "Script Selectivo (+ASNEF)"
         },
         {
           "row": 74,
@@ -480,11 +484,11 @@ const OMNI_MASTER = {
         },
         {
           "row": 75,
-          "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
+          "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef."
         },
         {
           "row": 76,
-          "text": "NIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
+          "text": "NIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef."
         },
         {
           "row": 77,
@@ -555,7 +559,7 @@ const OMNI_MASTER = {
           "duracionCita": "15min",
           "valuePoints": "En la primera visita incluimos todas las pruebas del diagnóstico, TAC 3D, y asesoramiento cercano, explicando todo sin tecnicismos y adaptándonos a cada paciente, también tenemos múltiples opciones de financiación sin intereses.",
           "qualifDoc": "DNI, NIE",
-          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.",
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.\nNIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.",
           "financing": "Financiación: tenemos múltiples opciones de financiación sin intereses"
         }
       },
@@ -563,7 +567,7 @@ const OMNI_MASTER = {
       "operationalNotes": [],
       "address": "Calle de Marcelo Usera, 102, 28026, Usera, Madrid (Enfrente del Burguer King).",
       "valuePoints": "En la primera visita incluimos todas las pruebas del diagnóstico, TAC 3D, y asesoramiento cercano, explicando todo sin tecnicismos y adaptándonos a cada paciente, también tenemos múltiples opciones de financiación sin intereses.",
-      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.",
+      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.\nNIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.",
       "qualifDoc": "DNI, NIE",
       "promo": "Descuento 20%\nCuota Implante Unitario: 50€/mes\nMás de 400€ de descuento en implantes",
       "financing": "Financiación: tenemos múltiples opciones de financiación sin intereses",
@@ -576,7 +580,7 @@ const OMNI_MASTER = {
       "scriptDeclarations": [
         {
           "row": 73,
-          "text": "Script Simplificado"
+          "text": "Script Selectivo (+ASNEF)"
         }
       ],
       "formCriteria": [
@@ -597,7 +601,7 @@ const OMNI_MASTER = {
       "id": "mostoles",
       "sourceName": "Mostoles Dental",
       "sourceRange": "A96:D128",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 96,
@@ -617,7 +621,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 101,
-          "text": "Script Simplificado"
+          "text": "Script Selectivo (+ASNEF)"
         },
         {
           "row": 102,
@@ -625,11 +629,11 @@ const OMNI_MASTER = {
         },
         {
           "row": 103,
-          "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
+          "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef."
         },
         {
           "row": 104,
-          "text": "NIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
+          "text": "NIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef ."
         },
         {
           "row": 105,
@@ -721,7 +725,7 @@ const OMNI_MASTER = {
           "horarios": "Lunes y Jueves: 10:00 a 13:30 / 16:00 a 19:30",
           "duracionCita": "30min",
           "qualifDoc": "DNI, NIE",
-          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.",
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.\nNIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef .",
           "financing": "Financiacion: 36 meses sin intereses con apertura"
         },
         "ortodoncia": {
@@ -740,7 +744,7 @@ const OMNI_MASTER = {
           "horarios": "Lunes: 16:00 a 19:30",
           "duracionCita": "30min",
           "qualifDoc": "DNI, NIE",
-          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.",
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.\nNIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef .",
           "financing": "Financiacion: 36 meses sin intereses con apertura"
         }
       },
@@ -764,7 +768,7 @@ const OMNI_MASTER = {
         }
       ],
       "address": "Av. del dos de Mayo, 36, 28934, Móstoles, Madrid (Metro Pradillo, Parada de bus la mas cercana Juan XXIII, El local está a pie de calle haciendo esquina fachada blanca con letras verdes y pone Mostoles Dental).",
-      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.",
+      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.\nNIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef .",
       "qualifDoc": "DNI, NIE",
       "promo": "Descuento: 20%\nCuota Implante Unitario mes y día: 47€/mes - 1,5€/día\nDescuento monetario: 1000€\nDescuento: 25%\nOrtodoncia Invisible: Desde 89€/mes.",
       "financing": "Financiacion: 36 meses sin intereses con apertura",
@@ -776,7 +780,7 @@ const OMNI_MASTER = {
       "scriptDeclarations": [
         {
           "row": 101,
-          "text": "Script Simplificado"
+          "text": "Script Selectivo (+ASNEF)"
         }
       ],
       "formCriteria": [
@@ -799,7 +803,7 @@ const OMNI_MASTER = {
       "id": "dentalis",
       "sourceName": "Instituto Médico Dentalis",
       "sourceRange": "A129:D155",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 129,
@@ -815,7 +819,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 133,
-          "text": "Script Simplificado"
+          "text": "Script Selectivo (+ASNEF)"
         },
         {
           "row": 134,
@@ -823,11 +827,11 @@ const OMNI_MASTER = {
         },
         {
           "row": 135,
-          "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
+          "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef."
         },
         {
           "row": 136,
-          "text": "NIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
+          "text": "NIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef."
         },
         {
           "row": 137,
@@ -899,7 +903,7 @@ const OMNI_MASTER = {
           "duracionCita": "30min",
           "valuePoints": "Nuestra clínica lleva 8 años abierta. En nuestra clínica, será atendido de manera continua por el mismo equipo de doctores, garantizando confianza y seguimiento personalizado. Contamos con implantólogos con años de experiencia y muy buenas reseñas en Google. Además, uno de nuestros cirujanos es catedrático en una universidad y trabajamos con tecnología avanzada de escaneo.",
           "qualifDoc": "DNI, NIE",
-          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.",
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.\nNIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.",
           "financing": "Financiación: hasta 24 meses sin intereses"
         }
       },
@@ -920,7 +924,7 @@ const OMNI_MASTER = {
       ],
       "address": "Vía Complutense, 70, 28805 Alcalá de Henares (A pie de calle enfrente de una rotonda chiquita).",
       "valuePoints": "Nuestra clínica lleva 8 años abierta. En nuestra clínica, será atendido de manera continua por el mismo equipo de doctores, garantizando confianza y seguimiento personalizado. Contamos con implantólogos con años de experiencia y muy buenas reseñas en Google. Además, uno de nuestros cirujanos es catedrático en una universidad y trabajamos con tecnología avanzada de escaneo.",
-      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.",
+      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.\nNIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.",
       "qualifDoc": "DNI, NIE",
       "promo": "Descuento: 20%\nCuota Unitario mes y día: 47€/mes - 1,5€/día\nDescuento monetario: 1000€",
       "financing": "Financiación: hasta 24 meses sin intereses",
@@ -932,7 +936,7 @@ const OMNI_MASTER = {
       "scriptDeclarations": [
         {
           "row": 133,
-          "text": "Script Simplificado"
+          "text": "Script Selectivo (+ASNEF)"
         }
       ],
       "formCriteria": [
@@ -954,7 +958,7 @@ const OMNI_MASTER = {
       "id": "jerez",
       "sourceName": "Clínica Dental Jerez",
       "sourceRange": "A156:D188",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 156,
@@ -1132,7 +1136,7 @@ const OMNI_MASTER = {
       "id": "oliver",
       "sourceName": "Instituto Odontólogico Oliver",
       "sourceRange": "A189:D215",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 189,
@@ -1297,7 +1301,7 @@ const OMNI_MASTER = {
       "id": "cespedes",
       "sourceName": "Clínica Dental Dr. de Céspedes",
       "sourceRange": "A216:D241",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 216,
@@ -1443,7 +1447,7 @@ const OMNI_MASTER = {
       "id": "wright",
       "sourceName": "Clínica Dental Gracia y Wright",
       "sourceRange": "A242:D270",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 242,
@@ -1539,7 +1543,7 @@ const OMNI_MASTER = {
             {
               "row": 245,
               "day": "Martes",
-              "time": "09:00 a 13:20 / 15:30 a 19:20",
+              "time": "09:00 a 13:20 / 15:00 a 16:20",
               "duration": "40min",
               "variant": ""
             },
@@ -1567,7 +1571,7 @@ const OMNI_MASTER = {
           ],
           "agendamientoLargoPlazo": "SI",
           "promo": "25% de descuento implantes\n190€/mes. 2 arcadas total. 8 implantes y 2 sobredentaduras\nSi realizas tu tratamiento de prótesis fija con implantes en nuestra clínica, disfurta de una tarjeta regalo de 200€ de una gran superficie.",
-          "horarios": "Lunes: 09:00 a 13:20 / 16:00 a 19:20\nMartes: 09:00 a 13:20 / 15:30 a 19:20\nMiercoles y Jueves: 10:00 a 13:20 / 16:00 a 19:20\nViernes (no doblar citas): 10:00 a 13:20\n12/10 al 16/10: 09:00 a 16:20",
+          "horarios": "Lunes: 09:00 a 13:20 / 16:00 a 19:20\nMartes: 09:00 a 13:20 / 15:00 a 16:20\nMiercoles y Jueves: 10:00 a 13:20 / 16:00 a 19:20\nViernes (no doblar citas): 10:00 a 13:20\n12/10 al 16/10: 09:00 a 16:20",
           "duracionCita": "40min",
           "valuePoints": "Somos una clínica premiada por nuestra excelencia en tratamientos odontológicos. Atendemos pacientes sin hueso y ofrecemos sedación parcial o completa para aquellos que tienen miedo",
           "qualifDoc": "DNI, NIE",
@@ -1630,7 +1634,7 @@ const OMNI_MASTER = {
       "id": "dentalestetic-badajoz",
       "sourceName": "Clínica Dental DentalEstetic ı Badajoz",
       "sourceRange": "A271:D290",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 271,
@@ -1733,7 +1737,7 @@ const OMNI_MASTER = {
       "id": "dentalestetic-merida",
       "sourceName": "Clínica Dental DentalEstetic ı Mérida",
       "sourceRange": "A291:D316",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 291,
@@ -1882,7 +1886,7 @@ const OMNI_MASTER = {
       "id": "rodriguezpons",
       "sourceName": "Clínica Dental Rodriguez & Pons",
       "sourceRange": "A317:D353",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 317,
@@ -2101,7 +2105,7 @@ const OMNI_MASTER = {
       "id": "adeje",
       "sourceName": "Clínica Dental Adeje",
       "sourceRange": "A354:D386",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 354,
@@ -2141,7 +2145,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 365,
-          "text": "Ayuda: A confirmar"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 366,
@@ -2270,7 +2274,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE, Pasaporte",
       "promo": "Descuento: 20%\nCuota Unitario mes y día: 35€/mes - 1,2€/día\nFinanciación: sin intereses hasta 36 meses\nDesde 62/mes. 60 meses",
       "financing": "Financiación: sin intereses hasta 36 meses",
-      "ayudas": "A confirmar",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "No aceptan seguros",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \"Adeje\"",
@@ -2301,7 +2305,7 @@ const OMNI_MASTER = {
       "id": "saludnavarra",
       "sourceName": "Clínica Dental Salud Navarra",
       "sourceRange": "A387:D411",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 387,
@@ -2463,7 +2467,7 @@ const OMNI_MASTER = {
       "id": "zarate",
       "sourceName": "Dr. Jaime Zárate Machado ı Dental Estudio",
       "sourceRange": "A423:D503",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 423,
@@ -2663,10 +2667,6 @@ const OMNI_MASTER = {
         {
           "row": 462,
           "text": "No duplicar citas en Las Palmas"
-        },
-        {
-          "row": 473,
-          "text": "Agregamos las citas de esta sede en el CRM de Tías en Klinikare mientras habilitan el acceso a Playa Blanca"
         }
       ],
       "sites": [
@@ -2675,8 +2675,7 @@ const OMNI_MASTER = {
           "direccion": "Calle El Siroco 1 Local 5, Los Alisios, 38111 Santa Cruz de Tenerife (hay un 5 océanos al lado nuestro)",
           "horarios": [
             "Lunes: 10:00 a 13:00 / 15:00 a 17:30",
-            "Miercoles: 10:00 a 12:30 / 15:00 a 17:30",
-            "Jueves: 10:00 a 13:00 / 15:00 a 17:30"
+            "Miercoles: 10:00 a 12:30 / 15:00 a 17:30"
           ],
           "duracionCita": "30min"
         },
@@ -2709,7 +2708,7 @@ const OMNI_MASTER = {
           "nombre": "Santa Cruz",
           "direccion": "Calle El Pilar 25, 38002 Santa Cruz de Tenerife",
           "horarios": [
-            "Lunes y Miércoles: 10:00 a 12:30 / 15:00 a 17:30"
+            "Martes y Jueves: 10:00 a 12:30 / 15:00 a 17:30"
           ],
           "duracionCita": "30min"
         },
@@ -2733,8 +2732,7 @@ const OMNI_MASTER = {
             "2026-10-06 00:00:00: 09:00 a 13:30 / 15:00 a 17:30",
             "2026-10-13 00:00:00: 09:00 a 13:30 / 15:00 a 17:30",
             "2026-10-20 00:00:00: 09:00 a 13:30 / 15:00 a 17:30",
-            "2026-10-26 00:00:00: 09:00 a 13:30 / 15:00 a 17:30",
-            "2026-10-27 00:00:00: 09:00 a 13:30 / 15:00 a 17:30"
+            "2026-10-26 00:00:00: 09:00 a 13:30 / 15:00 a 17:30"
           ],
           "duracionCita": "30min"
         },
@@ -2878,7 +2876,7 @@ const OMNI_MASTER = {
       "id": "massana-valladolid",
       "sourceName": "Massana Valladolid",
       "sourceRange": "A504:D535",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 504,
@@ -2922,7 +2920,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 516,
-          "text": "Recordatorio: NO"
+          "text": "Recordatorio: SI"
         },
         {
           "row": 517,
@@ -2982,7 +2980,14 @@ const OMNI_MASTER = {
           "scheduleRows": [
             {
               "row": 506,
-              "day": "Martes y Jueves",
+              "day": "Lunes",
+              "time": "10:00 a 17:30",
+              "duration": "30min",
+              "variant": ""
+            },
+            {
+              "row": 507,
+              "day": "Martes a Jueves",
               "time": "10:00 a 13:30 / 16:00 a 19:30",
               "duration": "30min",
               "variant": ""
@@ -2991,8 +2996,34 @@ const OMNI_MASTER = {
           "valuePoints": "Nuestra clínica lleva más de 2 años abierta y contamos con un implantólogo con más de 15 años de experiencia. Ofrecemos acompañamiento completo desde el inicio hasta la finalización del tratamiento, siempre con la supervisión del especialista. Además, ponemos a disposición carga inmediata, sedación consciente, radiografía dental 3D incluida sin coste y escáner intraoral, garantizando precisión y confianza en cada paso",
           "agendamientoLargoPlazo": "SI",
           "promo": "Descuento: 20%",
-          "horarios": "Martes y Jueves: 10:00 a 13:30 / 16:00 a 19:30",
+          "horarios": "Lunes: 10:00 a 17:30\nMartes a Jueves: 10:00 a 13:30 / 16:00 a 19:30",
           "duracionCita": "30min",
+          "qualifDoc": "DNI, NIE",
+          "qualifEcon": "DNI: Empleado fijo (nómina) + 1 año de antigüedad + 1000€ / pensión contributiva + 1000€ / Autónomo + 1 año de antigüedad\nNIE: Empleado fijo (nómina) + 1 año de antigüedad + 1000€ / pensión contributiva + 1000€ / Autónomo + 1 año de antigüedad",
+          "financing": "Financiación: hasta 60 meses con intereses"
+        },
+        "ortodoncia": {
+          "scheduleRows": [
+            {
+              "row": 506,
+              "day": "Lunes",
+              "time": "10:00 a 17:30",
+              "duration": "30min",
+              "variant": ""
+            },
+            {
+              "row": 507,
+              "day": "Martes a Jueves",
+              "time": "10:00 a 13:30 / 16:00 a 19:30",
+              "duration": "30min",
+              "variant": ""
+            }
+          ],
+          "agendamientoLargoPlazo": "SI",
+          "promo": "Descuento: 15%",
+          "horarios": "Lunes: 10:00 a 17:30\nMartes a Jueves: 10:00 a 13:30 / 16:00 a 19:30",
+          "duracionCita": "30min",
+          "valuePoints": "",
           "qualifDoc": "DNI, NIE",
           "qualifEcon": "DNI: Empleado fijo (nómina) + 1 año de antigüedad + 1000€ / pensión contributiva + 1000€ / Autónomo + 1 año de antigüedad\nNIE: Empleado fijo (nómina) + 1 año de antigüedad + 1000€ / pensión contributiva + 1000€ / Autónomo + 1 año de antigüedad",
           "financing": "Financiación: hasta 60 meses con intereses"
@@ -3001,33 +3032,14 @@ const OMNI_MASTER = {
           "scheduleRows": [
             {
               "row": 506,
-              "day": "Martes y Jueves",
-              "time": "10:00 a 13:30 / 16:00 a 19:30",
-              "duration": "30min",
-              "variant": ""
-            }
-          ],
-          "agendamientoLargoPlazo": "SI",
-          "promo": "Descuento: 15%",
-          "horarios": "Martes y Jueves: 10:00 a 13:30 / 16:00 a 19:30",
-          "duracionCita": "30min",
-          "valuePoints": "",
-          "qualifDoc": "DNI, NIE",
-          "qualifEcon": "DNI: Empleado fijo (nómina) + 1 año de antigüedad + 1000€ / pensión contributiva + 1000€ / Autónomo + 1 año de antigüedad\nNIE: Empleado fijo (nómina) + 1 año de antigüedad + 1000€ / pensión contributiva + 1000€ / Autónomo + 1 año de antigüedad",
-          "financing": "Financiación: hasta 60 meses con intereses"
-        },
-        "ortodoncia": {
-          "scheduleRows": [
-            {
-              "row": 509,
-              "day": "Miércoles",
-              "time": "10:00 a 13:30 y 16:00 a 19:30",
+              "day": "Lunes",
+              "time": "10:00 a 17:30",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 510,
-              "day": "2026-09-29 00:00:00",
+              "row": 507,
+              "day": "Martes a Jueves",
               "time": "10:00 a 13:30 / 16:00 a 19:30",
               "duration": "30min",
               "variant": ""
@@ -3035,7 +3047,7 @@ const OMNI_MASTER = {
           ],
           "agendamientoLargoPlazo": "SI",
           "promo": "Descuento: 15%",
-          "horarios": "Miércoles: 10:00 a 13:30 y 16:00 a 19:30\n2026-09-29 00:00:00: 10:00 a 13:30 / 16:00 a 19:30",
+          "horarios": "Lunes: 10:00 a 17:30\nMartes a Jueves: 10:00 a 13:30 / 16:00 a 19:30",
           "duracionCita": "30min",
           "valuePoints": "",
           "qualifDoc": "DNI, NIE",
@@ -3068,6 +3080,10 @@ const OMNI_MASTER = {
         {
           "row": 514,
           "text": "Si un paciente solicita reprogramar la fecha o la hora de su cita, debemos notificarlo a la clínica a través del canal de slack isa-actualizar, independientemente de la fecha para la que se haya realizado el cambio."
+        },
+        {
+          "row": 515,
+          "text": "No solapar citas entre tratamientos"
         }
       ],
       "address": "Calle Cánovas del Castillo 27, 47002, Valladolid.",
@@ -3077,7 +3093,7 @@ const OMNI_MASTER = {
       "financing": "Financiación: hasta 60 meses con intereses",
       "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "No aceptan seguros",
-      "recordatorio": "NO",
+      "recordatorio": "SI",
       "whatsapp": "Subcuenta \"Massana Smile\"",
       "agendamientoMismoDia": "NO",
       "scriptDeclarations": [
@@ -3097,8 +3113,8 @@ const OMNI_MASTER = {
       ],
       "treatments": [
         "implantes",
-        "carillas",
-        "ortodoncia"
+        "ortodoncia",
+        "carillas"
       ],
       "retainedTreatments": [],
       "agendamientoLargoPlazo": "Pendiente de confirmar en la Master"
@@ -3107,7 +3123,7 @@ const OMNI_MASTER = {
       "id": "massana-leon",
       "sourceName": "Massana Smile León",
       "sourceRange": "A536:D568",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 536,
@@ -3361,7 +3377,7 @@ const OMNI_MASTER = {
       "id": "vistalegre",
       "sourceName": "Clínica Dental Vistalegre",
       "sourceRange": "A569:D596",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 569,
@@ -3377,7 +3393,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 573,
-          "text": "Script Selectivo Implantes"
+          "text": "Script Selectivo (+ASNEF)"
         },
         {
           "row": 574,
@@ -3385,11 +3401,11 @@ const OMNI_MASTER = {
         },
         {
           "row": 575,
-          "text": "DNI: Nómina, Pensión contributiva (Jubilados), Autónomos."
+          "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef."
         },
         {
           "row": 576,
-          "text": "NIE: Empleado fijo (nómina) + 1 año de antigüedad, Autónomos."
+          "text": "NIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef."
         },
         {
           "row": 578,
@@ -3468,25 +3484,18 @@ const OMNI_MASTER = {
             {
               "row": 573,
               "day": "Viernes",
-              "time": "10:00 a 13:30",
-              "duration": "30min",
-              "variant": ""
-            },
-            {
-              "row": 574,
-              "day": "2026-10-16 00:00:00",
-              "time": "16:00 a 18:30",
+              "time": "10:00 a 12:00",
               "duration": "30min",
               "variant": ""
             }
           ],
           "financing": "Financiación hasta 36 meses sin intereses",
           "promo": "Descuento: 20%\nCuota Unitario: IU = 990€ (ya aplicado cualquier descuento)\nDescuento Monetario: 1000€ DTO en tratamientos de más de 5 implantes\nFinanciación hasta 36 meses sin intereses",
-          "horarios": "Martes: 16:00 a 18:30\nJueves: 10:00 a 13:30 / 16:00 a 18:30\nViernes: 10:00 a 13:30\n2026-10-16 00:00:00: 16:00 a 18:30",
+          "horarios": "Martes: 16:00 a 18:30\nJueves: 10:00 a 13:30 / 16:00 a 18:30\nViernes: 10:00 a 12:00",
           "duracionCita": "30min",
           "valuePoints": "Nuestra clínica tiene 15 años de trayectoria y más de 12 mil pacientes atendidos. Contamos con un implantólogo con amplia experiencia y realizamos panoramica en la cita de valoracion en caso de ser necesario durante la valoración",
           "qualifDoc": "DNI, NIE",
-          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Autónomos.\nNIE: Empleado fijo (nómina) + 1 año de antigüedad, Autónomos."
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.\nNIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef."
         }
       },
       "issues": [],
@@ -3502,7 +3511,7 @@ const OMNI_MASTER = {
       ],
       "address": "Calle de la Oca , 70 Vista Alegre, Carabanchel, 28025, Madrid (Azul por fuera).",
       "valuePoints": "Nuestra clínica tiene 15 años de trayectoria y más de 12 mil pacientes atendidos. Contamos con un implantólogo con amplia experiencia y realizamos panoramica en la cita de valoracion en caso de ser necesario durante la valoración",
-      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Autónomos.\nNIE: Empleado fijo (nómina) + 1 año de antigüedad, Autónomos.",
+      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.\nNIE con antigüedad de 1 año: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, + No Asnef.",
       "qualifDoc": "DNI, NIE",
       "promo": "Descuento: 20%\nCuota Unitario: IU = 990€ (ya aplicado cualquier descuento)\nDescuento Monetario: 1000€ DTO en tratamientos de más de 5 implantes\nFinanciación hasta 36 meses sin intereses",
       "financing": "Financiación hasta 36 meses sin intereses",
@@ -3515,7 +3524,7 @@ const OMNI_MASTER = {
       "scriptDeclarations": [
         {
           "row": 573,
-          "text": "Script Selectivo Implantes"
+          "text": "Script Selectivo (+ASNEF)"
         }
       ],
       "formCriteria": [
@@ -3536,7 +3545,7 @@ const OMNI_MASTER = {
       "id": "dental-star-holea",
       "sourceName": "Clínicas Dental Star ı Holea",
       "sourceRange": "A597:D626",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 597,
@@ -3564,7 +3573,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 604,
-          "text": "Ayuda: A confirmar"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 605,
@@ -3689,7 +3698,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE o Pasaporte",
       "promo": "Descuento: 50%\nImplante + Corona: 999€.\nHigiene Dental GRATIS.\nFinanciación: A 48 meses\nDescuento: 10%\nDesde 300€ a 660€ de descuento. *Sujeto a valoración del paciente",
       "financing": "Financiación: A 48 meses",
-      "ayudas": "A confirmar",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "podemos citar pacientes con seguro Sanitas",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \" DentalStar WhatsApp\"",
@@ -3720,7 +3729,7 @@ const OMNI_MASTER = {
       "id": "dental-star-gran-via-hortaleza",
       "sourceName": "Clínicas Dental Star ı Gran Via Hortaleza",
       "sourceRange": "A627:D659",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 627,
@@ -3748,7 +3757,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 634,
-          "text": "Ayuda: A confirmar"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 635,
@@ -3865,7 +3874,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE o Pasaporte",
       "promo": "Descuento: 50%\nImplante + Corona: 999€.\nHigiene Dental GRATIS.\nFinanciación: A 48 meses\nDescuento: 10%\nDesde 300€ a 660€ de descuento. *Sujeto a valoración del paciente\nKit dental de regalo",
       "financing": "Financiación: A 48 meses",
-      "ayudas": "A confirmar",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "podemos citar pacientes con seguro Sanitas",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \" DentalStar WhatsApp\"",
@@ -3896,7 +3905,7 @@ const OMNI_MASTER = {
       "id": "dental-star-cabrera-mar",
       "sourceName": "Clínicas Dental Star ı Cabrera de Mar",
       "sourceRange": "A660:D690",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 660,
@@ -3924,7 +3933,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 667,
-          "text": "Ayuda: A confirmar"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 668,
@@ -4043,7 +4052,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE o Pasaporte",
       "promo": "Descuento: 50%\nImplante + Corona: 999€.\nHigiene Dental GRATIS.\nFinanciación: A 48 meses\nDescuento: 10%\nDesde 300€ a 660€ de descuento. *Sujeto a valoración del paciente\nKit dental de regalo",
       "financing": "Financiación: A 48 meses",
-      "ayudas": "A confirmar",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "podemos citar pacientes con seguro Sanitas",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \" DentalStar WhatsApp\"",
@@ -4074,7 +4083,7 @@ const OMNI_MASTER = {
       "id": "dental-star-montigala",
       "sourceName": "Clínicas Dental Star ı Montigalá",
       "sourceRange": "A691:D722",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 691,
@@ -4102,7 +4111,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 698,
-          "text": "Ayuda: A confirmar"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 699,
@@ -4243,7 +4252,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE o Pasaporte",
       "promo": "Descuento: 50%\nImplante + Corona: 999€.\nHigiene Dental GRATIS.\nFinanciación: A 48 meses\nDescuento: 10%\nDesde 300€ a 660€ de descuento. *Sujeto a valoración del paciente\nKit dental de regalo",
       "financing": "Financiación: A 48 meses",
-      "ayudas": "A confirmar",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "podemos citar pacientes con seguro Sanitas",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \" DentalStar WhatsApp\"",
@@ -4274,7 +4283,7 @@ const OMNI_MASTER = {
       "id": "dental-star-rosaleda",
       "sourceName": "Clínicas Dental Star ı Rosaleda",
       "sourceRange": "A723:D755",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 723,
@@ -4302,7 +4311,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 731,
-          "text": "Ayuda: A confirmar"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 732,
@@ -4435,7 +4444,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE o Pasaporte",
       "promo": "Descuento: 50%\nImplante + Corona: 999€.\nHigiene Dental GRATIS.\nFinanciación: A 48 meses\nDescuento: 10%\nDesde 300€ a 660€ de descuento. *Sujeto a valoración del paciente\nKit dental de regalo",
       "financing": "Financiación: A 48 meses",
-      "ayudas": "A confirmar",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "podemos citar pacientes con seguro Sanitas",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \" DentalStar WhatsApp\"",
@@ -4466,7 +4475,7 @@ const OMNI_MASTER = {
       "id": "dental-star-as-cancelas",
       "sourceName": "Clínicas Dental Star ı As Cancelas",
       "sourceRange": "A756:D788",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 756,
@@ -4494,7 +4503,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 764,
-          "text": "Ayuda: A confirmar"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 765,
@@ -4619,7 +4628,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE o Pasaporte",
       "promo": "Descuento: 50%\nImplante + Corona: 999€.\nHigiene Dental GRATIS.\nFinanciación: A 48 meses\nDescuento: 10%\nDesde 300€ a 660€ de descuento. *Sujeto a valoración del paciente\nKit dental de regalo",
       "financing": "Financiación: A 48 meses",
-      "ayudas": "A confirmar",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "podemos citar pacientes con seguro Sanitas",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \" DentalStar WhatsApp\"",
@@ -4650,7 +4659,7 @@ const OMNI_MASTER = {
       "id": "dental-star-parla",
       "sourceName": "Clínicas Dental Star ı Parla",
       "sourceRange": "A789:D818",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 789,
@@ -4678,7 +4687,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 796,
-          "text": "Ayudas: A confirmar"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 797,
@@ -4778,7 +4787,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE o Pasaporte",
       "promo": "Descuento: 50%\nImplante + Corona: 999€.\nHigiene Dental GRATIS.\nFinanciación: A 48 meses\nDescuento: 10%\nDesde 300€ a 660€ de descuento. *Sujeto a valoración del paciente\nKit dental de regalo",
       "financing": "Financiación: A 48 meses",
-      "ayudas": "A confirmar",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "podemos citar pacientes con seguro Sanitas",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \" DentalStar WhatsApp\"",
@@ -4804,7 +4813,7 @@ const OMNI_MASTER = {
       "id": "ivoria",
       "sourceName": "Clínica Ivoria",
       "sourceRange": "A819:D846",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 819,
@@ -4968,7 +4977,7 @@ const OMNI_MASTER = {
       "id": "excelentia",
       "sourceName": "Excelentia Dental",
       "sourceRange": "A847:D872",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 847,
@@ -5132,7 +5141,7 @@ const OMNI_MASTER = {
       "id": "barrientos",
       "sourceName": "Clínica Dental Barrientos Menéndez",
       "sourceRange": "A873:D903",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 873,
@@ -5272,10 +5281,6 @@ const OMNI_MASTER = {
       "issues": [],
       "operationalNotes": [
         {
-          "row": 874,
-          "text": "NO SOLAPAR CITAS ENTRETATAMIENTO (se pueden visualizar los bloqueos desde el calendario activando Usuario + nombre de la clínica)"
-        },
-        {
           "row": 875,
           "text": "* Damos la primera cita y reprogramamos una vez mas (total 2) si falla a 2 citas movemos a falla citas"
         }
@@ -5318,7 +5323,7 @@ const OMNI_MASTER = {
       "id": "chroma",
       "sourceName": "Chroma Odontología Avanzada",
       "sourceRange": "A904:D931",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 904,
@@ -5491,7 +5496,7 @@ const OMNI_MASTER = {
       "id": "flordent",
       "sourceName": "Clínica Flordent",
       "sourceRange": "A932:D968",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 932,
@@ -5555,7 +5560,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 949,
-          "text": "Recordatorio: SI"
+          "text": "Recordatorio: NO"
         },
         {
           "row": 950,
@@ -5678,7 +5683,7 @@ const OMNI_MASTER = {
       "financing": "Financiación entre 12 y 24 meses, depende del banco",
       "ayudas": "Aceptan pacientes con ayuda por encima de 1000€.",
       "seguros": "Trabaja con seguros DKV",
-      "recordatorio": "SI",
+      "recordatorio": "NO",
       "whatsapp": "Subcuenta WhatsApp",
       "agendamientoMismoDia": "SI",
       "scriptDeclarations": [
@@ -5712,7 +5717,7 @@ const OMNI_MASTER = {
       "id": "smiledent-leon",
       "sourceName": "Clínica Dental Smiledent ı León",
       "sourceRange": "A969:D994",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 969,
@@ -5853,7 +5858,7 @@ const OMNI_MASTER = {
       "id": "smiledent-gijon",
       "sourceName": "Clínica Dental Smiledent  Gijon",
       "sourceRange": "A995:D1022",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 995,
@@ -6006,7 +6011,7 @@ const OMNI_MASTER = {
       "id": "paretsdent",
       "sourceName": "Clínica Dental Paretsdent",
       "sourceRange": "A1023:D1056",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1023,
@@ -6232,7 +6237,7 @@ const OMNI_MASTER = {
       "id": "espai",
       "sourceName": "Espai Zen Dental",
       "sourceRange": "A1057:D1085",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1057,
@@ -6334,48 +6339,20 @@ const OMNI_MASTER = {
             },
             {
               "row": 1061,
-              "day": "2026-09-04 00:00:00",
-              "time": "10:00 a 13:00",
-              "duration": "30min",
-              "variant": ""
-            },
-            {
-              "row": 1062,
-              "day": "2026-09-18 00:00:00",
-              "time": "10:00 a 13:00",
-              "duration": "30min",
-              "variant": ""
-            },
-            {
-              "row": 1063,
-              "day": "2026-10-02 00:00:00",
-              "time": "10:00 a 13:00",
-              "duration": "30min",
-              "variant": ""
-            },
-            {
-              "row": 1064,
-              "day": "2026-10-16 00:00:00",
-              "time": "10:00 a 13:00",
-              "duration": "30min",
-              "variant": ""
-            },
-            {
-              "row": 1065,
               "day": "2026-11-06 00:00:00",
               "time": "10:00 a 13:00",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1066,
+              "row": 1062,
               "day": "2026-11-20 00:00:00",
               "time": "10:00 a 13:00",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1067,
+              "row": 1063,
               "day": "2026-12-04 00:00:00",
               "time": "10:00 a 13:00",
               "duration": "30min",
@@ -6383,7 +6360,7 @@ const OMNI_MASTER = {
             }
           ],
           "promo": "Descuento: 30% (solo por esta semana)\nImplante Unitario: 1400€, precio final 980€\n2 Sobredentaduras (con 4 implantes c/u): 8500€. Cada sobredentadura 4250€.\n2 Arcadas Fijas (con 6 Implantes c/u) + Carga inmediata: 18000€\nFinanciación hasta 60 meses",
-          "horarios": "Lunes y miércoles: 10:00 a 13:00 / 15:00 a 18:30\nmartes: 12:00 a 13:30 / 15:50 a 18:30\n2026-09-04 00:00:00: 10:00 a 13:00\n2026-09-18 00:00:00: 10:00 a 13:00\n2026-10-02 00:00:00: 10:00 a 13:00\n2026-10-16 00:00:00: 10:00 a 13:00\n2026-11-06 00:00:00: 10:00 a 13:00\n2026-11-20 00:00:00: 10:00 a 13:00\n2026-12-04 00:00:00: 10:00 a 13:00",
+          "horarios": "Lunes y miércoles: 10:00 a 13:00 / 15:00 a 18:30\nmartes: 12:00 a 13:30 / 15:50 a 18:30\n2026-11-06 00:00:00: 10:00 a 13:00\n2026-11-20 00:00:00: 10:00 a 13:00\n2026-12-04 00:00:00: 10:00 a 13:00",
           "duracionCita": "30min",
           "valuePoints": "Nuestra cirujana cuenta con años de experiencia y 3 años de experiencia en carga inmediata. Somos una clínica muy familiar y trabajamos con implantes de alta gama.",
           "qualifDoc": "DNI, NIE o Pasaporte",
@@ -6429,7 +6406,7 @@ const OMNI_MASTER = {
       "id": "fonseca",
       "sourceName": "Clínica Dental Fonseca y Obando",
       "sourceRange": "A1086:D1111",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1086,
@@ -6620,7 +6597,7 @@ const OMNI_MASTER = {
       "id": "marinabaixa",
       "sourceName": "Odonto·Estética Marina Baixa",
       "sourceRange": "A1112:D1143",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1112,
@@ -6803,7 +6780,7 @@ const OMNI_MASTER = {
       "id": "smailo",
       "sourceName": "Clínicas Smailo ı Alcalá",
       "sourceRange": "A1144:D1174",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1144,
@@ -6843,7 +6820,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1155,
-          "text": "Seguros:"
+          "text": "Seguros: No aceptan seguros"
         },
         {
           "row": 1156,
@@ -6977,7 +6954,7 @@ const OMNI_MASTER = {
       "promo": "Descuento: 50%\nDescuento: 30%\nOrtodoncia Brackets Invisible: Desde 53€/mes.",
       "financing": "Sin condiciones de financiación especificadas; consultar la clínica.",
       "ayudas": "No podemos agendar ayudas",
-      "seguros": "",
+      "seguros": "No aceptan seguros",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \"Smailo Alcalá\"",
       "agendamientoMismoDia": "SI",
@@ -7011,7 +6988,7 @@ const OMNI_MASTER = {
       "id": "smailo-coslada",
       "sourceName": "Clínicas Smailo ı Coslada",
       "sourceRange": "A1175:D1205",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1175,
@@ -7051,7 +7028,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1186,
-          "text": "Seguros:"
+          "text": "Seguros: No aceptan seguros"
         },
         {
           "row": 1187,
@@ -7155,7 +7132,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1179,
-          "text": "Podemos duplicar citas (ambos tratamientos)"
+          "text": "NO podemos duplicar ni triplicar citas, en ningún tratamiento"
         }
       ],
       "address": "Calle Dr. Michavila, 19, 28821 Coslada, Madrid.",
@@ -7165,7 +7142,7 @@ const OMNI_MASTER = {
       "promo": "Descuento: 50%\nDescuento: 30%\nOrtodoncia Brackets Invisible: Desde 53€/mes.",
       "financing": "Sin condiciones de financiación especificadas; consultar la clínica.",
       "ayudas": "No podemos agendar ayudas",
-      "seguros": "",
+      "seguros": "No aceptan seguros",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \"WhatsApp\"",
       "agendamientoMismoDia": "SI",
@@ -7199,7 +7176,7 @@ const OMNI_MASTER = {
       "id": "nuno_perez",
       "sourceName": "Nuño y Pérez Odontólogos",
       "sourceRange": "A1206:D1234",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1206,
@@ -7235,11 +7212,11 @@ const OMNI_MASTER = {
         },
         {
           "row": 1217,
-          "text": "Seguros:"
+          "text": "Seguros: Preventiva Vital - Elma, Grupo Preventiva, Active Seguros, Grupo Ocaso, Hogar Dental, Servibucal, Fe Seguros, LINEA DIRECTA, HNA ARQUITECTOS, AVANT SALUD, FIATC SALUD, ALLIANZ, DIVINA PASTORA, CLINICUM."
         },
         {
           "row": 1218,
-          "text": "Recordatorio: NO"
+          "text": "Recordatorio: SI"
         },
         {
           "row": 1219,
@@ -7322,8 +7299,8 @@ const OMNI_MASTER = {
       "promo": "Descuento: 20% a los primeros 20 pacientes que reserven su tratamiento.\nPlan amigo: El referenciador y referenciado se llevan 50€ de descuento en tratamiento por recomendarnos.\nPara pacientes de Omni: 50% de descuento en los mantenimientos de los proximos 3 años .\nRegalo al final del tratamiento: Kit de higiene (con cepillo y pastas de acuerdo a la necesidad del paciente).\nFinanciación: Hasta 48 meses sin intereses",
       "financing": "Financiación: Hasta 48 meses sin intereses",
       "ayudas": "No podemos agendar ayudas",
-      "seguros": "",
-      "recordatorio": "NO",
+      "seguros": "Preventiva Vital - Elma, Grupo Preventiva, Active Seguros, Grupo Ocaso, Hogar Dental, Servibucal, Fe Seguros, LINEA DIRECTA, HNA ARQUITECTOS, AVANT SALUD, FIATC SALUD, ALLIANZ, DIVINA PASTORA, CLINICUM.",
+      "recordatorio": "SI",
       "whatsapp": "subcuenta: \"Nuño + Pérez Odontólogos\"",
       "agendamientoMismoDia": "SI",
       "agendamientoLargoPlazo": "SI",
@@ -7351,7 +7328,7 @@ const OMNI_MASTER = {
       "id": "ardenne",
       "sourceName": "Ardenne Dental",
       "sourceRange": "A1235:D1265",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1235,
@@ -7379,7 +7356,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1242,
-          "text": "Ayuda:"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 1243,
@@ -7404,10 +7381,6 @@ const OMNI_MASTER = {
         {
           "row": 1249,
           "text": "PROMOCIÓN"
-        },
-        {
-          "row": 1250,
-          "text": "Descuento: 10%"
         },
         {
           "row": 1251,
@@ -7458,7 +7431,7 @@ const OMNI_MASTER = {
         "implantes": {
           "horarios": null,
           "duracionCita": "",
-          "promo": "Descuento: 10%\nPrecios: (El paciente debe entender muy bien que los precios parten desde estos valores y que no hay financiación en la clínica)\nImplante: 1.199€ → 855€\nFunda sobre implante: 599€ → 486€\n2 Implantes + sobredentadura con LOCATOR: 3199€ → 2835€\n4 Implantes + sobredentadura con LOCATOR: 5.650€ → 4.650€\n6 implantes + 12 fundas metal/cerámica sobre implantes: 13.000€ → 10.960€ (no incluye provisional)\n8 implantes + 12 fundas metal/cerámica sobre implantes: 15.000€ → 12.670€ (no incluye provisional)\n*Los precios finales son del 10% de descuento del precio*\nNo realizan carga inmediata",
+          "promo": "Precios: (El paciente debe entender muy bien que los precios parten desde estos valores y que no hay financiación en la clínica)\nImplante: 1.199€ → 855€\nFunda sobre implante: 599€ → 486€\n2 Implantes + sobredentadura con LOCATOR: 3199€ → 2835€\n4 Implantes + sobredentadura con LOCATOR: 5.650€ → 4.650€\n6 implantes + 12 fundas metal/cerámica sobre implantes: 13.000€ → 10.960€ (no incluye provisional)\n8 implantes + 12 fundas metal/cerámica sobre implantes: 15.000€ → 12.670€ (no incluye provisional)\n*Los precios finales son del 10% de descuento del precio*\nNo realizan carga inmediata",
           "valuePoints": "",
           "qualifDoc": "Consultar criterios por tratamiento",
           "qualifEcon": "Pendiente de confirmar en la Master",
@@ -7479,7 +7452,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1245,
-          "text": "Filtramos aquellos leads que tienen presupuestos de otra clinicas, movemos a la columna: Comparando presupuestos"
+          "text": "Filtramos aquellos leads que iniciaron un tratamiento en otra clínica y lo dejaron inconcluso mover a la columna: No califica"
         },
         {
           "row": 1246,
@@ -7518,9 +7491,9 @@ const OMNI_MASTER = {
       "valuePoints": "",
       "qualifEcon": "Pendiente de confirmar en la Master",
       "qualifDoc": "Consultar criterios por tratamiento",
-      "promo": "Descuento: 10%\nPrecios: (El paciente debe entender muy bien que los precios parten desde estos valores y que no hay financiación en la clínica)\nImplante: 1.199€ → 855€\nFunda sobre implante: 599€ → 486€\n2 Implantes + sobredentadura con LOCATOR: 3199€ → 2835€\n4 Implantes + sobredentadura con LOCATOR: 5.650€ → 4.650€\n6 implantes + 12 fundas metal/cerámica sobre implantes: 13.000€ → 10.960€ (no incluye provisional)\n8 implantes + 12 fundas metal/cerámica sobre implantes: 15.000€ → 12.670€ (no incluye provisional)\n*Los precios finales son del 10% de descuento del precio*\nNo realizan carga inmediata",
+      "promo": "Precios: (El paciente debe entender muy bien que los precios parten desde estos valores y que no hay financiación en la clínica)\nImplante: 1.199€ → 855€\nFunda sobre implante: 599€ → 486€\n2 Implantes + sobredentadura con LOCATOR: 3199€ → 2835€\n4 Implantes + sobredentadura con LOCATOR: 5.650€ → 4.650€\n6 implantes + 12 fundas metal/cerámica sobre implantes: 13.000€ → 10.960€ (no incluye provisional)\n8 implantes + 12 fundas metal/cerámica sobre implantes: 15.000€ → 12.670€ (no incluye provisional)\n*Los precios finales son del 10% de descuento del precio*\nNo realizan carga inmediata",
       "financing": "No hay financiación disponible",
-      "ayudas": "",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "",
       "recordatorio": "SI",
       "whatsapp": "subcuenta: \"WhatsApp 2\"",
@@ -7550,7 +7523,7 @@ const OMNI_MASTER = {
       "id": "soniadent",
       "sourceName": "Clínica Dental SoniaDent",
       "sourceRange": "A1266:D1293",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1266,
@@ -7566,7 +7539,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1270,
-          "text": "Script Selectivo (+ASNEF)"
+          "text": "Script Soniadent"
         },
         {
           "row": 1271,
@@ -7590,7 +7563,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1277,
-          "text": "Recordatorio: SI"
+          "text": "Recordatorio: NO"
         },
         {
           "row": 1278,
@@ -7702,6 +7675,10 @@ const OMNI_MASTER = {
         {
           "row": 1274,
           "text": "No solapar citas entre tratamientos"
+        },
+        {
+          "row": 1276,
+          "text": "Atienden a niño para Ortodoncia"
         }
       ],
       "address": "Plaza de la Independència, 6, 1º1º, 08242 Manresa, Barcelona.",
@@ -7712,14 +7689,14 @@ const OMNI_MASTER = {
       "financing": "Financiación: En 3, 6 y 12 meses sin intereses.",
       "ayudas": "No podemos agendar ayudas",
       "seguros": "",
-      "recordatorio": "SI",
+      "recordatorio": "NO",
       "whatsapp": "subcuenta: \"WhatsApp 2\"",
       "agendamientoMismoDia": "SI",
       "agendamientoLargoPlazo": "SI",
       "scriptDeclarations": [
         {
           "row": 1270,
-          "text": "Script Selectivo (+ASNEF)"
+          "text": "Script Soniadent"
         }
       ],
       "formCriteria": [
@@ -7745,7 +7722,7 @@ const OMNI_MASTER = {
       "id": "marinadental",
       "sourceName": "Marina Dental",
       "sourceRange": "A1294:D1317",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1294,
@@ -7777,7 +7754,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1303,
-          "text": "Ayuda:"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 1304,
@@ -7832,10 +7809,17 @@ const OMNI_MASTER = {
               "time": "16:00 a 17:30",
               "duration": "30min",
               "variant": ""
+            },
+            {
+              "row": 1299,
+              "day": "Viernes",
+              "time": "10:00 a 13:30",
+              "duration": "30min",
+              "variant": ""
             }
           ],
           "promo": "Descuento: 20%",
-          "horarios": "Lunes, Martes y Jueves: 10:00 a 12:30 / 16:00 a 17:30\nMiércoles: 16:00 a 17:30",
+          "horarios": "Lunes, Martes y Jueves: 10:00 a 12:30 / 16:00 a 17:30\nMiércoles: 16:00 a 17:30\nViernes: 10:00 a 13:30",
           "duracionCita": "30min",
           "valuePoints": "",
           "qualifDoc": "DNI, NIE",
@@ -7856,7 +7840,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE",
       "promo": "Descuento: 20%",
       "financing": "Sin condiciones de financiación especificadas; consultar la clínica.",
-      "ayudas": "",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "",
       "recordatorio": "SI",
       "whatsapp": "Subcuenta \"WhatsApp\"",
@@ -7886,7 +7870,7 @@ const OMNI_MASTER = {
       "id": "zendental",
       "sourceName": "Zen Dental",
       "sourceRange": "A1318:D1344",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1318,
@@ -7922,7 +7906,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1328,
-          "text": "Ayuda:"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 1329,
@@ -7984,14 +7968,14 @@ const OMNI_MASTER = {
             },
             {
               "row": 1323,
-              "day": "2026-09-16 00:00:00",
-              "time": "13:00, 13:30, 19:30 y 20:00",
+              "day": "2026-11-12 00:00:00",
+              "time": "12:00 a 13:30",
               "duration": "30min",
               "variant": ""
             }
           ],
           "promo": "Descuento: 30%\nFinanciación sin intereses. Realizan carga inmediata. Estacionamiento en parking gratuito.",
-          "horarios": "Lunes y Miércoles: 10:00 a 13:30 / 16:00 a 19:30\nViernes: 10:00 a 13:30\n2026-09-16 00:00:00: 13:00, 13:30, 19:30 y 20:00",
+          "horarios": "Lunes y Miércoles: 10:00 a 13:30 / 16:00 a 19:30\nViernes: 10:00 a 13:30\n2026-11-12 00:00:00: 12:00 a 13:30",
           "duracionCita": "30min",
           "valuePoints": "",
           "qualifDoc": "DNI, NIE",
@@ -8016,7 +8000,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE",
       "promo": "Descuento: 30%\nFinanciación sin intereses. Realizan carga inmediata. Estacionamiento en parking gratuito.",
       "financing": "Financiación sin intereses. Realizan carga inmediata. Estacionamiento en parking gratuito.",
-      "ayudas": "",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "",
       "recordatorio": "SI",
       "whatsapp": "subcuenta: \"WhatsApp 2\"",
@@ -8046,7 +8030,7 @@ const OMNI_MASTER = {
       "id": "caredentjerez",
       "sourceName": "Clínica Dental Caredent Jerez",
       "sourceRange": "A1345:D1368",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1345,
@@ -8074,7 +8058,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1353,
-          "text": "Ayuda:"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 1354,
@@ -8189,7 +8173,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI",
       "promo": "Implante + corona: 21,47€/mes en 60 meses\nArcada completa: 97,58€/mes (a confirmar a cuántos meses)",
       "financing": "Sin condiciones de financiación especificadas; consultar la clínica.",
-      "ayudas": "",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "",
       "recordatorio": "SI",
       "whatsapp": "subcuenta: \"WhatsApp 2\"",
@@ -8220,7 +8204,7 @@ const OMNI_MASTER = {
       "id": "videsdental",
       "sourceName": "Vides Dental",
       "sourceRange": "A1369:D1396",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1369,
@@ -8252,7 +8236,7 @@ const OMNI_MASTER = {
         },
         {
           "row": 1378,
-          "text": "Ayuda:"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 1379,
@@ -8347,7 +8331,7 @@ const OMNI_MASTER = {
       "qualifDoc": "DNI, NIE",
       "promo": "Prótesis semifija con 4 implantes: Incluye estudio y planificación de la cirugía y seguimiento, cirugía de 4 implantes, prótesis provisional y prótesis definitiva por 3245€. Desde 97,80€/mes.\nPrótesis fija de resina: Incluye estudio y planificación de cirugía, extracciones, cirugía 6 implantes y prótesis fija de resina definitiva atornillada, 5945€ por arcada hablamos todo los precios. Desde 140€/mes,",
       "financing": "Colaboran con bancos para facilitar el pago (no es financiación).",
-      "ayudas": "",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "No aceptan seguros",
       "recordatorio": "NO",
       "whatsapp": "Subcuenta \"Vides\"",
@@ -8376,8 +8360,8 @@ const OMNI_MASTER = {
     {
       "id": "parati",
       "sourceName": "Clínica PAraTI Medicina Estética",
-      "sourceRange": "A1397:D1420",
-      "sourceDate": "2026-10-17",
+      "sourceRange": "A1397:D1421",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1397,
@@ -8501,79 +8485,79 @@ const OMNI_MASTER = {
     {
       "id": "castelldent",
       "sourceName": "Castelldent",
-      "sourceRange": "A1421:D1445",
-      "sourceDate": "2026-10-17",
+      "sourceRange": "A1422:D1446",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
-          "row": 1421,
+          "row": 1422,
           "text": "Castelldent"
         },
         {
-          "row": 1423,
+          "row": 1424,
           "text": "Dirección: Av. Primer de Maig, 12, bajos 3, 08860 Castelldefels, Barcelona."
         },
         {
-          "row": 1424,
+          "row": 1425,
           "text": "Puntos de valor:"
         },
         {
-          "row": 1425,
+          "row": 1426,
           "text": "Script Selectivo Implantes"
         },
         {
-          "row": 1426,
+          "row": 1427,
           "text": "Criterios de financiación"
         },
         {
-          "row": 1427,
+          "row": 1428,
           "text": "DNI: + cuenta bancaria, Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
         },
         {
-          "row": 1428,
+          "row": 1429,
           "text": "NIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autonomos."
         },
         {
-          "row": 1429,
+          "row": 1430,
           "text": "Pasaporte: Terceros (avalistas con nómina, pensión o autónomos)."
         },
         {
-          "row": 1431,
+          "row": 1432,
           "text": "Ayuda: No podemos citar pacientes con ayudas."
         },
         {
-          "row": 1432,
+          "row": 1433,
           "text": "Seguros:"
         },
         {
-          "row": 1433,
+          "row": 1434,
           "text": "Recordatorio: SI"
         },
         {
-          "row": 1434,
+          "row": 1435,
           "text": "Whatsapp: Subcuenta Castelldent"
         },
         {
-          "row": 1435,
+          "row": 1436,
           "text": "Agendamiento el mismo día: NO"
         },
         {
-          "row": 1436,
+          "row": 1437,
           "text": "Agendamiento a largo plazo (+ de 72 horas de antelación): SI"
         },
         {
-          "row": 1438,
+          "row": 1439,
           "text": "PROMOCIÓN"
         },
         {
-          "row": 1439,
+          "row": 1440,
           "text": "No tienen, no les gustan las ofertas."
         },
         {
-          "row": 1441,
+          "row": 1442,
           "text": "CRITERIOS PARA FORMULARIO MB:"
         },
         {
-          "row": 1442,
+          "row": 1443,
           "text": "ZONA, DNI/NIE/Pasaport + Nómina, Jubilados, Terce…"
         }
       ],
@@ -8581,21 +8565,21 @@ const OMNI_MASTER = {
         "implantes": {
           "scheduleRows": [
             {
-              "row": 1424,
+              "row": 1425,
               "day": "Lunes",
               "time": "10:00:00",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1425,
+              "row": 1426,
               "day": "Martes, Miércoles y Viernes",
               "time": "10:00, 13:00, 15:00",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1426,
+              "row": 1427,
               "day": "Jueves",
               "time": "10:00, 13:00, 15:00, 19:00",
               "duration": "30min",
@@ -8614,11 +8598,11 @@ const OMNI_MASTER = {
       "issues": [],
       "operationalNotes": [
         {
-          "row": 1423,
+          "row": 1424,
           "text": "Podemos duplicar citas"
         },
         {
-          "row": 1424,
+          "row": 1425,
           "text": "Agendar minimo con 24 horas de antelación"
         }
       ],
@@ -8636,13 +8620,13 @@ const OMNI_MASTER = {
       "agendamientoLargoPlazo": "SI",
       "scriptDeclarations": [
         {
-          "row": 1425,
+          "row": 1426,
           "text": "Script Selectivo Implantes"
         }
       ],
       "formCriteria": [
         {
-          "row": 1442,
+          "row": 1443,
           "text": "ZONA, DNI/NIE/Pasaport + Nómina, Jubilados, Terce…"
         }
       ],
@@ -8657,150 +8641,138 @@ const OMNI_MASTER = {
     {
       "id": "odos",
       "sourceName": "Odos Dental",
-      "sourceRange": "A1446:D1487",
-      "sourceDate": "2026-10-17",
+      "sourceRange": "A1447:D1486",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
-          "row": 1446,
+          "row": 1447,
           "text": "Odos Dental"
         },
         {
-          "row": 1448,
+          "row": 1449,
           "text": "Dirección: C. de Gaztambide, 31, Chamberí, 28015, Madrid."
         },
         {
-          "row": 1449,
+          "row": 1450,
           "text": "Puntos de valor:"
         },
         {
-          "row": 1450,
-          "text": "Script Selectivo Implantes"
-        },
-        {
           "row": 1451,
-          "text": "Script Selectivo Ortodoncia"
+          "text": "Script Odos Dental (Implantes y Ortodoncia)"
         },
         {
           "row": 1452,
           "text": "Script Selectivo Apnea"
         },
         {
-          "row": 1453,
+          "row": 1454,
           "text": "Criterios de financiación"
         },
         {
-          "row": 1454,
+          "row": 1455,
           "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
         },
         {
-          "row": 1455,
-          "text": "NIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autonomos."
-        },
-        {
-          "row": 1457,
-          "text": "Ayuda: No podemos citar pacientes con ayuda"
+          "row": 1456,
+          "text": "NIE: Nómina (+2 años de antigüedad) , Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos (+ 1 año de antigüedad)"
         },
         {
           "row": 1458,
-          "text": "Seguros: Aceptan seguros"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 1459,
-          "text": "Recordatorio: SI"
+          "text": "Seguros: Aceptan seguros"
         },
         {
           "row": 1460,
-          "text": "Whatsapp: \"Whatsapp 2\""
+          "text": "Recordatorio: SI"
         },
         {
           "row": 1461,
-          "text": "Agendamiento el mismo día: SI"
+          "text": "Whatsapp: \"Whatsapp 2\""
         },
         {
           "row": 1462,
+          "text": "Agendamiento el mismo día: SI"
+        },
+        {
+          "row": 1463,
           "text": "Agendamiento a largo plazo (+ de 72 horas de antelación): SI"
         },
         {
-          "row": 1464,
+          "row": 1465,
           "text": "PROMOCIÓN"
         },
         {
-          "row": 1465,
+          "row": 1466,
           "text": "Implantes"
         },
         {
-          "row": 1466,
+          "row": 1467,
           "text": "Descuento:"
         },
         {
-          "row": 1467,
+          "row": 1468,
           "text": "Para los pacientes de implantes que se realicen un tratamiento mayor a 6000€ se les regala un irrigador bucal"
         },
         {
-          "row": 1469,
+          "row": 1470,
           "text": "Apnea del Sueño"
         },
         {
-          "row": 1470,
+          "row": 1471,
           "text": "Descuento:"
         },
         {
-          "row": 1472,
+          "row": 1473,
           "text": "Ortodoncia"
         },
         {
-          "row": 1473,
+          "row": 1474,
           "text": "Oferta: la cuota financiada es desde 76 euros mes (financiación a 60 meses, previa aprobación de entidad financiera, interés TIN 10,95%) . El tratamiento Full, el más completo, ideal para todo tipo de casos, incluidas maloclusiones graves."
         },
         {
-          "row": 1474,
+          "row": 1475,
           "text": "Incluye alineadores ilimitados y refinamientos durante tres años desde la aprobación del ClinCheck."
         },
         {
-          "row": 1475,
+          "row": 1476,
           "text": "Es la opción más utilizada por su capacidad para abordar incluso los problemas más complejos."
         },
         {
-          "row": 1476,
+          "row": 1477,
           "text": "Por el tratamiento de Ortodoncia regalamos blanqueamiento dental y sistema de retención (paquete valorado en 600€)."
         },
         {
-          "row": 1477,
+          "row": 1478,
           "text": "Para pacientes de Ortodoncia que inicien el tratamiento se les regala un kit de limpieza."
         },
         {
-          "row": 1479,
+          "row": 1480,
           "text": "Clínica especializada en tratamientos personalizados para Apnea del Sueño. Realizan carga inmediata y sedación consciente."
         },
         {
-          "row": 1481,
+          "row": 1482,
           "text": "CRITERIOS PARA FORMULARIO IMPLANTES Y APNEA MB:"
         },
         {
-          "row": 1482,
-          "text": "ZONA, DNI/NIE"
-        },
-        {
           "row": 1483,
-          "text": "CRITERIOS PARA FORMULARIO ORTODONCIA MB:"
-        },
-        {
-          "row": 1484,
-          "text": "SOLO ZONA"
+          "text": "ZONA, DNI/NIE + Nómina +2 años de antigüedad..."
         }
       ],
       "byTreatment": {
         "implantes": {
           "scheduleRows": [
             {
-              "row": 1449,
+              "row": 1450,
               "day": "Lunes, Miércoles y Jueves",
               "time": "10:00 a 13:15 / 16:00 a 18:00",
               "duration": "60min",
               "variant": ""
             },
             {
-              "row": 1450,
+              "row": 1451,
               "day": "Martes",
               "time": "10:00 a 13:15 / 16:00 a 19:00",
               "duration": "60min",
@@ -8812,20 +8784,20 @@ const OMNI_MASTER = {
           "duracionCita": "60min",
           "valuePoints": "",
           "qualifDoc": "DNI, NIE",
-          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autonomos.",
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina (+2 años de antigüedad) , Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos (+ 1 año de antigüedad)",
           "financing": "Sin condiciones de financiación especificadas; consultar la clínica."
         },
         "apnea": {
           "scheduleRows": [
             {
-              "row": 1453,
+              "row": 1454,
               "day": "Lunes, Miércoles y Jueves",
-              "time": "10:30 a 13:00 / 16:00 a 19:30",
+              "time": "10:30 a 13:00 / 16:00 a 19:00",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1454,
+              "row": 1455,
               "day": "Viernes",
               "time": "10:30 a 13:00",
               "duration": "30min",
@@ -8833,55 +8805,63 @@ const OMNI_MASTER = {
             }
           ],
           "promo": "Descuento:",
-          "horarios": "Lunes, Miércoles y Jueves: 10:30 a 13:00 / 16:00 a 19:30\nViernes: 10:30 a 13:00",
+          "horarios": "Lunes, Miércoles y Jueves: 10:30 a 13:00 / 16:00 a 19:00\nViernes: 10:30 a 13:00",
           "duracionCita": "30min",
           "valuePoints": "",
           "qualifDoc": "DNI, NIE",
-          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autonomos.",
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina (+2 años de antigüedad) , Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos (+ 1 año de antigüedad)",
           "financing": "Sin condiciones de financiación especificadas; consultar la clínica."
         },
         "ortodoncia": {
           "scheduleRows": [
             {
-              "row": 1457,
-              "day": "Lunes",
+              "row": 1458,
+              "day": "Lunes, Miércoles y Jueves",
               "time": "10:00 a 13:15 / 16:00 a 19:15",
               "duration": "45min",
               "variant": ""
             },
             {
-              "row": 1458,
-              "day": "Viernes",
+              "row": 1459,
+              "day": "Martes y Viernes",
               "time": "10:00 a 13:15",
               "duration": "45min",
               "variant": ""
             }
           ],
-          "promo": "Oferta: la cuota financiada es desde 76 euros mes (financiación a 60 meses, previa aprobación de entidad financiera, interés TIN 10,95%) . El tratamiento Full, el más completo, ideal para todo tipo de casos, incluidas maloclusiones graves.\nIncluye alineadores ilimitados y refinamientos durante tres años desde la aprobación del ClinCheck.\nEs la opción más utilizada por su capacidad para abordar incluso los problemas más complejos.\nPor el tratamiento de Ortodoncia regalamos blanqueamiento dental y sistema de retención (paquete valorado en 600€).\nPara pacientes de Ortodoncia que inicien el tratamiento se les regala un kit de limpieza.",
-          "horarios": "Lunes: 10:00 a 13:15 / 16:00 a 19:15\nViernes: 10:00 a 13:15",
+          "promo": "Oferta: la cuota financiada es desde 76 euros mes (financiación a 60 meses, previa aprobación de entidad financiera, interés TIN 10,95%) . El tratamiento Full, el más completo, ideal para todo tipo de casos, incluidas maloclusiones graves.\nIncluye alineadores ilimitados y refinamientos durante tres años desde la aprobación del ClinCheck.\nEs la opción más utilizada por su capacidad para abordar incluso los problemas más complejos.\nPor el tratamiento de Ortodoncia regalamos blanqueamiento dental y sistema de retención (paquete valorado en 600€).\nClínica especializada en tratamientos personalizados para Apnea del Sueño. Realizan carga inmediata y sedación consciente.",
+          "horarios": "Lunes, Miércoles y Jueves: 10:00 a 13:15 / 16:00 a 19:15\nMartes y Viernes: 10:00 a 13:15",
           "duracionCita": "45min",
           "valuePoints": "",
           "qualifDoc": "DNI, NIE",
-          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autonomos.",
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina (+2 años de antigüedad) , Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos (+ 1 año de antigüedad)",
           "financing": "Sin condiciones de financiación especificadas; consultar la clínica."
         }
       },
       "issues": [],
       "operationalNotes": [
         {
-          "row": 1449,
+          "row": 1450,
           "text": "Aunque el paciente avise que viene retrasado, si no llega dentro de los 15minutos de cortesía, se debe reprogramar la cita."
         },
         {
-          "row": 1479,
-          "text": "Clínica especializada en tratamientos personalizados para Apnea del Sueño. Realizan carga inmediata y sedación consciente."
+          "row": 1454,
+          "text": "Entre 1100€ y 1500€ depende del grado de severidad"
+        },
+        {
+          "row": 1455,
+          "text": "La clínica realiza su propio triaje en la llamada de confirmación: Si el paciente cree que tiene Apnea pero no tiene diagnositco, debe paga un estudio del sueño nocturno (coste en clínica: 180 €)"
+        },
+        {
+          "row": 1478,
+          "text": "Para pacientes de Ortodoncia que inicien el tratamiento se les regala un kit de limpieza."
         }
       ],
       "address": "C. de Gaztambide, 31, Chamberí, 28015, Madrid.",
       "valuePoints": "",
-      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autonomos.",
+      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina (+2 años de antigüedad) , Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos (+ 1 año de antigüedad)",
       "qualifDoc": "DNI, NIE",
-      "promo": "Descuento:\nPara los pacientes de implantes que se realicen un tratamiento mayor a 6000€ se les regala un irrigador bucal\nDescuento:\nOferta: la cuota financiada es desde 76 euros mes (financiación a 60 meses, previa aprobación de entidad financiera, interés TIN 10,95%) . El tratamiento Full, el más completo, ideal para todo tipo de casos, incluidas maloclusiones graves.\nIncluye alineadores ilimitados y refinamientos durante tres años desde la aprobación del ClinCheck.\nEs la opción más utilizada por su capacidad para abordar incluso los problemas más complejos.\nPor el tratamiento de Ortodoncia regalamos blanqueamiento dental y sistema de retención (paquete valorado en 600€).\nPara pacientes de Ortodoncia que inicien el tratamiento se les regala un kit de limpieza.",
+      "promo": "Descuento:\nPara los pacientes de implantes que se realicen un tratamiento mayor a 6000€ se les regala un irrigador bucal\nDescuento:\nOferta: la cuota financiada es desde 76 euros mes (financiación a 60 meses, previa aprobación de entidad financiera, interés TIN 10,95%) . El tratamiento Full, el más completo, ideal para todo tipo de casos, incluidas maloclusiones graves.\nIncluye alineadores ilimitados y refinamientos durante tres años desde la aprobación del ClinCheck.\nEs la opción más utilizada por su capacidad para abordar incluso los problemas más complejos.\nPor el tratamiento de Ortodoncia regalamos blanqueamiento dental y sistema de retención (paquete valorado en 600€).\nClínica especializada en tratamientos personalizados para Apnea del Sueño. Realizan carga inmediata y sedación consciente.",
       "financing": "Sin condiciones de financiación especificadas; consultar la clínica.",
       "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "Aceptan seguros",
@@ -8891,12 +8871,8 @@ const OMNI_MASTER = {
       "agendamientoLargoPlazo": "SI",
       "scriptDeclarations": [
         {
-          "row": 1450,
-          "text": "Script Selectivo Implantes"
-        },
-        {
           "row": 1451,
-          "text": "Script Selectivo Ortodoncia"
+          "text": "Script Odos Dental (Implantes y Ortodoncia)"
         },
         {
           "row": 1452,
@@ -8905,12 +8881,8 @@ const OMNI_MASTER = {
       ],
       "formCriteria": [
         {
-          "row": 1482,
-          "text": "ZONA, DNI/NIE"
-        },
-        {
-          "row": 1484,
-          "text": "SOLO ZONA"
+          "row": 1483,
+          "text": "ZONA, DNI/NIE + Nómina +2 años de antigüedad..."
         }
       ],
       "financialHeaders": [
@@ -8926,79 +8898,79 @@ const OMNI_MASTER = {
     {
       "id": "implants-solutions",
       "sourceName": "Implants Solutions",
-      "sourceRange": "A1488:D1512",
-      "sourceDate": "2026-10-17",
+      "sourceRange": "A1487:D1511",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
-          "row": 1488,
+          "row": 1487,
           "text": "Implants Solutions"
         },
         {
-          "row": 1490,
+          "row": 1489,
           "text": "Dirección: Calle Alcornocales 5, esquina Avenida de España, Local 1, Dos Hermanas, 41701, Sevilla. (Junto al Lider, Frente al Aldi)."
         },
         {
-          "row": 1491,
+          "row": 1490,
           "text": "Puntos de valor:"
         },
         {
-          "row": 1492,
+          "row": 1491,
           "text": "Script Selectivo Implantes"
         },
         {
-          "row": 1493,
+          "row": 1492,
           "text": "Criterios de financiación"
         },
         {
-          "row": 1494,
+          "row": 1493,
           "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos, La Caixa / Caixa (cuenta bancaria Caixabank)"
         },
         {
-          "row": 1496,
+          "row": 1495,
           "text": "Ayuda: A confirmar con la clínica"
         },
         {
-          "row": 1497,
+          "row": 1496,
           "text": "Seguros:"
         },
         {
-          "row": 1498,
+          "row": 1497,
           "text": "Recordatorio: SI"
         },
         {
-          "row": 1499,
+          "row": 1498,
           "text": "Whatsapp: \"Whatsapp 2\""
         },
         {
-          "row": 1500,
+          "row": 1499,
           "text": "Agendamiento el mismo día: SI"
         },
         {
-          "row": 1501,
+          "row": 1500,
           "text": "Agendamiento a largo plazo (+ de 72 horas de antelación): SI"
         },
         {
-          "row": 1503,
+          "row": 1502,
           "text": "PROMOCIÓN"
         },
         {
-          "row": 1504,
+          "row": 1503,
           "text": "Implantes"
         },
         {
-          "row": 1505,
+          "row": 1504,
           "text": "Prótesis fija sobre 4 implantes: Desde 99/mes."
         },
         {
-          "row": 1506,
+          "row": 1505,
           "text": "Prótesis semifija con 2 implantes: Desde 49/mes."
         },
         {
-          "row": 1508,
+          "row": 1507,
           "text": "CRITERIOS PARA FORMULARIO MB:"
         },
         {
-          "row": 1509,
+          "row": 1508,
           "text": "ZONA, DNI + Nómina, Jubilados, Terceros, Autón"
         }
       ],
@@ -9006,21 +8978,21 @@ const OMNI_MASTER = {
         "implantes": {
           "scheduleRows": [
             {
-              "row": 1491,
+              "row": 1490,
               "day": "Lunes",
               "time": "09:30 a 13:00 / 16:30 a 19:30",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1492,
+              "row": 1491,
               "day": "Martes, Miércoles y Jueves",
               "time": "16:30 a 19:30",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1493,
+              "row": 1492,
               "day": "Viernes",
               "time": "09:30 a 13:00",
               "duration": "30min",
@@ -9039,15 +9011,15 @@ const OMNI_MASTER = {
       "issues": [],
       "operationalNotes": [
         {
-          "row": 1490,
+          "row": 1489,
           "text": "Pendiente horario a partir de la 2da semana de Octubre"
         },
         {
-          "row": 1491,
+          "row": 1490,
           "text": "Se pueden duplicar citas en los horarios de media hora (16:30, 17:30, 18:30 y 19:30)."
         },
         {
-          "row": 1492,
+          "row": 1491,
           "text": "Agendamos desde mitad del horario hacia arriba o hacia abajo. VER NOTA"
         }
       ],
@@ -9065,13 +9037,13 @@ const OMNI_MASTER = {
       "agendamientoLargoPlazo": "SI",
       "scriptDeclarations": [
         {
-          "row": 1492,
+          "row": 1491,
           "text": "Script Selectivo Implantes"
         }
       ],
       "formCriteria": [
         {
-          "row": 1509,
+          "row": 1508,
           "text": "ZONA, DNI + Nómina, Jubilados, Terceros, Autón"
         }
       ],
@@ -9086,83 +9058,83 @@ const OMNI_MASTER = {
     {
       "id": "dental-ros",
       "sourceName": "Clínica Dental Ros",
-      "sourceRange": "A1513:D1539",
-      "sourceDate": "2026-10-17",
+      "sourceRange": "A1512:D1538",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
-          "row": 1513,
+          "row": 1512,
           "text": "Clínica Dental Ros"
         },
         {
-          "row": 1515,
+          "row": 1514,
           "text": "Dirección: Calle Luis Vives 20, 46113 Moncada, Valencia."
         },
         {
-          "row": 1516,
+          "row": 1515,
           "text": "Puntos de valor:"
         },
         {
-          "row": 1517,
+          "row": 1516,
           "text": "Script Selectivo Implantes"
         },
         {
-          "row": 1518,
+          "row": 1517,
           "text": "Criterios de financiación (Edad máxima paciente 77 años en el momento que acabe de pagar)"
         },
         {
-          "row": 1519,
+          "row": 1518,
           "text": "DNI: Nómina, Pensión contributiva (Jubilados)."
         },
         {
-          "row": 1520,
+          "row": 1519,
           "text": "NIE: Nómina con antigüedad mínima de 6 meses."
         },
         {
-          "row": 1522,
+          "row": 1521,
           "text": "Ayuda: Si podemos citar pacientes con ayudas."
         },
         {
-          "row": 1523,
+          "row": 1522,
           "text": "Seguros: Aceptan seguros"
         },
         {
-          "row": 1524,
+          "row": 1523,
           "text": "Recordatorio: SI"
         },
         {
-          "row": 1525,
+          "row": 1524,
           "text": "Whatsapp: Subcuenta Whatsapp"
         },
         {
-          "row": 1526,
+          "row": 1525,
           "text": "Agendamiento el mismo día: NO"
         },
         {
-          "row": 1527,
+          "row": 1526,
           "text": "Agendamiento a largo plazo (+ de 72 horas de antelación): SI"
         },
         {
-          "row": 1529,
+          "row": 1528,
           "text": "PROMOCIÓN"
         },
         {
-          "row": 1530,
+          "row": 1529,
           "text": "Implantes"
         },
         {
-          "row": 1531,
+          "row": 1530,
           "text": "Descuento 25%"
         },
         {
-          "row": 1533,
+          "row": 1532,
           "text": "Realizan carga inmediata (según el caso). No realizan sedación consciente."
         },
         {
-          "row": 1535,
+          "row": 1534,
           "text": "CRITERIOS PARA FORMULARIO MB:"
         },
         {
-          "row": 1536,
+          "row": 1535,
           "text": "SOLO ZONA"
         }
       ],
@@ -9170,28 +9142,14 @@ const OMNI_MASTER = {
         "implantes": {
           "scheduleRows": [
             {
-              "row": 1516,
+              "row": 1515,
               "day": "Lunes, Miércoles y Viernes",
               "time": "10:00 a 13:30 / 15:00 a 18:30",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1517,
-              "day": "2026-09-29 00:00:00",
-              "time": "10:00 a 13:30 / 15:00 a 18:30",
-              "duration": "30min",
-              "variant": ""
-            },
-            {
-              "row": 1518,
-              "day": "2026-10-27 00:00:00",
-              "time": "10:00 a 13:30 / 15:00 a 18:30",
-              "duration": "30min",
-              "variant": ""
-            },
-            {
-              "row": 1519,
+              "row": 1516,
               "day": "2026-11-24 00:00:00",
               "time": "10:00 a 13:30 / 15:00 a 18:30",
               "duration": "30min",
@@ -9199,7 +9157,7 @@ const OMNI_MASTER = {
             }
           ],
           "promo": "Descuento 25%\nRealizan carga inmediata (según el caso). No realizan sedación consciente.",
-          "horarios": "Lunes, Miércoles y Viernes: 10:00 a 13:30 / 15:00 a 18:30\n2026-09-29 00:00:00: 10:00 a 13:30 / 15:00 a 18:30\n2026-10-27 00:00:00: 10:00 a 13:30 / 15:00 a 18:30\n2026-11-24 00:00:00: 10:00 a 13:30 / 15:00 a 18:30",
+          "horarios": "Lunes, Miércoles y Viernes: 10:00 a 13:30 / 15:00 a 18:30\n2026-11-24 00:00:00: 10:00 a 13:30 / 15:00 a 18:30",
           "duracionCita": "30min",
           "valuePoints": "",
           "qualifDoc": "DNI, NIE",
@@ -9210,7 +9168,7 @@ const OMNI_MASTER = {
       "issues": [],
       "operationalNotes": [
         {
-          "row": 1517,
+          "row": 1516,
           "text": "Martes, solo el último de cada mes"
         }
       ],
@@ -9228,13 +9186,13 @@ const OMNI_MASTER = {
       "agendamientoLargoPlazo": "SI",
       "scriptDeclarations": [
         {
-          "row": 1517,
+          "row": 1516,
           "text": "Script Selectivo Implantes"
         }
       ],
       "formCriteria": [
         {
-          "row": 1536,
+          "row": 1535,
           "text": "SOLO ZONA"
         }
       ],
@@ -9249,68 +9207,72 @@ const OMNI_MASTER = {
     {
       "id": "mp-ellite",
       "sourceName": "MP Ellite Dental",
-      "sourceRange": "A1540:D1564",
-      "sourceDate": "2026-10-17",
+      "sourceRange": "A1539:D1564",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
-          "row": 1540,
+          "row": 1539,
           "text": "MP Ellite Dental"
         },
         {
-          "row": 1542,
+          "row": 1541,
           "text": "Dirección: Av. del Mar Mediterráneo, 3  Clínica Gaias Valdemoro, consulta 8, area odontologica (al lado del Centro Comercial El Restón).28342 Valdemoro, Madrid."
         },
         {
-          "row": 1544,
+          "row": 1543,
           "text": "Puntos de valor:"
         },
         {
-          "row": 1545,
+          "row": 1544,
           "text": "Script Selectivo Implantes"
         },
         {
-          "row": 1546,
+          "row": 1545,
           "text": "Criterios de financiación"
         },
         {
-          "row": 1547,
+          "row": 1546,
           "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
         },
         {
-          "row": 1548,
+          "row": 1547,
           "text": "NIE: Nómina + 1 año de antigüedad, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autonomos."
         },
         {
-          "row": 1550,
+          "row": 1549,
           "text": "Ayuda: Podemos agendar ayudas"
         },
         {
-          "row": 1551,
+          "row": 1550,
           "text": "Seguros: aceptan seguros"
         },
         {
-          "row": 1552,
+          "row": 1551,
           "text": "Recordatorio: SI"
         },
         {
-          "row": 1553,
+          "row": 1552,
           "text": "WhatsApp: Subcuenta \"WhatsApp 2\""
         },
         {
-          "row": 1554,
+          "row": 1553,
           "text": "Agendamiento el mismo día: SI"
         },
         {
-          "row": 1555,
+          "row": 1554,
           "text": "Agendamiento a largo plazo (+ de 72 horas de antelación): SI"
         },
         {
-          "row": 1557,
+          "row": 1556,
           "text": "PROMOCIÓN"
         },
         {
-          "row": 1558,
+          "row": 1557,
           "text": "Descuento: 20%"
+        },
+        {
+          "row": 1558,
+          "text": "Descuento Black Friday: 30% de descuento para los 10 primeros pacientes"
         },
         {
           "row": 1560,
@@ -9325,28 +9287,28 @@ const OMNI_MASTER = {
         "implantes": {
           "scheduleRows": [
             {
-              "row": 1543,
+              "row": 1542,
               "day": "Martes",
               "time": "10:00 a 19:00",
               "duration": "60min",
               "variant": ""
             },
             {
-              "row": 1544,
+              "row": 1543,
               "day": "Míercoles",
               "time": "15:00 a 19:00",
               "duration": "60min",
               "variant": ""
             },
             {
-              "row": 1545,
+              "row": 1544,
               "day": "Viernes",
               "time": "10:00 a 13:30",
               "duration": "60min",
               "variant": ""
             }
           ],
-          "promo": "Descuento: 20%",
+          "promo": "Descuento: 20%\nDescuento Black Friday: 30% de descuento para los 10 primeros pacientes",
           "horarios": "Martes: 10:00 a 19:00\nMíercoles: 15:00 a 19:00\nViernes: 10:00 a 13:30",
           "duracionCita": "60min",
           "valuePoints": "",
@@ -9358,11 +9320,11 @@ const OMNI_MASTER = {
       "issues": [],
       "operationalNotes": [
         {
-          "row": 1543,
+          "row": 1542,
           "text": "Podemos duplicar citas"
         },
         {
-          "row": 1544,
+          "row": 1543,
           "text": "No hacen carga inmediata ni sedación consciente"
         }
       ],
@@ -9370,7 +9332,7 @@ const OMNI_MASTER = {
       "valuePoints": "",
       "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.\nNIE: Nómina + 1 año de antigüedad, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autonomos.",
       "qualifDoc": "DNI, NIE",
-      "promo": "Descuento: 20%",
+      "promo": "Descuento: 20%\nDescuento Black Friday: 30% de descuento para los 10 primeros pacientes",
       "financing": "Sin condiciones de financiación especificadas; consultar la clínica.",
       "ayudas": "Podemos agendar ayudas",
       "seguros": "aceptan seguros",
@@ -9380,7 +9342,7 @@ const OMNI_MASTER = {
       "agendamientoLargoPlazo": "SI",
       "scriptDeclarations": [
         {
-          "row": 1545,
+          "row": 1544,
           "text": "Script Selectivo Implantes"
         }
       ],
@@ -9402,7 +9364,7 @@ const OMNI_MASTER = {
       "id": "belestar",
       "sourceName": "Clínica Belestar",
       "sourceRange": "A1565:D1589",
-      "sourceDate": "2026-10-17",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1565,
@@ -9556,8 +9518,8 @@ const OMNI_MASTER = {
     {
       "id": "martinez-silva",
       "sourceName": "Clínica Dental Martínez Silva",
-      "sourceRange": "A1590:D1612",
-      "sourceDate": "2026-10-17",
+      "sourceRange": "A1590:D1613",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
           "row": 1590,
@@ -9577,50 +9539,54 @@ const OMNI_MASTER = {
         },
         {
           "row": 1595,
-          "text": "Criterios de financiación"
+          "text": "Script Selectivo Ortodoncia"
         },
         {
           "row": 1596,
+          "text": "Criterios de financiación"
+        },
+        {
+          "row": 1597,
           "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos."
         },
         {
-          "row": 1598,
+          "row": 1599,
           "text": "Ayuda: No podemos citar pacientes con ayudas."
         },
         {
-          "row": 1599,
+          "row": 1600,
           "text": "Seguros:"
         },
         {
-          "row": 1600,
+          "row": 1601,
           "text": "Recordatorio: SI"
         },
         {
-          "row": 1601,
+          "row": 1602,
           "text": "WhatsApp: Subcuenta \"WhatsApp 2\""
         },
         {
-          "row": 1602,
+          "row": 1603,
           "text": "Agendamiento el mismo día: SI"
         },
         {
-          "row": 1603,
+          "row": 1604,
           "text": "Agendamiento a largo plazo (+ de 72 horas de antelación): SI"
         },
         {
-          "row": 1605,
+          "row": 1606,
           "text": "PROMOCIÓN"
         },
         {
-          "row": 1606,
+          "row": 1607,
           "text": "Descuento: 10% en Implantes Unitarios y 15% a partir de dos Implantes."
         },
         {
-          "row": 1608,
+          "row": 1609,
           "text": "CRITERIOS PARA FORMULARIO MB:"
         },
         {
-          "row": 1609,
+          "row": 1610,
           "text": "ZONA, DNI"
         }
       ],
@@ -9649,7 +9615,7 @@ const OMNI_MASTER = {
               "variant": ""
             },
             {
-              "row": 1595,
+              "row": 1596,
               "day": "Viernes",
               "time": "09:30 a 12:30",
               "duration": "30min",
@@ -9658,6 +9624,24 @@ const OMNI_MASTER = {
           ],
           "promo": "Descuento: 10% en Implantes Unitarios y 15% a partir de dos Implantes.",
           "horarios": "Lunes: 09:30 a 13:00 / 16:00 a 18:00\nMartes y Jueves: 09:30 a 13:30 / 16:00 a 19:00\nMiércoles: 09:30 a 14:30\nViernes: 09:30 a 12:30",
+          "duracionCita": "30min",
+          "valuePoints": "Contamos con un implantólogo con 10 años de experiencia. Ofrecemos carga inmediata, siempre dependiendo de la valoración del especialista, y realizamos todo tipo de regeneración de hueso. También ofrecemos financiacion sin interes hasta 36 meses.",
+          "qualifDoc": "DNI",
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos.",
+          "financing": "Sin condiciones de financiación especificadas; consultar la clínica."
+        },
+        "ortodoncia": {
+          "scheduleRows": [
+            {
+              "row": 1599,
+              "day": "2026-10-27 00:00:00",
+              "time": "15:00 a 19:00",
+              "duration": "30min",
+              "variant": ""
+            }
+          ],
+          "promo": "",
+          "horarios": "2026-10-27 00:00:00: 15:00 a 19:00",
           "duracionCita": "30min",
           "valuePoints": "Contamos con un implantólogo con 10 años de experiencia. Ofrecemos carga inmediata, siempre dependiendo de la valoración del especialista, y realizamos todo tipo de regeneración de hueso. También ofrecemos financiacion sin interes hasta 36 meses.",
           "qualifDoc": "DNI",
@@ -9692,11 +9676,15 @@ const OMNI_MASTER = {
         {
           "row": 1594,
           "text": "Script Selectivo Implantes"
+        },
+        {
+          "row": 1595,
+          "text": "Script Selectivo Ortodoncia"
         }
       ],
       "formCriteria": [
         {
-          "row": 1609,
+          "row": 1610,
           "text": "ZONA, DNI"
         }
       ],
@@ -9704,82 +9692,83 @@ const OMNI_MASTER = {
         "Criterios de financiación"
       ],
       "treatments": [
-        "implantes"
+        "implantes",
+        "ortodoncia"
       ],
       "retainedTreatments": []
     },
     {
       "id": "cirium",
       "sourceName": "Cirium Clínica Dental",
-      "sourceRange": "A1613:D1636",
-      "sourceDate": "2026-10-17",
+      "sourceRange": "A1614:D1637",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
-          "row": 1613,
+          "row": 1614,
           "text": "Cirium Clínica Dental"
         },
         {
-          "row": 1615,
+          "row": 1616,
           "text": "Dirección: C. Madrid, 22, 28690 Brunete, Madrid."
         },
         {
-          "row": 1616,
+          "row": 1617,
           "text": "Puntos de valor:"
         },
         {
-          "row": 1617,
+          "row": 1618,
           "text": "Script Simplificado"
         },
         {
-          "row": 1618,
+          "row": 1619,
           "text": "Criterios de financiación"
         },
         {
-          "row": 1619,
+          "row": 1620,
           "text": "No se aplican filtros en esta clinica de momento"
         },
         {
-          "row": 1621,
-          "text": "Ayuda:"
-        },
-        {
           "row": 1622,
-          "text": "Seguros: No aceptan seguros"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 1623,
-          "text": "Recordatorio: NO"
+          "text": "Seguros: No aceptan seguros"
         },
         {
           "row": 1624,
-          "text": "WhatsApp: Subcuenta \"WhatsApp\""
+          "text": "Recordatorio: NO"
         },
         {
           "row": 1625,
-          "text": "Agendamiento el mismo día: SI"
+          "text": "WhatsApp: Subcuenta \"WhatsApp\""
         },
         {
           "row": 1626,
+          "text": "Agendamiento el mismo día: SI"
+        },
+        {
+          "row": 1627,
           "text": "Agendamiento a largo plazo (+ de 72 horas de antelación): SI"
         },
         {
-          "row": 1628,
+          "row": 1629,
           "text": "PROMOCIÓN"
         },
         {
-          "row": 1629,
+          "row": 1630,
           "text": "Implantes Unitarios: Desde 900€."
         },
         {
-          "row": 1630,
+          "row": 1631,
           "text": "Facilidades de pago"
         },
         {
-          "row": 1632,
+          "row": 1633,
           "text": "CRITERIOS PARA FORMULARIO MB:"
         },
         {
-          "row": 1633,
+          "row": 1634,
           "text": "SOLO ZONA"
         }
       ],
@@ -9787,21 +9776,21 @@ const OMNI_MASTER = {
         "implantes": {
           "scheduleRows": [
             {
-              "row": 1616,
+              "row": 1617,
               "day": "Martes y Miércoles",
               "time": "10:00 a 13:20 / 16:00 a 19:20",
               "duration": "40min",
               "variant": ""
             },
             {
-              "row": 1617,
+              "row": 1618,
               "day": "Jueves",
               "time": "16:00 a 19:20",
               "duration": "40min",
               "variant": ""
             },
             {
-              "row": 1618,
+              "row": 1619,
               "day": "Viernes",
               "time": "10:00 a 17:20",
               "duration": "40min",
@@ -9820,7 +9809,7 @@ const OMNI_MASTER = {
       "issues": [],
       "operationalNotes": [
         {
-          "row": 1615,
+          "row": 1616,
           "text": "Agendamos en su agenda de Doctoralia"
         }
       ],
@@ -9830,7 +9819,7 @@ const OMNI_MASTER = {
       "qualifDoc": "No se aplican filtros",
       "promo": "Implantes Unitarios: Desde 900€.\nFacilidades de pago",
       "financing": "Sin condiciones de financiación especificadas; consultar la clínica.",
-      "ayudas": "",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "No aceptan seguros",
       "recordatorio": "NO",
       "whatsapp": "Subcuenta \"WhatsApp\"",
@@ -9838,13 +9827,13 @@ const OMNI_MASTER = {
       "agendamientoLargoPlazo": "SI",
       "scriptDeclarations": [
         {
-          "row": 1617,
+          "row": 1618,
           "text": "Script Simplificado"
         }
       ],
       "formCriteria": [
         {
-          "row": 1633,
+          "row": 1634,
           "text": "SOLO ZONA"
         }
       ],
@@ -9859,126 +9848,170 @@ const OMNI_MASTER = {
     {
       "id": "los-molinos",
       "sourceName": "Clínica Dental Los Molinos",
-      "sourceRange": "A1637:D1659",
-      "sourceDate": "2026-10-17",
+      "sourceRange": "A1638:D1666",
+      "sourceDate": "2026-11-01",
       "sourceRows": [
         {
-          "row": 1637,
+          "row": 1638,
           "text": "Clínica Dental Los Molinos"
         },
         {
-          "row": 1639,
+          "row": 1640,
           "text": "Dirección: Av. Caballero de la Triste Figura, 3, Local 10, 28906 Getafe, Madrid."
         },
         {
-          "row": 1640,
+          "row": 1641,
           "text": "Puntos de valor:"
         },
         {
-          "row": 1641,
-          "text": "Script Selectivo Ortodoncia"
+          "row": 1642,
+          "text": "Script Selectivo Ortodoncia (+ ASNEF)"
         },
         {
-          "row": 1642,
+          "row": 1643,
           "text": "Criterios de financiación"
         },
         {
-          "row": 1645,
-          "text": "Ayuda:"
+          "row": 1644,
+          "text": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos + No Asnef"
         },
         {
-          "row": 1646,
-          "text": "Seguros: No aceptan seguros"
+          "row": 1645,
+          "text": "NIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos + No Asnef"
         },
         {
           "row": 1647,
-          "text": "Recordatorio: SI"
+          "text": "Ayuda: No podemos citar pacientes con ayuda"
         },
         {
           "row": 1648,
-          "text": "WhatsApp: subcuenta \"Whatsapp\""
+          "text": "Seguros: No aceptan seguros"
         },
         {
           "row": 1649,
-          "text": "Agendamiento el mismo día: SI"
+          "text": "Recordatorio: SI"
         },
         {
           "row": 1650,
-          "text": "Agendamiento a largo plazo (+ de 72 horas de antelación): SI"
+          "text": "WhatsApp: subcuenta \"Whatsapp\""
+        },
+        {
+          "row": 1651,
+          "text": "Agendamiento el mismo día: SI"
         },
         {
           "row": 1652,
+          "text": "Agendamiento a largo plazo (+ de 72 horas de antelación): SI"
+        },
+        {
+          "row": 1654,
           "text": "PROMOCIÓN"
         },
         {
           "row": 1655,
+          "text": "Ortodoncia invisible: Desde 3.500€, o 145€/mes"
+        },
+        {
+          "row": 1656,
+          "text": "Brackets: Desde 1.500€, o 62€/mes"
+        },
+        {
+          "row": 1657,
+          "text": "Estudio de ortodoncia GRATIS"
+        },
+        {
+          "row": 1658,
+          "text": "Escáner intraoral: Ves cómo quedará tu sonrisa antes de empezar"
+        },
+        {
+          "row": 1659,
+          "text": "Revisiones, refinamientos y retenedores incluidos"
+        },
+        {
+          "row": 1660,
+          "text": "Blanqueamiento de REGALO al terminar"
+        },
+        {
+          "row": 1661,
+          "text": "Ortodoncia infantil desde 8 años"
+        },
+        {
+          "row": 1662,
+          "text": "Parking gratuito"
+        },
+        {
+          "row": 1664,
           "text": "CRITERIOS PARA FORMULARIO MB:"
+        },
+        {
+          "row": 1665,
+          "text": "ZONA, DNI/NIE + Nómina, Jubilados, Terceros, Autón"
         }
       ],
       "byTreatment": {
         "ortodoncia": {
           "scheduleRows": [
             {
-              "row": 1639,
+              "row": 1640,
               "day": "Martes",
               "time": "10:00 a 12:30 / 15:00 a 19:30",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1640,
+              "row": 1641,
               "day": "Jueves",
               "time": "10:00 a 12:30 / 15:00 a 19:30",
               "duration": "30min",
               "variant": ""
             },
             {
-              "row": 1641,
+              "row": 1642,
               "day": "Viernes",
               "time": "10:00 a 12:30",
               "duration": "30min",
               "variant": ""
             }
           ],
-          "promo": "",
+          "promo": "Ortodoncia invisible: Desde 3.500€, o 145€/mes\nBrackets: Desde 1.500€, o 62€/mes\nEstudio de ortodoncia GRATIS\nEscáner intraoral: Ves cómo quedará tu sonrisa antes de empezar\nRevisiones, refinamientos y retenedores incluidos\nBlanqueamiento de REGALO al terminar\nOrtodoncia infantil desde 8 años\nParking gratuito",
           "horarios": "Martes: 10:00 a 12:30 / 15:00 a 19:30\nJueves: 10:00 a 12:30 / 15:00 a 19:30\nViernes: 10:00 a 12:30",
           "duracionCita": "30min",
           "valuePoints": "",
-          "qualifDoc": "Consultar criterios por tratamiento",
-          "qualifEcon": "Pendiente de confirmar en la Master",
+          "qualifDoc": "DNI, NIE",
+          "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos + No Asnef\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos + No Asnef",
           "financing": "Sin condiciones de financiación especificadas; consultar la clínica."
         }
       },
       "issues": [],
       "operationalNotes": [
         {
-          "row": 1638,
+          "row": 1639,
           "text": "Agendamos en su plataforma externa"
         },
         {
-          "row": 1645,
+          "row": 1647,
           "text": "Profesional: Primera visita"
         },
         {
-          "row": 1646,
+          "row": 1648,
           "text": "Tipo de cita: Primera visita"
         },
         {
-          "row": 1647,
+          "row": 1649,
           "text": "Observaciones: PVO"
         },
         {
-          "row": 1649,
+          "row": 1651,
           "text": "Podemos agendar valoraciones para otros tratamientos (saneamiento, carillas, implantes, etc.)"
         }
       ],
       "address": "Av. Caballero de la Triste Figura, 3, Local 10, 28906 Getafe, Madrid.",
       "valuePoints": "",
-      "qualifEcon": "Pendiente de confirmar en la Master",
-      "qualifDoc": "Consultar criterios por tratamiento",
-      "promo": "",
+      "qualifEcon": "DNI: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos + No Asnef\nNIE: Nómina, Pensión contributiva (Jubilados), Terceros (avalistas con nómina, pensión o autónomos), Autónomos + No Asnef",
+      "qualifDoc": "DNI, NIE",
+      "promo": "Ortodoncia invisible: Desde 3.500€, o 145€/mes\nBrackets: Desde 1.500€, o 62€/mes\nEstudio de ortodoncia GRATIS\nEscáner intraoral: Ves cómo quedará tu sonrisa antes de empezar\nRevisiones, refinamientos y retenedores incluidos\nBlanqueamiento de REGALO al terminar\nOrtodoncia infantil desde 8 años\nParking gratuito",
       "financing": "Sin condiciones de financiación especificadas; consultar la clínica.",
-      "ayudas": "",
+      "ayudas": "No podemos citar pacientes con ayuda",
       "seguros": "No aceptan seguros",
       "recordatorio": "SI",
       "whatsapp": "subcuenta \"Whatsapp\"",
@@ -9986,11 +10019,16 @@ const OMNI_MASTER = {
       "agendamientoLargoPlazo": "SI",
       "scriptDeclarations": [
         {
-          "row": 1641,
-          "text": "Script Selectivo Ortodoncia"
+          "row": 1642,
+          "text": "Script Selectivo Ortodoncia (+ ASNEF)"
         }
       ],
-      "formCriteria": [],
+      "formCriteria": [
+        {
+          "row": 1665,
+          "text": "ZONA, DNI/NIE + Nómina, Jubilados, Terceros, Autón"
+        }
+      ],
       "financialHeaders": [
         "Criterios de financiación"
       ],
@@ -10921,4 +10959,96 @@ const OMNI_SCRIPT_SOURCES_17 = {
       }
     }
   }
+})();
+
+const OMNI_SCRIPT_SOURCES_NOV = {"ortodonciaB": [{"title": "Saludo + Encaje + Ubicación", "text": "«Hola [Nombre], te llamo de [Clínica] en [Ciudad].  \n Vimos tu solicitud para el tratamiento de ortodoncia.  \n Estamos en [Dirección corta], cerca de [Referencia].  \n ¿La zona te suena?»\n\n→Si dice que no conoce la zona:  No hay problema, le enviaremos la ubicación exacta y el enlace de Google Maps por Whatsapp"}, {"title": "Mini pitch de autoridad + oferta + explicación de cita", "text": "«Perfecto. Antes de seguir, te explico muy rápido:\n\nBueno esta llamada puede ser grabada por motivos de calidad.\n\n En [Clínica] trabajamos con [puntos de valor: cirugía guiada, especialista en implantes, tecnología 3D, garantías, etc.].  \n Y ahora mismo tenemos una promoción (oferta,precio) vigente: [promoción], válida solo durante esta semana/ mes para las primeras reservas.\n\nAdemás, la primera cita es totalmente gratuita.»"}, {"title": "Motivo de la visita", "text": "«Para ayudarte bien, ¿qué es exactamente lo que necesitas?  \n ¿Es un tratamiento desde cero o una revisión de algo que ya llevas?»\n\n→ Escuchar respuesta.  \n → Resumir en 1 frase:  \n «Perfecto, entonces vienes por ______.»"}, {"title": "Cualificación documental (estricta)", "text": "«Para poder abrir tu ficha y que el especialista te atienda, ¿qué documentación tienes disponible?  \n Aceptamos: [documentación admitida].\n\n→ Si NO tiene documento válido:  \n«Te cuento, [Nombre]: Para esta campaña específica de salud dental, trabajamos con una entidad financiera externa que es la que gestiona las cuotas. Actualmente, sus condiciones de aprobación son muy estrictas y, por un tema de su propio sistema de riesgos, solo nos permiten tramitar solicitudes con [documentación admitida].»\n\nMe sabe fatal, porque me encantaría poder darte el hueco ya mismo, pero el sistema no me deja avanzar sin ese documento concreto. ¿Te parece que te avise si cambian estas condiciones?\n\n(Finalizar llamada si no cualifica.)"}, {"title": "Cualificación económica (pregunta abierta)", "text": "«Cuando un paciente quiere financiar el tratamiento, las entidades suelen pedir cierta documentación.  \n ¿Qué situación laboral o de ingresos tienes tú ahora mismo?»\n\nSi Paciente menciona solamente: «Trabajo»\n\nAgente: «Genial. Te pregunto porque las financieras diferencian entre nómina, autónomos o pensión. ¿Cómo recibes tú tus ingresos?»\n\nSi menciona ingresos regulares (nómina, autónomo, jubilado, tercero con nómina…):\n\nPasamos al siguiente bloque\n\nSi menciona ingresos irregulares o ambiguos :\n\n«Entiendo. En este caso, las entidades prefieren ingresos regulares.  \n Si tu situación cambia, nos avisas y reabrimos la opción de financiación.»\n\nSi menciona que no tiene ingresos:\n\n«Lo siento, para acceder a la financiación necesitamos que el paciente tenga un ingreso regular.  \n Cuando tu situación cambie, estaremos encantados de ayudarte.»\n\n(Finalizar llamada si no cualifica.)"}, {"title": "Pregunta obligatoria sobre incidencias de pago", "text": "Y, para confirmar el último requisito antes de avanzar, ¿tienes actualmente alguna incidencia de pago o apareces en algún fichero como ASNEF?\n\nSi no figura en el fichero y cumple el criterio establecido, continuar»\n\nSi no cumple con los requisitos:  \nLo entiendo, [Nombre]. En ese caso, quizá ahora mismo no sería el mejor momento para avanzar, ya que aunque existe financiación, la financiera tendría que aprobar la operación y el tratamiento debe poder asumirse.  \nSi más adelante cambia tu situación, estaremos encantados de ayudarte."}, {"title": "Refuerzo de valor + Cierre con urgencia real", "text": "(Solo si el paciente sí cualifica en documentación y economía)\n\n«Perfecto, entonces sí puedes optar tanto al diagnóstico como a la financiación.  \n Como te decía, la promoción de [promoción] es para las primeras 10 primeras personas que reserven»"}, {"title": "Verificación de datos básicos", "text": "Antes de agendar, necesito verificar tus datos para completar bien tu ficha.  \n ¿Me confirmas tu nombre y apellido? \n\n→(Si pregunta por qué no sirve sólo con el nombre)  \n ¡Perfecto, [Nombre]! ¿Y me podrías facilitar también tus apellidos? Es para asegurarnos de que tu ficha quede registrada correctamente\n\n(Actualización)  \n «Perfecto, lo actualizo aquí.»"}, {"title": "Agendamiento", "text": "¿Te viene mejor por la mañana o por la tarde?»\n\n→ (Ofrecer un único horario exacto dentro de las próximas 72h, según disponibilidad real)"}, {"title": "Cierre con resumen final", "text": "«Perfecto,:tu cita queda programada para el [día] a las [hora], en [clínica y dirección].  \n Ahora te envío por WhatsApp la ubicación e información de la cita para que lo tengas más cómodo.\n\n¿Tienes alguna duda rápida antes de que te lo mande?»"}], "odos": [{"title": "Saludo + Encaje + Ubicación", "text": "«Hola [Nombre], te llamo de Odos Dental, en Chamberí. Te contacto porque solicitaste una cita por internet para el tratamiento de [Tratamiento]  ¿correcto?\n\n Estamos en Calle de Gaztambide, 31 ¿La zona te suena?»\n\n→Si dice que no conoce la zona:  No hay problema, le enviaremos la ubicación exacta y el enlace de Google Maps por Whatsapp"}, {"title": "Motivo de la visita", "text": "Esta llamada puede ser grabada por motivos de calidad.\n\nIMPLANTES \n\n«Para ayudarte bien, ¿qué es exactamente lo que necesitas?  \n ¿Una rehabilitación completa o solo una pieza en concreto?»\n\n→ Escuchar respuesta.\n\n→ Resumir en 1 frase:  \n «Perfecto, entonces vienes por ______.»\n\nORTODONCIA   \n«Para ayudarte bien, ¿qué es exactamente lo que necesitas?  \n ¿Es un tratamiento desde cero o una revisión de algo que ya llevas?»\n\n→ Escuchar respuesta.\n\n→ Resumir en 1 frase:  \n «Perfecto, entonces vienes por ______.»"}, {"title": "Explicación de cita + Cualificación documental", "text": "«La primera cita de valoración es totalmente gratuita. Durante esa visita, el especialista revisará tu caso, te explicará el tratamiento más adecuado para ti y te entregará un presupuesto personalizado. \n\n«Para poder abrir tu ficha y que el especialista te atienda, ¿qué documentación tienes disponible?  \n Aceptamos: DNI, NIE…»\n\n→ Si NO tiene documento válido:  \n«Te cuento, [Nombre]: Para esta campaña específica de salud dental, trabajamos con una entidad financiera externa que es la que gestiona las cuotas. Actualmente, sus condiciones de aprobación son muy estrictas y, por un tema de su propio sistema de riesgos, solo nos permiten tramitar solicitudes con [documentación admitida].»\n\nMe sabe fatal, porque me encantaría poder darte el hueco ya mismo, pero el sistema no me deja avanzar sin ese documento concreto. ¿Te parece que te avise si cambian estas condiciones?\n\nSi cumple:"}, {"title": "Cualificación económica", "text": "Además, la clínica trabaja con una entidad financiera, por lo que muchos pacientes pueden acceder al tratamiento mediante cuotas y no tienen que asumir el importe completo de una sola vez. En caso de necesitarlo, para comprobar qué opción podemos ofrecerte:\n\n¿Qué situación laboral o de ingresos tienes tú ahora mismo?»\n\nSi Paciente menciona solamente: «Trabajo»\n\nAgente: «Genial. Te pregunto porque las financieras diferencian entre nómina, autónomos o pensión. ¿Cómo recibes tú tus ingresos?»\n\nSi cumple DNI: pasamos al siguiente bloque\n\nSi es NIE y tiene nómina: Las financieras son un poco exigentes con esto y suelen pedir algo de estabilidad. ¿Llevas al menos dos años trabajando en tu empresa actual?» \n\nSi cumple: pasamos al siguiente bloque\n\nSi no cumple con los requisitos:  \nLo entiendo, [Nombre]. En ese caso, quizá ahora mismo no sería el mejor momento para avanzar, ya que aunque existe financiación, la financiera tendría que aprobar la operación y el tratamiento debe poder asumirse.  \nSi más adelante cambia tu situación, estaremos encantados de ayudarte."}, {"title": "Verificación de datos básicos", "text": "Antes de agendar, necesito confirmar tus datos para abrir bien tu historia clínica.  \n ¿Me confirmas tu nombre y apellido? \n\n(Si solo da nombre)  \n « ¡Perfecto, [Nombre]! ¿Y me podrías facilitar también tus apellidos? Es para asegurarnos de que tu ficha quede registrada correctamente.»\n\n(Actualización)  \n «Perfecto, lo actualizo aquí.»"}, {"title": "Agendamiento", "text": "¿Te viene mejor por la mañana o por la tarde?»\n\n→ (Ofrecer un único horario exacto dentro de las próximas 72h, según disponibilidad real)"}, {"title": "Cierre con resumen final", "text": "«Perfecto, antes de finalizar te hago un resumen:\n\nTu cita queda programada para el [día] a las [hora], en [clínica y dirección].  \n Ahora te envío por WhatsApp la ubicación e información de la cita para que lo tengas más cómodo.\n\n¿Tienes alguna duda rápida antes de que te lo mande?»"}], "soniadent": [{"title": "Saludo + Encaje + Ubicación", "text": "«Hola [Nombre], te llamo de Clínica Dental SoniaDent porque dejaste una solicitud para [Tratamiento].¿correcto? »\n\n «Estamos en  Plaza de la Independència, 6, 1º1º, 08242 Manresa, Barcelona ., ¿La zona te suena?»\n\n→Si dice que no conoce la zona:  No hay problema, le enviaremos la ubicación exacta y el enlace de Google Maps por Whatsapp"}, {"title": "Motivo de la visita", "text": "Esta llamada puede ser grabada por motivos de calidad.\n\nIMPLANTES \n\n«Para ayudarte bien, ¿qué es exactamente lo que necesitas?  \n ¿Una rehabilitación completa o solo una pieza en concreto?»\n\n→ Escuchar respuesta.\n\n«¿este sería un tratamiento nuevo o tienes algún tratamiento dental o de implantes iniciado actualmente en otra clínica?» \n\nTratamiento nuevo: \n\n→ Resumir en 1 frase:  \n «Perfecto, entonces vienes por ______.»\n\nTratamiento iniciado o incompleto en otra clínica \n\nPerfecto, voy a dejar registrada toda la información y procesar tu solicitud para que el equipo de la clínica pueda revisarla. En caso de que tu solicitud encaje, se pondrán en contacto contigo para indicarte los siguientes pasos. \n\n(Finalizar llamada)\n\nORTODONCIA   \n«Para ayudarte bien, ¿qué es exactamente lo que necesitas?  \n ¿Es un tratamiento desde cero o una revisión de algo que ya llevas?»\n\n→ Escuchar respuesta.\n\nTratamiento nuevo: \n\n→ Resumir en 1 frase:  \n «Perfecto, entonces vienes por ______.»\n\nTratamiento iniciado o incompleto en otra clínica \n\nPerfecto, voy a dejar registrada toda la información y procesar tu solicitud para que el equipo de la clínica pueda revisarla. En caso de que tu solicitud encaje, se pondrán en contacto contigo para indicarte los siguientes pasos. \n\n(Finalizar llamada)"}, {"title": "Explicación de cita + Cualificación documental", "text": "«La primera cita de valoración es totalmente gratuita. Durante esa visita, el especialista revisará tu caso, te explicará el tratamiento más adecuado para ti y te entregará un presupuesto personalizado. \n\n«Para poder abrir tu ficha y que el especialista te atienda, ¿qué documentación tienes disponible?  \n Aceptamos: DNI O NIE.\n\n→ Si NO tiene documento válido:  \n«Te cuento, [Nombre]: Para esta campaña específica de salud dental, trabajamos con una entidad financiera externa que es la que gestiona las cuotas. Actualmente, sus condiciones de aprobación son muy estrictas y, por un tema de su propio sistema de riesgos, solo nos permiten tramitar solicitudes con [documentación admitida].»\n\nMe sabe fatal, porque me encantaría poder darte el hueco ya mismo, pero el sistema no me deja avanzar sin ese documento concreto. ¿Te parece que te avise si cambian estas condiciones?\n\n(Finalizar llamada si no cualifica.)\n\nSi cumple:"}, {"title": "Cualificación económica", "text": "Además, la clínica trabaja con una entidad financiera, por lo que muchos pacientes pueden acceder al tratamiento mediante cuotas y no tienen que asumir el importe completo de una sola vez. En caso de necesitarlo, para comprobar qué opción podemos ofrecerte:\n\n¿Qué situación laboral o de ingresos tienes tú ahora mismo?»\n\nSi Paciente menciona solamente: «Trabajo»\n\nAgente: «Genial. Te pregunto porque las financieras diferencian entre nómina, autónomos o pensión. ¿Cómo recibes tú tus ingresos?»\n\nSi cumple DNI: pasamos al siguiente bloque\n\nSi es NIE y tiene nómina: Las financieras son un poco exigentes con esto y suelen pedir algo de estabilidad. ¿Llevas al menos dos años trabajando en tu empresa actual?» \n\nSi cumple: pasamos al siguiente bloque\n\nSi no cumple con los requisitos:  \nLo entiendo, [Nombre]. En ese caso, quizá ahora mismo no sería el mejor momento para avanzar, ya que aunque existe financiación, la financiera tendría que aprobar la operación y el tratamiento debe poder asumirse.  \nSi más adelante cambia tu situación, estaremos encantados de ayudarte."}, {"title": "Pregunta obligatoria sobre incidencias de pago", "text": "Y, para confirmar el último requisito antes de avanzar, ¿tienes actualmente alguna incidencia de pago o apareces en algún fichero como ASNEF?\n\nSi no figura en el fichero y cumple el criterio establecido, continuar»\n\nSi no cumple con los requisitos:  \nLo entiendo, [Nombre]. En ese caso, quizá ahora mismo no sería el mejor momento para avanzar, ya que aunque existe financiación, la financiera tendría que aprobar la operación y el tratamiento debe poder asumirse.  \nSi más adelante cambia tu situación, estaremos encantados de ayudarte."}, {"title": "Verificación de datos básicos", "text": "Antes de agendar, necesito confirmar tus datos para abrir bien tu ficha.  \n ¿Me confirmas tu nombre y apellido? \n\n→(Si pregunta por qué no sirve sólo con el nombre)  \n ¡Perfecto, [Nombre]! ¿Y me podrías facilitar también tus apellidos? Es para asegurarnos de que tu ficha quede registrada correctamente\n\n(Actualización)  \n «Perfecto, lo actualizo aquí.»"}, {"title": "Agendamiento", "text": "¿Te viene mejor por la mañana o por la tarde?»\n\n→ (Ofrecer un único horario exacto dentro de las próximas 72h, según disponibilidad real)"}, {"title": "Cierre con resumen final", "text": "«Perfecto,:tu cita queda programada para el [día] a las [hora], en [clínica y dirección].  \n Ahora te envío por WhatsApp la ubicación e información de la cita para que lo tengas más cómodo.\n\n¿Tienes alguna duda rápida antes de que te lo mande?»"}], "apnea": [{"title": "Saludo + Encaje + Ubicación", "text": "«Hola [Nombre], te llamo de Odos Dental, en Chamberí. Te contacto porque solicitaste una cita por internet para el tratamiento de  Apnea del sueño. ¿correcto?\n\n Estamos en Calle de Gaztambide, 31 ¿La zona te suena?»\n\n→Si dice que no conoce la zona:  No hay problema, le enviaremos la ubicación exacta y el enlace de Google Maps por Whatsapp"}, {"title": "Motivo de consulta + explicación de cita", "text": "«Perfecto, [Nombre]. Antes de continuar, te informo de que esta llamada puede grabarse por motivos de calidad.»\n\n«Para orientarle bien, ¿nos llama principalmente por ronquidos, o por apnea del sueño?»\n\n→ Escuchar respuesta.  \nA→Solo ronquido:\n\n«Perfecto. Le damos cita con el doctor para valorar su ronquido. Antes de venir, le pedimos una cosa muy sencilla: descárguese en el móvil la aplicación Roncolab y úsela un par de noches antes de la cita. La app graba y mide el ronquido mientras duerme, y así el doctor tendrá datos reales de cómo ronca. Si ha tenido alguna prueba o informe previo relacionado, tráigalo también»\n\nB→Apnea del sueño  \n\n«¿Tiene ya un diagnóstico de apnea con un estudio del sueño? ¿Está usando actualmente una CPAP?»\n\n Diagnosticado y usa CPAP : «Muy bien. En la clínica valoramos alternativas a la CPAP, como los dispositivos de avance mandibular, y el doctor estudiará si son adecuados en su caso. Para la consulta es muy importante que traiga el estudio del sueño que le hicieron y cualquier informe de su médico o de la unidad del sueño. Si tiene datos de uso de la CPAP, también nos sirven.»\n\n—\n\n Cree que tiene apnea pero no tiene diagnóstico: «Entiendo. Para saber con seguridad si tiene apnea del sueño y de qué grado, es necesario hacer un estudio del sueño nocturno. Es una prueba que se realiza durante una noche mientras duerme y nos da el diagnóstico. El estudio tiene un coste de 180 euros. Con ese resultado, el doctor podrá indicarle el tratamiento más adecuado. Si tiene alguna prueba o informe previo, tráigalo también.»"}, {"title": "Cualificación documental (estricta)", "text": "«Para poder abrir tu ficha y que el especialista te atienda, ¿qué documentación tienes disponible?  \n Aceptamos: DNI, NIE…»\n\n→ Si NO tiene documento válido:  \n«Te cuento, [Nombre]: Para esta campaña específica de salud dental, trabajamos con una entidad financiera externa que es la que gestiona las cuotas. Actualmente, sus condiciones de aprobación son muy estrictas y, por un tema de su propio sistema de riesgos, solo nos permiten tramitar solicitudes con [documentación admitida].»\n\nMe sabe fatal, porque me encantaría poder darte el hueco ya mismo, pero el sistema no me deja avanzar sin ese documento concreto. ¿Te parece que te avise si cambian estas condiciones?\n\nSi cumple:"}, {"title": "Cualificación económica", "text": "Por otro lado, la clínica trabaja con una entidad financiera, por lo que muchos pacientes pueden acceder al tratamiento mediante cuotas y no tienen que asumir el importe completo de una sola vez. En caso de necesitarlo, para comprobar qué opción podemos ofrecerte:\n\n¿Qué situación laboral o de ingresos tienes tú ahora mismo?»\n\nSi Paciente menciona solamente: «Trabajo»\n\nAgente: «Genial. Te pregunto porque las financieras diferencian entre nómina, autónomos o pensión. ¿Cómo recibes tú tus ingresos?»\n\nSi cumple DNI: pasamos al siguiente bloque\n\nSi es NIE y tiene nómina:  Las financieras son un poco exigentes con esto y suelen pedir algo de estabilidad. ¿Llevas al menos dos años trabajando en tu empresa actual?» \n\nSi cumple: pasamos al siguiente bloque\n\nSi no cumple con los requisitos:  \nLo entiendo, [Nombre]. En ese caso, quizá ahora mismo no sería el mejor momento para avanzar, ya que aunque existe financiación, la financiera tendría que aprobar la operación y el tratamiento debe poder asumirse.  \nSi más adelante cambia tu situación, estaremos encantados de ayudarte."}, {"title": "Verificación de datos básicos", "text": "Antes de agendar, necesito confirmar tus datos para abrir bien tu historia clínica.  \n ¿Me confirmas tu nombre y apellido? \n\n(Si solo da nombre)  \n « ¡Perfecto, [Nombre]! ¿Y me podrías facilitar también tus apellidos? Es para asegurarnos de que tu ficha quede registrada correctamente.»\n\n(Actualización)  \n «Perfecto, lo actualizo aquí.»"}, {"title": "Agendamiento", "text": "¿Te viene mejor por la mañana o por la tarde?»\n\n→ (Ofrecer un único horario exacto dentro de las próximas 72h, según disponibilidad real)"}, {"title": "Cierre con resumen final", "text": "«Perfecto, antes de finalizar te hago un resumen:\n\nTu cita queda programada para el [día] a las [hora], en [clínica y dirección].  \n Ahora te envío por WhatsApp la ubicación e información de la cita para que lo tengas más cómodo.\n\n¿Tienes alguna duda rápida antes de que te lo mande?»"}]};
+// Master 01/11 y confirmaciones del manager. Se aplica después de las
+// excepciones históricas, para que no anulen las actualizaciones nuevas.
+(() => {
+  const esc=escapeScriptText;
+  const standard=['Nómina','Autónomo','Jubilación','Pensión contributiva'];
+  const names={ortodonciaB:'Ortodoncia · Selectivo B · ASNEF',odos:'Odos · Implantes y ortodoncia',soniadent:'Soniadent · Implantes y ortodoncia',apnea:'Apnea del sueño · Odos'};
+  function text(value,c) {
+    const fields={'clínica':c.name,'nombre de clínica':c.name,'documentación admitida':c.qualifDoc,'tratamiento':c.treatment==='ortodoncia'?'ortodoncia':'implantes dentales','clínica y dirección':`${c.name}, ${c.address}`,'promoción':c.promo,'dirección corta':c.address,'referencia':c.ref};
+    fields.ciudad=c.city;
+    return esc(value).replace(/\[([^\]]+)\]/g,(all,key)=>key.toLowerCase().startsWith('puntos de valor')?esc(c.valuePoints):fields[key.toLowerCase()]!==undefined?esc(fields[key.toLowerCase()]):all).replace(/primeras 10 primeras/g,'primeras 10');
+  }
+  for(const [key,source] of Object.entries(OMNI_SCRIPT_SOURCES_NOV)) {
+    SCRIPT_TEMPLATES[`nov_${key}`]={label:names[key],icon:'📋',rebates:[],steps:source.filter(s=>s.text).map(s=>({
+      title:s.title,text:c=>{
+        if(/mini pitch/i.test(s.title))return buildAuthorityOfferText(c,'Perfecto. Antes de seguir: esta llamada puede ser grabada por motivos de calidad.')+'\nAdemás, la primera cita es totalmente gratuita.';
+        let value=s.text;
+        if(/motivo de la visita/i.test(s.title) && ['odos','soniadent'].includes(key) && ['implantes','ortodoncia'].includes(c.treatment)) {
+          const parts=value.split(/\n(?:IMPLANTES|ORTODONCIA)\s*\n/);
+          if(parts.length===3)value=parts[0]+'\n'+parts[c.treatment==='implantes'?1:2];
+        }
+        return text(value,c);
+      },...(/cualificación económica/i.test(s.title)?{condition:'econQualif',note:c=>`Criterios de esta clínica:\n${esc(c.qualifEcon)}`}:{})
+    }))};
+  }
+  // La biblioteca histórica de apnea también debe enseñar el guion vigente.
+  SCRIPT_TEMPLATES.vigente_apnea=SCRIPT_TEMPLATES.nov_apnea;
+  const find=id=>CLINICS_DATA.find(c=>c.id===id);
+  const record=id=>OMNI_MASTER.records.find(c=>c.id===id);
+  function operator(id,t,key,asnef) {
+    const c=find(id),data=CLINIC_SCHEDULES[id].byTreatment[t],raw=record(id).byTreatment[t];
+    Object.assign(data,{qualifDoc:raw.qualifDoc,qualifEcon:raw.qualifEcon,promo:raw.promo});
+    delete data.offerDescription;
+    const prior=OMNI_APPOINTMENT_RULES[id].treatments[t];
+    OMNI_APPOINTMENT_RULES[id].treatments[t]={...prior,qualification:'operator',document:true,economic:true,needRequired:true,asnef,
+      criteria:{...prior?.criteria,documents:['DNI','NIE'],incomeByDocument:{DNI:standard,NIE:standard},thirdIncomes:standard,contributiveOnly:true}};
+    c.scriptOverrides[t]=key;c.econQualif=true;c.econQualifAll=true;
+    c.qualifDoc=data.qualifDoc;c.qualifEcon=data.qualifEcon;
+  }
+  for(const id of ['usera','mostoles','dentalis','vistalegre']) {
+    for(const t of find(id).treatments) {
+      operator(id,t,t==='ortodoncia'?'nov_ortodonciaB':'vigente_B',true);
+      const data=CLINIC_SCHEDULES[id].byTreatment[t];
+      data.qualifEcon=data.qualifEcon.replace(/NIE con antigüedad de 1 año:/g,'NIE (antigüedad laboral mínima de 1 año):');
+      const rule=OMNI_APPOINTMENT_RULES[id].treatments[t];
+      rule.criteria.reviewByDocument={NIE:standard};
+      rule.laborTenure=true;
+      find(id).qualifEcon=data.qualifEcon;
+    }
+  }
+  operator('los-molinos','ortodoncia','nov_ortodonciaB',true);
+  for(const t of ['implantes','ortodoncia'])operator('soniadent',t,'nov_soniadent',true);
+  for(const t of ['implantes','ortodoncia','apnea'])operator('odos',t,t==='apnea'?'nov_apnea':'nov_odos',false);
+  for(const id of ['odos','soniadent'])for(const t of find(id).treatments) {
+    const rule=OMNI_APPOINTMENT_RULES[id].treatments[t];
+    rule.criteria.reviewByDocument={NIE:['Nómina',...(id==='odos'?['Autónomo']:[])]};
+    rule.laborTenure=true;
+  }
+  find('soniadent').masterIssues=find('soniadent').masterIssues.filter(s=>!s.includes('falta validar'));
+  for(const schedule of Object.values(CLINIC_SCHEDULES))for(const data of Object.values(schedule.byTreatment || {})) {
+    if(data.archivedScheduleRows?.length && data.scheduleRows?.length) {
+      const durations=[...new Set(data.scheduleRows.map(r=>r.duration))];
+      if(durations.length===1)data.duracionCita=durations[0];
+    }
+  }
+  // Una fecha pasada no es una agenda semanal ni permite crear citas nuevas.
+  const martinez=OMNI_APPOINTMENT_RULES['martinez-silva'].treatments.ortodoncia;
+  if(martinez) {martinez.noteBlocked=true;martinez.blockedMessage='Ortodoncia: consulta la próxima disponibilidad con la clínica. La única fecha publicada (27/10/2026) ya pasó.';find('martinez-silva').masterIssues.push(martinez.blockedMessage);}
+  // Pendientes visibles, sin deducir filtros no confirmados.
+  for(const c of CLINICS_DATA.filter(c=>c.id.startsWith('dental-star-') || ['cirium','adeje'].includes(c.id))) {
+    CLINIC_SCHEDULES[c.id].operationalNotes.push('La Master indica que no se pueden citar pacientes con ayudas. Pendiente de confirmar quién comprueba esta condición; consultar al manager antes de agendar si declara recibirlas.');
+  }
+  CLINIC_SCHEDULES['mp-ellite'].operationalNotes.push('Black Friday: 30% para los diez primeros pacientes. Confirmar vigencia y cupo; no acumular con el 20% habitual.');
+  CLINIC_SCHEDULES.zarate.operationalNotes=CLINIC_SCHEDULES.zarate.operationalNotes.filter(s=>!s.includes('CRM de Tías'));
+  // Las fechas especiales de las sedes también caducan, igual que el resto de agendas.
+  const today=new Date().toISOString().slice(0,10);
+  for(const site of CLINIC_SCHEDULES.zarate.sedes || [])site.horarios=site.horarios.filter(line=>{
+    const day=line.match(/\d{4}-\d{2}-\d{2}/)?.[0];return !day || day>=today;
+  });
+  // Se conservan los importes publicados de Ardenne, sin deducir un porcentaje.
+  for(const data of Object.values(CLINIC_SCHEDULES.ardenne.byTreatment))data.promo=data.promo.split('\n').filter(l=>!l.includes('precios finales son del 10%')).join('\n');
+  find('ardenne').promo=CLINIC_SCHEDULES.ardenne.byTreatment.implantes.promo;
+  const ardenneNeed=SCRIPT_TEMPLATES.ardenne_master.steps.find(s=>/motivo|necesidad/i.test(s.title));
+  if(ardenneNeed) {
+    const original=ardenneNeed.text;
+    ardenneNeed.text=c=>original(c)+'\n\n¿Este sería un tratamiento nuevo o tienes algún tratamiento dental o de implantes iniciado actualmente en otra clínica?\nSi está iniciado o incompleto en otra clínica: registrar la información y procesar la solicitud para que la clínica la revise. Si encaja, la clínica contactará para indicar los siguientes pasos. Finalizar llamada sin agendar.';
+  }
+  const introduction=SCRIPT_TEMPLATES.reprogramacion.steps[0];
+  const before=introduction.text;
+  introduction.text=c=>before(c)+'\n\n¿Te importaría contarnos qué te impidió venir? Nos ayuda a organizar mejor las citas.\nSi ya explicó el motivo, no volver a preguntarlo. Registrar su respuesta sin interpretaciones. Si no quiere explicarlo o tiene prisa, no insistir y anotar «Motivo no especificado».';
 })();
