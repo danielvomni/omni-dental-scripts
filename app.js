@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (step.note) {
         const noteContent = typeof step.note === 'function' ? step.note(cleanClinic) : step.note;
-        html += `<div class="step-note">${noteContent}</div>`;
+        if(!/^Criterios de esta clínica:/i.test(noteContent)) html += `<div class="step-note">${noteContent}</div>`;
       }
 
       if (step.rebate && !conditional.consumesRebate) {

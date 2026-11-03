@@ -7,16 +7,20 @@ function buildAuthorityOfferText(c, intro, options = {}) {
   if (hasValuePoints) {
     t += `
 
-<b>Sobre ${escapeScriptText(c.name)}</b>
+<b>Sobre nuestra clínica</b>
 ${escapeScriptText(c.valuePoints)}`;
   }
 
   if (hasPromo) {
     const suffix = options.promoSuffix || '';
+    let promotion=c.promo;
+    if(c.id==='wright' && c.treatment==='implantes') promotion=promotion
+      .replace('25% de descuento implantes','Para implantes, tenemos un 25% de descuento.')
+      .replace('190€/mes. 2 arcadas total. 8 implantes y 2 sobredentaduras','La opción de 8 implantes y 2 sobredentaduras, para las dos arcadas, tiene una cuota de 190 €/mes.');
     t += `
 
-<b>Promoción vigente</b>
-${escapeScriptText(c.promo)}${suffix ? '\n' + escapeScriptText(suffix.replace(/^,\s*/, '')) : ''}`;
+<b>Para este tratamiento, estas son las condiciones de la promoción:</b>
+${escapeScriptText(promotion)}${suffix ? '\n' + escapeScriptText(suffix.replace(/^,\s*/, '')) : ''}`;
   }
 
   return t;

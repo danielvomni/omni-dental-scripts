@@ -160,7 +160,7 @@
                                     <p id="note-economic-criteria" class="note-hint"></p>
                                     <label for="note-income">Situación económica del paciente<select id="note-income" data-note-field="income"><option value="">Selecciona una respuesta</option><option>Nómina</option><option>Autónomo</option><option>Jubilación</option><option>Pensión contributiva</option><option>Pensión no contributiva</option><option>Ayuda</option><option>Sin ingresos</option><option>Ahorros</option><option>Cuenta bancaria o tarjeta</option><option>No especifica</option><option>Otro</option></select></label>
                                     <p id="note-income-warning" class="criterion-warning" role="status" hidden></p>
-                                    <div class="note-grid amount-grid">
+                                    <div id="note-amount-row" class="note-grid amount-grid">
                                         <label for="note-amount-comparison">Importe <span id="note-amount-optional" class="optional">(opcional)</span><select id="note-amount-comparison" data-note-field="amountComparison"><option value="">Importe indicado</option><option value="more">Más de</option></select></label>
                                         <label for="note-amount">Euros<input id="note-amount" type="text" inputmode="decimal" maxlength="12" placeholder="Ej. 880" data-note-field="amount"></label>
                                     </div>
@@ -169,7 +169,7 @@
                                     <div id="note-third-fields" class="note-third" hidden>
                                         <label for="note-third-income">Situación económica del tercero<select id="note-third-income" data-note-field="thirdIncome"><option value="">Selecciona una respuesta</option><option>Nómina</option><option>Autónomo</option><option>Jubilación</option><option>Pensión contributiva</option><option>Pensión no contributiva</option><option>No especifica</option><option>Otro</option></select></label>
                                         <p id="note-third-warning" class="criterion-warning" role="status" hidden></p>
-                                        <div class="note-grid amount-grid">
+                                        <div id="note-third-amount-row" class="note-grid amount-grid">
                                             <label for="note-third-comparison">Importe <span class="optional">(opcional)</span><select id="note-third-comparison" data-note-field="thirdComparison"><option value="">Importe indicado</option><option value="more">Más de</option></select></label>
                                             <label for="note-third-amount">Euros<input id="note-third-amount" type="text" inputmode="decimal" maxlength="12" placeholder="Ej. 1500" data-note-field="thirdAmount"></label>
                                         </div>

@@ -315,7 +315,8 @@
       byId('note-availability').required = Boolean(policy.clinicConfirmsAppointment);
       byId('note-new-fields').hidden = reschedule;
       byId('note-reason-row').hidden = !reschedule;
-      byId('note-need-row').hidden = reschedule;
+      const simplified=clinic?.scriptOverrides?.[treatment]==='simplificado';
+      byId('note-need-row').hidden = reschedule || simplified;
       byId('note-pieces-row').hidden = !policy.zenRoutes || reschedule;
       byId('note-need').required = Boolean(policy.needRequired && !reschedule);
       byId('note-need').setAttribute('aria-required', String(Boolean(policy.needRequired && !reschedule)));
@@ -335,6 +336,11 @@
       byId('note-clinic-fields').hidden = !policy.clinicConfirmsAppointment || reschedule;
       const criteria = criteriaFor(clinic, treatment, policy, readValue);
       byId('note-economic-criteria').textContent = criteria.economicText ? 'Criterios de esta clínica: ' + criteria.economicText : 'Criterios pendientes de confirmar con el manager.';
+      const askAmount=Boolean(policy.economic && (policy.minimumIncome || policy.amountRequired || /\d[\d.,]*\s*(?:€|euros)/i.test(criteria.economicText || '')));
+      byId('note-amount-row').hidden=!askAmount;
+      byId('note-third-amount-row').hidden=!askAmount;
+      if(!askAmount) {draft.amount='';draft.amountComparison='';draft.thirdAmount='';draft.thirdComparison='';}
+      if(simplified) draft.need='';
       const mark = (element, kind, value) => {
         const result = answerStatus(criteria, kind, value, draft.document);
         element.setAttribute('data-criterion', result.status);

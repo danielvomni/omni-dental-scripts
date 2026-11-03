@@ -11051,4 +11051,12 @@ const OMNI_SCRIPT_SOURCES_NOV = {"ortodonciaB": [{"title": "Saludo + Encaje + Ub
   const introduction=SCRIPT_TEMPLATES.reprogramacion.steps[0];
   const before=introduction.text;
   introduction.text=c=>before(c)+'\n\n¿Te importaría contarnos qué te impidió venir? Nos ayuda a organizar mejor las citas.\nSi ya explicó el motivo, no volver a preguntarlo. Registrar su respuesta sin interpretaciones. Si no quiere explicarlo o tiene prisa, no insistir y anotar «Motivo no especificado».';
+  // Una sola explicación completa de la oferta; refuerzo breve, sin repetir
+  // importes ni añadir cupos o prometer aprobación financiera.
+  for(const template of Object.values(SCRIPT_TEMPLATES))for(const step of template.steps || []) {
+    if(/refuerzo de valor|valor \+ urgencia/i.test(step.title) && !/compromiso de asistencia/i.test(step.title)) {
+      step.title='Antes de agendar';
+      step.text=()=> 'En la valoración revisarán tu caso y te explicarán las opciones y el presupuesto. ¿Buscamos un horario que te venga bien?';
+    }
+  }
 })();

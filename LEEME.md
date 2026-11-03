@@ -1,5 +1,13 @@
 # Omni Dental Scripts — citas y notas
 
+## Simplificación del 03/11/2026
+
+Importes del paciente y tercero ocultos cuando la ruta no exige cuantía; se mantienen en rutas con mínimo económico como Selectivo C, Massana, Zen cuando corresponde y Flordent estética. El simplificado no muestra el campo Necesidad. Los criterios se muestran una sola vez junto a las respuestas.
+
+La oferta completa se conserva en su explicación inicial y la ficha. Los refuerzos genéricos pasan a una transición breve hacia la valoración, sin repetir precios, prometer financiación ni añadir cupos. Se mantiene el compromiso de asistencia específico de Adeje. La oferta de Gracia y Wright se redacta separando descuento, cuota de dos arcadas y regalo condicionado. Datos originales preservados.
+
+121 pruebas automáticas superadas. Pendiente revisión visual en navegador real. No publicado en GitHub ni Vercel.
+
 Copia de trabajo actualizada el 1 de noviembre de 2026. Incluye la nueva Master, guiones y cualificación revisados, horarios y motivo en la nota de reprogramación. La carpeta original de Downloads permanece intacta.
 
 Consulta [la actualización del 01/11/2026](ACTUALIZACION_01_NOVIEMBRE.md) para los cambios y pendientes vigentes. Los informes de octubre conservan el historial anterior. Esta versión supera 120 pruebas automáticas; queda pendiente la revisión visual en navegador real.
